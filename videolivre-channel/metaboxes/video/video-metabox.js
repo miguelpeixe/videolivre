@@ -59,20 +59,57 @@ var html5;
 				$('.html5_webm').hide();
 			}
 
-			$('.add-subtitle').click(function() {
+			subtitleLength = $('.subtitle-list li').length;
+
+			$('.add-subtitle').live('click', function() {
 				addSubtitle();
 				return false;
 			});
+
+			$('.remove-subtitle').live('click', function() {
+				var $item = $(this).parents('.list-item');
+				removeSubtitle($item);
+				return false;
+			});
+
+			updateSubtitleList();
 
 		} else {
 			$('.html5-extras').hide();
 		}
 	}
 
+	var subtitleLength;
+
 	function addSubtitle() {
 		var $subtitleList = $('.subtitle-list');
+		var $item = $('.subtitle-list .model').clone();
 
-		$subtitleList.append('<li><input type="text" class="subtitle_url" name="subtitles[0][url]" placeholder="' + video_metabox_messages.placeholders.subtitle_url + '" /><input type="text" class="subtitle_lang" name="subtitles[0][lang]" placeholder="' + video_metabox_messages.placeholders.subtitle_lang + '" /></li>');
+		$item.find('.subtitle_url input').attr('name', 'subtitles[' + subtitleLength + '][url]');
+		$item.find('.subtitle_lang_code input').attr('name', 'subtitles[' + subtitleLength + '][lang-code]');
+		$item.find('.subtitle_lang_label input').attr('name', 'subtitles[' + subtitleLength + '][lang-label]');
+
+		$item.removeClass('model').appendTo($subtitleList);
+
+		subtitleLength++;
+
+		updateSubtitleList();
+	}
+
+	function removeSubtitle($item) {
+		$item.remove();
+		updateSubtitleList();
+	}
+
+	function updateSubtitleList() {
+		var $subtitleContainer = $('.subtitle-container');
+		var $subtitleList = $('.subtitle-list');
+		var listSize = $subtitleList.find('li').length;
+
+		if(listSize === 1)
+			$subtitleContainer.hide();
+		else
+			$subtitleContainer.show();
 	}
 
 	function getVideo(videoURL) {

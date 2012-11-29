@@ -1,32 +1,66 @@
 #video-metabox #video_url {
 	font-size: 22px;
-	padding: 1%;
-	width: 98%;
+	padding: 5px;
+	width: 100%;
+}
+
+#video-metabox span.tip {
+	color: #999;
+	font-style: italic;
 }
 
 #video-metabox .html5-extras input {
 	font-size: 16px;
-	padding: 1%;
-	width: 98%;
+	padding: 5px;
+	width: 100%;
 }
 
-#video-metabox .html5-extras .subtitle-list input {
+#video-metabox .html5-extras .subtitle-tracks input {
 	font-size: 12px;
 }
 
-#video-metabox .html5-extras .subtitle-list input.subtitle_url {
-	width: 80%;
-	padding: 1%;
+#video-metabox .html5-extras .subtitle-tracks .subtitle_part,
+#video-metabox .html5-extras .subtitle-tracks .tip {
+	display: block;
+	float: left;
+	margin-bottom: 10px;
 }
 
-#video-metabox .html5-extras .subtitle-list input.subtitle_lang {
-	width: 10%;
-	padding: 1%;
+
+#video-metabox .html5-extras .subtitle-tracks .subtitle_part input {
+	width: 98%;
+}
+
+#video-metabox .html5-extras .subtitle-tracks .subtitle_url {
+	width: 55%;
+	min-height: 1px;
+}
+
+#video-metabox .html5-extras .subtitle-tracks .subtitle_lang_code {
+	width: 15%;
+}
+
+#video-metabox .html5-extras .subtitle-tracks .subtitle_lang_label {
+	width: 15%;
+}
+
+#video-metabox .html5-extras .subtitle-tracks .subtitle_manage {
+	width: 15%;
+}
+
+#video-metabox .html5-extras .subtitle-tracks .remove-subtitle {
+	color: #f00;
+	float: right;
+	padding: 5px 0;
+}
+
+#video-metabox .html5-extras .subtitle-tracks .subtitle-list .model {
+	display: none;
 }
 
 #video-metabox .locate-video {
-	width: 98%;
-	padding: 1%;
+	width: 100%;
+	padding: 5px 0;
 }
 
 #video-metabox .video-container iframe,
