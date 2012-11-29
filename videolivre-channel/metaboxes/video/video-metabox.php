@@ -97,7 +97,7 @@ function video_inner_meta_box($post) {
 			    </div>
 		    </div>
 	    </div>
-	    <p><input type="button" class="locate-video button" value="<?php _e('Load video', 'videolivre-channel'); ?>" /></p>
+	    <p><input type="button" class="locate-video button" value="<?php _e('Preview video', 'videolivre-channel'); ?>" /></p>
 	    <div class="video-container">
 	    	<div id="apiplayer"></div>
 	    </div>
