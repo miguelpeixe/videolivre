@@ -7,14 +7,12 @@ var html5;
 
 	$(document).ready(function() {
 
-		$('.html5-extras').hide();
-
 		if($('input#video_url').val()) {
 			enableHTML5();
 			getVideo($('input#video_url').val());
 		}
 
-		$('#video_url').bind('keyup', 'change', function() {
+		$('#video_url').bind('keyup change focus blur', function() {
 			enableHTML5();
 		});
 
@@ -27,6 +25,21 @@ var html5;
 
 		$('.locate-video').live('click', function() {
 			getVideo($('input#video_url').val());
+		});
+
+		/* html5 video */
+
+		$('.html5-extras').hide();
+		
+		$('.add-subtitle').live('click', function() {
+			addSubtitle();
+			return false;
+		});
+
+		$('.remove-subtitle').live('click', function() {
+			var $item = $(this).parents('.list-item');
+			removeSubtitle($item);
+			return false;
 		});
 
 	});
@@ -46,17 +59,6 @@ var html5;
 		} else
 			return false;
 	}
-
-	$('.add-subtitle').live('click', function() {
-		addSubtitle();
-		return false;
-	});
-
-	$('.remove-subtitle').live('click', function() {
-		var $item = $(this).parents('.list-item');
-		removeSubtitle($item);
-		return false;
-	});
 
 	function enableHTML5() {
 		html5 = checkHTML5($('#video_url').val());
