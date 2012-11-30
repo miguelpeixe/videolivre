@@ -14,7 +14,7 @@ var html5;
 			getVideo($('input#video_url').val());
 		}
 
-		$('#video_url').keyup(function() {
+		$('#video_url').bind('keyup', 'change', function() {
 			enableHTML5();
 		});
 
@@ -47,6 +47,17 @@ var html5;
 			return false;
 	}
 
+	$('.add-subtitle').live('click', function() {
+		addSubtitle();
+		return false;
+	});
+
+	$('.remove-subtitle').live('click', function() {
+		var $item = $(this).parents('.list-item');
+		removeSubtitle($item);
+		return false;
+	});
+
 	function enableHTML5() {
 		html5 = checkHTML5($('#video_url').val());
 		if(html5) {
@@ -60,17 +71,6 @@ var html5;
 			}
 
 			subtitleLength = $('.subtitle-list li').length;
-
-			$('.add-subtitle').live('click', function() {
-				addSubtitle();
-				return false;
-			});
-
-			$('.remove-subtitle').live('click', function() {
-				var $item = $(this).parents('.list-item');
-				removeSubtitle($item);
-				return false;
-			});
 
 			updateSubtitleList();
 
