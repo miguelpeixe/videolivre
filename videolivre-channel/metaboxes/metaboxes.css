@@ -1,0 +1,50 @@
+#poststuff .general-box .inside {
+	margin: 0;
+	padding: 0;
+}
+
+.general-metabox {
+}
+
+.general-metabox .field {
+	width: 96%;
+	float: left;
+	padding: 2%;
+	clear: both;
+	border-top: 1px solid #fff;
+	border-bottom: 1px solid #dfdfdf;
+}
+
+.general-metabox .field .field-meta {
+	width: 17%;
+	float: left;
+	padding-right: 3%;
+}
+
+.general-metabox .field .field-input {
+	width: 80%;
+	float: left;
+}
+
+.general-metabox .field label {
+	display: block;
+	font-weight: bold;
+	margin: 0 0 5px;
+	text-align: right;
+}
+
+.general-metabox .field p.instruction {
+	color: #666;
+	margin: 0 0 5px;
+	font-style: italic;
+	text-align: right;
+}
+
+.general-metabox .field textarea {
+	width: 100%;
+}
+
+.clearfix {
+	width: 100%;
+	clear:both;
+}

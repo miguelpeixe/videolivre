@@ -2,6 +2,7 @@ google.load('swfobject', '2.1');
 
 var ytplayer;
 var html5;
+var subtitleLength;
 
 (function($) {
 
@@ -29,7 +30,8 @@ var html5;
 
 		/* html5 video */
 
-		$('.html5-extras').hide();
+		if(!html5)
+			$('.html5-extras').hide();
 		
 		$('.add-subtitle').live('click', function() {
 			addSubtitle();
@@ -80,8 +82,6 @@ var html5;
 			$('.html5-extras').hide();
 		}
 	}
-
-	var subtitleLength;
 
 	function addSubtitle() {
 		var $subtitleList = $('.subtitle-list');
