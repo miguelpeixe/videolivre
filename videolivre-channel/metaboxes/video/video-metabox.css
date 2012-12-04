@@ -1,96 +1,96 @@
-#video-metabox #video_url {
+#video_metabox #video_url {
 	font-size: 22px;
 	padding: 5px;
 	width: 100%;
 }
 
-#video-metabox span.tip {
+#video_metabox span.tip {
 	color: #999;
 	font-style: italic;
 }
 
-#video-metabox .html5-extras input {
+#video_metabox .html5-extras input {
 	font-size: 16px;
 	padding: 5px;
 	width: 100%;
 }
 
-#video-metabox .html5-extras .subtitle-tracks input {
+#video_metabox .html5-extras .subtitle-tracks input {
 	font-size: 12px;
 }
 
-#video-metabox .html5-extras .subtitle-tracks .subtitle_part,
-#video-metabox .html5-extras .subtitle-tracks .tip {
+#video_metabox .html5-extras .subtitle-tracks .subtitle_part,
+#video_metabox .html5-extras .subtitle-tracks .tip {
 	display: block;
 	float: left;
 	margin-bottom: 10px;
 }
 
 
-#video-metabox .html5-extras .subtitle-tracks .subtitle_part input {
+#video_metabox .html5-extras .subtitle-tracks .subtitle_part input {
 	width: 98%;
 }
 
-#video-metabox .html5-extras .subtitle-tracks .subtitle_url {
+#video_metabox .html5-extras .subtitle-tracks .subtitle_url {
 	width: 55%;
 	min-height: 1px;
 }
 
-#video-metabox .html5-extras .subtitle-tracks .subtitle_lang_code {
+#video_metabox .html5-extras .subtitle-tracks .subtitle_lang_code {
 	width: 15%;
 }
 
-#video-metabox .html5-extras .subtitle-tracks .subtitle_lang_label {
+#video_metabox .html5-extras .subtitle-tracks .subtitle_lang_label {
 	width: 15%;
 }
 
-#video-metabox .html5-extras .subtitle-tracks .subtitle_manage {
+#video_metabox .html5-extras .subtitle-tracks .subtitle_manage {
 	width: 15%;
 }
 
-#video-metabox .html5-extras .subtitle-tracks .remove-subtitle {
+#video_metabox .html5-extras .subtitle-tracks .remove-subtitle {
 	color: #f00;
 	float: right;
 	padding: 5px 0;
 }
 
-#video-metabox .html5-extras .subtitle-tracks .subtitle-list .model {
+#video_metabox .html5-extras .subtitle-tracks .subtitle-list .model {
 	display: none;
 }
 
-#video-metabox .locate-video {
+#video_metabox .locate-video {
 	width: 100%;
 	padding: 5px 0;
 }
 
-#video-metabox .video-container iframe,
-#video-metabox .video-container object,
-#video-metabox .video-container video {
+#video_metabox .video-container iframe,
+#video_metabox .video-container object,
+#video_metabox .video-container video {
 	margin: 0 auto;
 	display: block;
 }
 
-#video-metabox .supported-formats {
+#video_metabox .supported-formats {
 	float: right;
 	color: #999;
 	width: 25%;
 	min-width: 195px;
 }
 
-#video-metabox .supported-formats span {
+#video_metabox .supported-formats span {
 	float: left;
 	display: block;
 	margin: 0 10px;
 }
 
-#video-metabox .supported-formats ul {
+#video_metabox .supported-formats ul {
 	margin: 0;
 	padding: 0;
 	float: left;
 	display: block;
 }
 
-#video-metabox .supported-formats ul li {
+#video_metabox .supported-formats ul li {
 	float: left;
 	padding: 0;
 	margin: 0 2px;
@@ -103,14 +103,14 @@
 	background-repeat: no-repeat;
 }
 
-#video-metabox .supported-formats ul li.html5 {
+#video_metabox .supported-formats ul li.html5 {
 	background-position: 0px 0px;
 }
 
-#video-metabox .supported-formats ul li.vimeo {
+#video_metabox .supported-formats ul li.vimeo {
 	background-position: -32px 0px;
 }
 
-#video-metabox .supported-formats ul li.youtube {
+#video_metabox .supported-formats ul li.youtube {
 	background-position: -16px 0px;
 }
