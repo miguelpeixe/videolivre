@@ -8,11 +8,11 @@ function video_metabox_init() {
 	wp_enqueue_script('google-jsapi', 'http://www.google.com/jsapi');
 	wp_enqueue_script('video-metabox', get_template_directory_uri() . '/metaboxes/video/video-metabox.js', array('jquery', 'google-jsapi'), '1.0');
 	wp_localize_script('video-metabox', 'video_metabox_messages', array(
-		'empty_url' => __('You must enter a valid URL', 'videolivre-channel'),
-		'placeholders' => array(
-		)
+		'empty_url' => __('You must enter a valid URL', 'videolivre-channel')
 	));
 	wp_enqueue_style('video-metabox', get_template_directory_uri() . '/metaboxes/video/video-metabox.css');
+
+	wp_enqueue_script('custom-uploader');
 }
 
 function video_add_meta_box() {

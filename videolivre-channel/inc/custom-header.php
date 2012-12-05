@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Implements an optional custom header for Twenty Twelve.
+ * Implements an optional custom header.
  * See http://codex.wordpress.org/Custom_Headers
  */
 
