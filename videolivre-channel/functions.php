@@ -1,5 +1,8 @@
 <?php
 
+/*
+ * Theme setup
+ */
 function vlchannel_setup() {
 
 	add_theme_support( 'custom-background', array(
@@ -10,8 +13,20 @@ function vlchannel_setup() {
 	set_post_thumbnail_size( 624, 9999 );
 
 }
-
 add_action('after_setup_theme', 'vlchannel_setup');
+
+/*
+ * Styles
+ */
+
+function vlchannel_styles() {
+	wp_register_style('base', get_template_directory_uri() . '/css/base.css');
+	wp_register_style('skeleton', get_template_directory_uri() . '/css/skeleton.css', array('base'));
+	wp_register_style('main', get_template_directory_uri() . '/css/main.css', array('base', 'skeleton'));
+
+	wp_enqueue_style('main');
+}
+add_action('wp_enqueue_scripts', 'vlchannel_styles');
 
 /**
  * Register post types
@@ -24,15 +39,14 @@ add_action('after_setup_theme', 'vlchannel_setup');
 include(TEMPLATEPATH . '/metaboxes/metaboxes.php');
 
 /**
- * Adds support for a custom header image.
+ * Add support for a custom header image.
  */
-require(get_template_directory() . '/inc/custom-header.php');
+require(TEMPLATEPATH . '/inc/custom-header.php');
 
-// custom preview
-function vlchannel_customize_preview_js() {
-	wp_enqueue_script( 'vlchannel-customizer', get_template_directory_uri() . '/js/theme-customizer.js', array( 'customize-preview' ), '20120827', true );
-}
-//add_action( 'customize_preview_init', 'vlchannel_customize_preview_js' );
+/**
+ * Theme customizer
+ */
+require(TEMPLATEPATH . '/inc/theme-customizer.php');
 
 
 function vlchannel_wp_title( $title, $sep ) {
@@ -55,4 +69,13 @@ function vlchannel_wp_title( $title, $sep ) {
 
 	return $title;
 }
-add_filter( 'wp_title', 'vlchannel_wp_title', 10, 2 );
+add_filter('wp_title', 'vlchannel_wp_title', 10, 2);
+
+/*
+ * Add subtitle (srt files) mime type
+ */
+add_filter('upload_mimes', 'vlchannel_upload_mimes');
+function vlchannel_upload_mimes ($mimes = array()) {
+	$mimes['srt'] = 'text/plain';
+	return $mimes;
+}

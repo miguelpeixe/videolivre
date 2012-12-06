@@ -60,6 +60,7 @@ function video_inner_meta_box($post) {
 		    		<li class="model list-item">
 		    			<span class="subtitle_url subtitle_part">
 		    				<input type="text" placeholder="<?php _e('Subtitle url', 'videolivre-channel'); ?>" />
+		    				<a class="button upload_file_button"><?php _e('Upload file', 'videolivre-channel'); ?></a>
 		    			</span>
 		    			<span class="subtitle_lang_code subtitle_part">
 		    				<input type="text" placeholder="<?php _e('Language code', 'videolivre-channel'); ?>" title="<?php _e('E.g.: pt-BR, en-US, fr', 'videolivre-channel'); ?>" />
