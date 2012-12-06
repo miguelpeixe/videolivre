@@ -16,7 +16,7 @@ jQuery(document).ready(function() {
 	window.send_to_editor = function(html){
 
 		if (fileInput) {
-			fileurl = jQuery('img',html).attr('src');
+			fileurl = jQuery(html).attr('href');
 
 			fileInput.val(fileurl);
 
