@@ -36,6 +36,10 @@
 	min-height: 1px;
 }
 
+#video_metabox .html5-extras .subtitle-tracks .subtitle_url input {
+	width: 75%;
+}
+
 #video_metabox .html5-extras .subtitle-tracks .subtitle_lang_code {
 	width: 15%;
 }

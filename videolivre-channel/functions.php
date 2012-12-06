@@ -31,7 +31,12 @@ add_action('wp_enqueue_scripts', 'vlchannel_styles');
 /**
  * Register post types
  */
- include(TEMPLATEPATH . '/inc/post-types.php');
+include(TEMPLATEPATH . '/inc/post-types.php');
+
+/**
+ * Video functions
+ */
+include(TEMPLATEPATH . '/inc/video-functions.php');
 
 /**
  * Include metaboxes
@@ -49,7 +54,7 @@ require(TEMPLATEPATH . '/inc/custom-header.php');
 require(TEMPLATEPATH . '/inc/theme-customizer.php');
 
 
-function vlchannel_wp_title( $title, $sep ) {
+function vlchannel_wp_title($title, $sep) {
 	global $paged, $page;
 
 	if ( is_feed() )
