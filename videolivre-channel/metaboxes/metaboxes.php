@@ -11,6 +11,7 @@ function metaboxes_init() {
 }
 
 include(TEMPLATEPATH . '/metaboxes/video/video-metabox.php');
+include(TEMPLATEPATH . '/metaboxes/programs/programs-metabox.php');
 include(TEMPLATEPATH . '/metaboxes/video-metadata/video-metadata-metabox.php');
 include(TEMPLATEPATH . '/metaboxes/program-metadata/program-metadata-metabox.php');
 include(TEMPLATEPATH . '/metaboxes/attachments/attachments-metabox.php');
