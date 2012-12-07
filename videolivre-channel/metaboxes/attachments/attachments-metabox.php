@@ -67,7 +67,7 @@ function attachments_inner_meta_box($post) {
 							<label><?php _e('File', 'videolivre-channel'); ?></label>
 						</div>
 						<div class="field-input">
-							<input type="text" name="video_attachments[<?php echo $i; ?>][name]" size="80" value="<?php echo $attachment['url']; ?>" />
+							<input type="text" name="video_attachments[<?php echo $i; ?>][url]" size="80" value="<?php echo $attachment['url']; ?>" />
 							<a class="button upload_file_button"><?php _e('Upload file', 'videolivre-channel'); ?></a>
 							<p class="instruction"><?php _e('Enter file URL or upload new file', 'videolivre-channel'); ?></p>
 						</div>
