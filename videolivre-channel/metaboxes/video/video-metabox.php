@@ -91,7 +91,7 @@ function video_inner_meta_box($post) {
 			    	<?php $i++; endforeach; endif; ?>
 		    	</ul>
 		    	<div class="subtitle-tips">
-		    		<span class="subtitle_url tip"><?php _e('Enter the file url or click to upload a new file. <strong>.srt</strong> or <strong>.vtt</strong> file', 'videolivre-channel'); ?></span>
+		    		<span class="subtitle_url tip"><?php _e('Enter the file url or click to upload a <strong>.srt</strong> or <strong>.vtt</strong> file', 'videolivre-channel'); ?></span>
 		    		<span class="subtitle_lang_code tip"><?php echo sprintf(__('According to <a href="%s" target="_blank" rel="external">BCP 47</a> code. E.g.: pt-BR, en-US, fr.', 'videolivre-channel'), 'http://tools.ietf.org/html/bcp47'); ?></span>
 		    		<span class="subtitle_lang_label tip"><?php _e('E.g.: English, Português', 'videolivre-channel'); ?></span>
 		    	</div>

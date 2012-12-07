@@ -10,7 +10,7 @@ function metaboxes_init() {
 	wp_register_script('custom-uploader', get_template_directory_uri() . '/js/custom-uploader.js', array('jquery','media-upload','thickbox'));
 }
 
-// video metabox
 include(TEMPLATEPATH . '/metaboxes/video/video-metabox.php');
 include(TEMPLATEPATH . '/metaboxes/video-metadata/video-metadata-metabox.php');
 include(TEMPLATEPATH . '/metaboxes/program-metadata/program-metadata-metabox.php');
+include(TEMPLATEPATH . '/metaboxes/attachments/attachments-metabox.php');

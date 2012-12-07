@@ -1,11 +1,10 @@
 jQuery(document).ready(function() {
-	var fileInput = '';
+	var fileInput;
 
 	jQuery('.upload_file_button').live('click', function() {
 		fileInput = jQuery(this).prev('input');
-		//console.log(fileInput);
 		post_id = jQuery('#post_ID').val();
-		tb_show('', 'media-upload.php?post_id='+post_id+'&amp;TB_iframe=true');
+		tb_show('', 'media-upload.php?post_id='+post_id+'&type=file&TB_iframe=true');
 		return false;
 	});
 
