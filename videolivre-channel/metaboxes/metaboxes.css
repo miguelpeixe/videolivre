@@ -4,7 +4,7 @@
 }
 
 .general-box p.description {
-	padding: 2%;
+	padding: 10px;
 	border-bottom: 1px solid #dfdfdf;
 	margin: 0;
 }
@@ -12,7 +12,7 @@
 .general-box .field {
 	width: 96%;
 	float: left;
-	padding: 2%;
+	padding: 10px;
 	clear: both;
 	border-top: 1px solid #fff;
 	border-bottom: 1px solid #dfdfdf;
@@ -68,8 +68,6 @@
 /* relationship box */
 
 .general-box .field.relationship .relation-list li {
-	width: 33%;
-	float: left;
 }
 
 .general-box .field.relationship .relation-list li input[type=checkbox] {

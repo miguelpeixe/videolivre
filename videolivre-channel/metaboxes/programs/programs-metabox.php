@@ -14,8 +14,8 @@ function programs_add_meta_box() {
 		__('Programs', 'videolivre-channel'),
 		'programs_inner_meta_box',
 		'video',
-		'advanced',
-		'high'
+		'side',
+		'default'
 	);
 }
 
