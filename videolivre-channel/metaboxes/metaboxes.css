@@ -65,6 +65,23 @@
 	width: 100%;
 }
 
+/* relationship box */
+
+.general-box .field.relationship .relation-list li {
+	width: 33%;
+	float: left;
+}
+
+.general-box .field.relationship .relation-list li input[type=checkbox] {
+	margin-right: 10px;
+}
+
+.general-box .field.relationship .relation-list li label {
+	display: inline;
+	text-align: inherit;
+	font-weight: normal;
+}
+
 .clearfix {
 	width: 100%;
 	clear:both;

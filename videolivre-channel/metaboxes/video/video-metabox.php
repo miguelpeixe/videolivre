@@ -49,9 +49,9 @@ function video_inner_meta_box($post) {
 	<p><input type="text" size="80" id="video_url" name="video_url" placeholder="<?php _e('Video URL', 'videolivre-channel'); ?>" value="<?php echo $video_url; ?>" /></p>
     <div class="html5-extras">
     	<p>
-	    	<input type="text" size="80" class="html5_mp4" name="html5_mp4" placeholder="<?php echo _e('MP4 fallback', 'videolivre-channel'); ?>" value="<?php echo $video_html5_mp4; ?>" />
-	    	<input type="text" size="80" class="html5_ogv" name="html5_ogv" placeholder="<?php echo _e('OGV fallback', 'videolivre-channel'); ?>" value="<?php echo $video_html5_ogv; ?>" />
-	    	<input type="text" size="80" class="html5_webm" name="html5_webm" placeholder="<?php echo _e('WebM fallback', 'videolivre-channel'); ?>" value="<?php echo $video_html5_webm; ?>" />
+	    	<input type="text" size="80" class="html5_mp4" name="html5_mp4" placeholder="<?php _e('MP4 fallback', 'videolivre-channel'); ?>" value="<?php echo $video_html5_mp4; ?>" />
+	    	<input type="text" size="80" class="html5_ogv" name="html5_ogv" placeholder="<?php _e('OGV fallback', 'videolivre-channel'); ?>" value="<?php echo $video_html5_ogv; ?>" />
+	    	<input type="text" size="80" class="html5_webm" name="html5_webm" placeholder="<?php _e('WebM fallback', 'videolivre-channel'); ?>" value="<?php echo $video_html5_webm; ?>" />
 	    </p>
 	    <div class="subtitle-tracks">
 	    	<a href="#" class="add-subtitle button"><?php _e('+ Add subtitle track', 'videolivre-channel'); ?></a>
