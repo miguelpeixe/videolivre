@@ -26,8 +26,7 @@ function programs_inner_meta_box($post) {
 	$video_programs = get_post_meta($post->ID, 'programs', true);
 	?>
 	<p class="description">
-		<?php _e('Click the available programs to associate with your video.', 'videolivre-channel'); ?><br/>
-		<?php echo sprintf(__('<a href="%s" target="_blank" title="New program">Click here</a> to create a new program', 'videolivre-channel'), get_admin_url('', 'post-new.php?post_type=program')); ?>
+		<?php _e('Select program(s) to associate with your video.', 'videolivre-channel'); ?><br/>
 	</p>
 	<div class="field relationship">
 		<?php if($programs) : ?>
@@ -43,11 +42,14 @@ function programs_inner_meta_box($post) {
 
 		<?php else : ?>
 
-			<p><?php echo sprintf(__('No programs were found. <a href="%s" target="_blank" title="New program">Click here</a> to create your first and start associating videos!', 'videolivre-channel'), get_admin_url('','post-new.php?post_type=program')); ?></p>
+			<p><?php _e('No programs were found.', 'videolivre-channel'); ?></p>
 
 		<?php endif; ?>
 	</div>
 	<div class="clearfix"></div>
+	<p class="description">
+		<?php echo sprintf(__('<a href="%s" target="_blank" title="New program">Click here</a> to create a new program', 'videolivre-channel'), get_admin_url('', 'post-new.php?post_type=program')); ?>
+	</p>
 	<?php
 }
 

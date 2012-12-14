@@ -101,14 +101,14 @@ function vlchannel_admin_header_style() {
 		font-size: 30px;
 	}
 	#headimg h1 a {
-		color: #515151;
+		color: #fff;
 		text-decoration: none;
 	}
 	#headimg h1 a:hover {
-		color: #21759b;
+		color: #fff;
 	}
 	#headimg h2 {
-		color: #757575;
+		color: #fff;
 		font: normal 13px/1.8 "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", sans-serif;
 		margin-bottom: 24px;
 	}

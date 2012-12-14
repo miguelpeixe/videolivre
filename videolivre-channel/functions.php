@@ -24,6 +24,8 @@ function vlchannel_styles() {
 	wp_register_style('skeleton', get_template_directory_uri() . '/css/skeleton.css', array('base'));
 	wp_register_style('main', get_template_directory_uri() . '/css/main.css', array('base', 'skeleton'));
 
+	wp_enqueue_style('font-dosis', 'http://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600');
+
 	wp_enqueue_style('main');
 }
 add_action('wp_enqueue_scripts', 'vlchannel_styles');
@@ -53,6 +55,24 @@ require(TEMPLATEPATH . '/inc/custom-header.php');
  */
 require(TEMPLATEPATH . '/inc/theme-customizer.php');
 
+/**
+ * Community functions (WordPress MS)
+ */
+if(is_multisite())
+	include(TEMPLATEPATH . '/inc/community-functions.php');
+
+/*
+ * Add subtitle (srt files) mime type
+ */
+add_filter('upload_mimes', 'vlchannel_upload_mimes');
+function vlchannel_upload_mimes ($mimes = array()) {
+	$mimes['srt'] = 'text/plain';
+	return $mimes;
+}
+
+/*
+ * Custom title
+ */
 
 function vlchannel_wp_title($title, $sep) {
 	global $paged, $page;
@@ -76,11 +96,15 @@ function vlchannel_wp_title($title, $sep) {
 }
 add_filter('wp_title', 'vlchannel_wp_title', 10, 2);
 
+
 /*
- * Add subtitle (srt files) mime type
+ * Registration and login url
  */
-add_filter('upload_mimes', 'vlchannel_upload_mimes');
-function vlchannel_upload_mimes ($mimes = array()) {
-	$mimes['srt'] = 'text/plain';
-	return $mimes;
+
+function vlchannel_login_url() {
+	return '#';
+}
+
+function vlchannel_register_url() {
+	return '#';
 }

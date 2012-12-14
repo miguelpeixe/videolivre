@@ -10,7 +10,6 @@
 }
 
 .general-box .field {
-	width: 96%;
 	float: left;
 	padding: 10px;
 	clear: both;
@@ -67,7 +66,8 @@
 
 /* relationship box */
 
-.general-box .field.relationship .relation-list li {
+.general-box .field.relationship .relation-list {
+	margin: 0;
 }
 
 .general-box .field.relationship .relation-list li input[type=checkbox] {

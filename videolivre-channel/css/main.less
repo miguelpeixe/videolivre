@@ -1,4 +1,177 @@
-.header-image {
-	width: 100% !important;
-	height: auto !important;
+/*
+ * UI
+ */
+
+/*
+ * Buttons
+ */
+
+/*
+ * Community header
+ */
+
+aside#community-header {
+	background: #f2f2f2;
+	border-bottom: 2px solid #dedede;
+	padding: 20px 0 0;
+	box-shadow: 0 0 20px rgba(0,0,0,.2);
+	position: relative;
+	z-index: 2;
+	#searchform {
+		width: 100%;
+		position: relative;
+		input {
+			margin: 0;
+			&[type=text] {
+				width: 94%;
+				padding: 3%;
+				border: 0;
+			}
+			&[type=submit] {
+				position: absolute;
+				top: 0;
+				right: 0;
+				height: 100%;
+				border-left: 1px solid #ececec;
+			}
+		}
+	}
+	.meta-links {
+		span {
+			font-family: "Dosis";
+			font-weight: 600;
+			text-transform: lowercase;
+			display: block;
+			float: left;
+			margin: 10px 20px 20px;
+			a {
+				text-decoration: none;
+				color: #999;
+			}
+		}
+	}
+}
+
+/*
+ * Channel header
+ */
+header#masthead {
+	hgroup {
+		width: 100%;
+		position: relative;
+		max-height: 500px;
+		overflow: hidden;
+		/*
+		 * Header image styles
+		 */
+		.header-image {
+			width: 100% !important;
+			height: auto !important;
+			display: block;
+			margin: 0 auto;
+		}
+		.left-gradient {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 30%;
+			height: 500px;
+			background: -moz-linear-gradient(left,  rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%); /* FF3.6+ */
+			background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,1)), color-stop(100%,rgba(0,0,0,0))); /* Chrome,Safari4+ */
+			background: -webkit-linear-gradient(left,  rgba(0,0,0,1) 0%,rgba(0,0,0,0) 100%); /* Chrome10+,Safari5.1+ */
+			background: -o-linear-gradient(left,  rgba(0,0,0,1) 0%,rgba(0,0,0,0) 100%); /* Opera 11.10+ */
+			background: -ms-linear-gradient(left,  rgba(0,0,0,1) 0%,rgba(0,0,0,0) 100%); /* IE10+ */
+			background: linear-gradient(to right,  rgba(0,0,0,1) 0%,rgba(0,0,0,0) 100%); /* W3C */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#00000000',GradientType=1 ); /* IE6-9 */
+		}
+		.right-gradient {
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 30%;
+			height: 500px;
+			background: -moz-linear-gradient(left,  rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%); /* FF3.6+ */
+			background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,1))); /* Chrome,Safari4+ */
+			background: -webkit-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%); /* Chrome10+,Safari5.1+ */
+			background: -o-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%); /* Opera 11.10+ */
+			background: -ms-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%); /* IE10+ */
+			background: linear-gradient(to right,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%); /* W3C */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=1 ); /* IE6-9 */
+		}
+		.bottom-gradient {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 30%;
+			background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%); /* FF3.6+ */
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,1))); /* Chrome,Safari4+ */
+			background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%); /* Chrome10+,Safari5.1+ */
+			background: -o-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%); /* Opera 11.10+ */
+			background: -ms-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%); /* IE10+ */
+			background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%); /* W3C */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+		}
+		/*
+		 * Header text
+		 */
+		.header-content {
+			margin: 40px 0;
+			&.with-image {
+				position: absolute;
+				width: 100%;
+				bottom: 0;
+				h1 {
+					text-shadow: 2px 2px 1px rgba(0,0,0,0.5);
+				}
+				h2 {
+					text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+				}
+			}
+			h1 {
+				font-size: 52px;
+				font-family: "Dosis";
+				text-transform: uppercase;
+				a {
+					text-decoration: none;
+				}
+			}
+			h2 {
+				font-size: 20px;
+				font-family: "Dosis";
+				font-weight: 200;
+			}
+		}
+	}
+	#channel-meta {
+		width: 100%;
+		padding: 20px 0 0;
+		background: -moz-linear-gradient(top,  rgba(0,0,0,0.1) 0%, rgba(0,0,0,0) 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.1)), color-stop(100%,rgba(0,0,0,0))); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top,  rgba(0,0,0,0.1) 0%,rgba(0,0,0,0) 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top,  rgba(0,0,0,0.1) 0%,rgba(0,0,0,0) 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(top,  rgba(0,0,0,0.1) 0%,rgba(0,0,0,0) 100%); /* IE10+ */
+		background: linear-gradient(to bottom,  rgba(0,0,0,0.1) 0%,rgba(0,0,0,0) 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
+		p {
+			color: #999;
+			font-family: "Dosis";
+			margin: 0 0 10px;
+			font-size: 18px;
+			font-weight: 200;
+			strong {
+				font-weight: 600;
+				color: #999;
+			}
+		}
+		p.channel-description {
+			margin-top: 10px;
+			padding: 20px 0;
+			border-top: 1px solid rgba(0,0,0,0.1);
+			border-bottom: 1px solid rgba(0,0,0,0.1);
+			color: #777;
+			font-size: 20px;
+			line-height: 130%;
+		}
+	}
 }
