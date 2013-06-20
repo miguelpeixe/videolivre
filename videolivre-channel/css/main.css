@@ -48,7 +48,7 @@ header#masthead hgroup .header-content h2{font-size:20px;font-family:"Dosis";fon
 #videohead nav:hover{opacity:1;}
 #video-meta .video-meta-inside{border-bottom:1px solid rgba(0, 0, 0, 0.1);margin-bottom:40px;padding-bottom:10px;}
 #video-meta ul.video-specs{margin:0;padding:0;}#video-meta ul.video-specs li{margin:0 0 10px;width:50%;float:left;box-sizing:border-box;color:#999;font-size:16px;font-family:"Dosis",sans-serif;}
-#video-more .title{font-size:32px;font-family:"Dosis",sans-serif;margin:0 0 20px;display:block;}
+#video-more .title{font-size:32px;line-height:42px;font-family:"Dosis",sans-serif;margin:0 0 20px;display:block;}
 #video-more p{color:#555;}
 #video-widgets .video-widgets{margin:0;padding:0;}#video-widgets .video-widgets .video-widget{margin:0 0 20px;padding:0 0 20px;border-bottom:2px solid;}#video-widgets .video-widgets .video-widget ul{margin:0;padding:0;}#video-widgets .video-widgets .video-widget ul li{margin:0;padding:0;}
 #video-widgets .video-widgets .video-widget ul.buttons{width:100%;display:table;margin-bottom:10px;}#video-widgets .video-widgets .video-widget ul.buttons li{display:table-cell;vertical-align:middle;text-align:center;}#video-widgets .video-widgets .video-widget ul.buttons li>*{display:block;margin:0 auto;}
