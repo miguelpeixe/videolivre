@@ -7,7 +7,7 @@ function change_default_theme($blog_id) {
 }
 add_action('wpmu_new_blog', 'change_default_theme', 100, 1);
 
-function vccommunity_setup() {
+function vlcommunity_setup() {
 
 	add_theme_support( 'custom-background', array(
 		'default-color' => 'e6e6e6',
