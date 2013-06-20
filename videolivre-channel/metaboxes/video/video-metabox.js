@@ -3,6 +3,7 @@ google.load('swfobject', '2.1');
 var ytplayer;
 var html5;
 var subtitleLength;
+var storeVideoDuration;
 
 (function($) {
 
@@ -154,8 +155,8 @@ var subtitleLength;
 				var ampersandPosition = videoSrc.indexOf('&');
 				if(ampersandPosition != -1) {
 				  videoSrc = videoSrc.substring(0, ampersandPosition);
-				  videoSrv = 'youtube';
 				}
+				videoSrv = 'youtube';
 			} else {
 				// try vimeo url
 				var vimeoRegExp = /http:\/\/(www\.)?vimeo.com\/(\d+)($|\/)/;
@@ -193,20 +194,52 @@ var subtitleLength;
 
 			swfobject.embedSWF('http://www.youtube.com/v/' + videoSrc + '?version=3&enablejsapi=1&playerapiid=ytplayer&showinfo=0', 'apiplayer', '480', '295', '9', null, null, params, atts);
 
+			// get duration
+			$.getJSON('http://gdata.youtube.com/feeds/api/videos/' + videoSrc + '?v=2&alt=jsonc&callback=?', function(data) {
+				storeVideoDuration(parseInt(data.data.duration));
+			});
+
 		} else if(videoSrv == 'vimeo') {
 
-			$videoContainer.append('<iframe src="http://player.vimeo.com/video/' + videoSrc + '" width="480" height="295" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>');
+			$videoContainer.append('<iframe id="vimeoplayer" src="http://player.vimeo.com/video/' + videoSrc + '?api=1&player_id=vimeoplayer" width="480" height="295" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>');
+
+			var vimeoiframe = $('#vimeoplayer')[0];
+			var vimeoplayer = $f(vimeoiframe);
+
+			vimeoplayer.addEvent('ready', function(data) {
+				vimeoplayer.api('getDuration', function(value, player_id) {
+					storeVideoDuration(parseInt(value));
+				});
+			});
+
 
 		} else if(videoSrv == 'html5') {
 
-			$('#apiplayer').append('<video width="480" height="295" controls />');
+			$('#apiplayer').append('<video id="html5video" width="480" height="295" controls />');
 
 			jQuery.each(videoSrc, function(i, videoUrl) {
 				if(videoUrl)
 					$videoContainer.find('video').append('<source src="' + videoUrl + '" />');
 			});
 
+			var html5video = document.getElementById('html5video');
+			html5video.addEventListener('loadedmetadata', function() {
+				storeVideoDuration(Math.round(html5video.duration));
+			});
+
 		}
 	}
 
+	storeVideoDuration = function(duration) {
+		if(duration) $('input[name="video_duration"]').val(duration);
+	}
+
 })(jQuery);
+
+/*
+function onYouTubePlayerReady(playerId) {
+	ytplayer = document.getElementById('videoplayer');
+	alert(ytplayer.getDuration());
+	storeVideoDuration(ytplayer.getDuration());
+}
+*/

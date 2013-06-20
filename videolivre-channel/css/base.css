@@ -109,7 +109,7 @@
 	ul.circle { list-style: circle outside; }
 	ul.disc { list-style: disc outside; }
 	ul ul, ul ol,
-	ol ol, ol ul { margin: 4px 0 5px 30px; font-size: 90%;  }
+	ol ol, ol ul { margin: 4px 0 5px 30px; }
 	ul ul li, ul ol li,
 	ol ol li, ol ul li { margin-bottom: 6px; }
 	li { line-height: 18px; margin-bottom: 12px; }
@@ -120,7 +120,7 @@
 ================================================== */
 
 	img.scale-with-grid {
-		max-width: 100%;
+		width: 100%;
 		height: auto; }
 
 
@@ -221,6 +221,10 @@
  		-moz-box-shadow: inset 1px 1px 1px rgba(0,0,0,.1);
 		-webkit-box-shadow: inset 1px 1px 1px rgba(0,0,0,.1);
 		box-shadow:  inset 1px 1px 1px rgba(0,0,0,.1);
+		-moz-box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		-ms-box-sizing: border-box;
+		box-sizing: border-box;
 		 }
 	select {
 		padding: 0; }

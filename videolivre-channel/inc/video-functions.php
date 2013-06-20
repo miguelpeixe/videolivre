@@ -11,24 +11,35 @@
 function vlchannel_video_scripts() {
 	wp_enqueue_script('mediaelement-and-player', get_template_directory_uri() . '/lib/mediaelement/mediaelement-and-player.min.js', array('jquery'));
 	wp_enqueue_style('mediaelementplayer', get_template_directory_uri() . '/lib/mediaelement/mediaelementplayer.css');
+	wp_enqueue_script('vlchannel-player', get_template_directory_uri() . '/js/videoplayer.js', 'mediaelement-and-player');
+	wp_enqueue_script('fitvids', get_template_directory_uri() . '/js/jquery.fitvids.js', 'mediaelement-and-player');
 }
 add_action('wp_enqueue_scripts', 'vlchannel_video_scripts');
 
-function video_embed($post_id = false) {
-	echo get_video_embed($post_id);
+/*
+ * Echo video embed
+ */
+function vlchannel_video($post_id = false) {
+	do_action('vlchannel_video');
+	echo vlchannel_get_video($post_id);
 }
 
-function get_video_embed($post_id = false) {
+/*
+ * Get video embed
+ */
+function vlchannel_get_video($post_id = false) {
+
 	global $post;
+
 	$post_id = ($post_id ? $post_id : $post->ID);
 
 	$video_data = get_post_meta($post_id);
 
-	$embed = '';
+	$embed = apply_filters('vlchannel_before_video', '');
 
 	if($video_data['video_srv'][0] == 'html5') {
 
-		$embed .= '<video id="video_' . $post_id . '" controls="controls" preload="none">';
+		$embed .= '<video id="video_' . $post_id . '" controls="controls" preload="preload" style="max-width: 100%;">';
 
 		// video sources
 
@@ -65,7 +76,160 @@ function get_video_embed($post_id = false) {
 		$embed .= '</video>';
 
 		$embed .= '<script type="text/javascript">jQuery("#video_' . $post_id . '").mediaelementplayer();</script>';
+	} elseif($video_data['video_srv'][0] == 'youtube') {
+		$embed .= '<iframe id="video_' . $post_id . ' class="fitvid" src="http://www.youtube.com/embed/'.$video_data['video_src'][0].'" frameborder="0" allowfullscreen></iframe>';
 	}
 
+	$embed .= apply_filters('vlchannel_after_video', '');
+
 	return $embed;
+}
+
+/*
+ * Video dynamic data (external APIs)
+ */
+
+// Views
+function the_views($post_id = false) {
+	global $post;
+	$post_id = $post_id ? $post_id : $post->ID;
+	echo vlchannel_get_video_views($post_id);
+}
+function vlchannel_get_video_views($post_id = false) {
+	global $post;
+	$post_id = $post_id ? $post_id : $post->ID;
+
+	$video_data = get_post_meta($post_id);
+
+	$views = false;
+
+	// grab views from youtube and store transient
+	if($video_data['video_srv'][0] == 'youtube') {
+		$views = get_transient('video_'.$post_id.'_views');
+		if(!$views) {
+			$youtube_data = json_decode(file_get_contents('http://gdata.youtube.com/feeds/api/videos/' . $video_data['video_src'][0] . '?v=2&alt=jsonc'));
+			$views = $youtube_data->data->viewCount;
+		}
+	}
+	// grab views from youtube and store transient
+	elseif($video_data['video_srv'][0] == 'vimeo') {
+		$views = get_transient('video_'.$post_id.'_views');
+		if(!$views) {
+			$vimeo_data = array_shift(json_decode(file_get_contents('http://vimeo.com/api/v2/video/' . $video_data['video_src'][0] . '.json')));
+			$views = $vimeo_data->stats_number_of_plays;
+		}
+	}
+	set_transient('video_'.$post_id.'_views', $views, 60*60*2);
+	return $views;
+}
+
+
+
+/*
+ * Video metadata getters
+ */
+
+// Year of production
+function the_launch($post_id = false) {
+	global $post;
+	$post_id = $post_id ? $post_id : $post->ID;
+	echo get_the_launch($post_id);
+}
+function get_the_launch($post_id = false) {
+	global $post;
+	$post_id = $post_id ? $post_id : $post->ID;
+	$launch = get_post_meta($post_id, 'year', true);
+	return apply_filters('vlchannel_video_launch', $launch);
+}
+function has_launch($post_id = false) {
+	global $post;
+	$post_id = $post_id ? $post_id : $post->ID;
+	if(get_post_meta($post_id, 'year', true))
+		return true;
+	
+	return false;
+}
+
+// Direction
+function the_director($post_id = false) {
+	global $post;
+	$post_id = $post_id ? $post_id : $post->ID;
+	echo get_the_director($post_id);
+}
+function get_the_director($post_id = false) {
+	global $post;
+	$post_id = $post_id ? $post_id : $post->ID;
+	$director = get_post_meta($post_id, 'direction', true);
+	return apply_filters('vlchannel_video_direction', $director);
+}
+function has_director($post_id = false) {
+	global $post;
+	$post_id = $post_id ? $post_id : $post->ID;
+	if(get_post_meta($post_id, 'direction', true))
+		return true;
+	
+	return false;
+}
+
+// Duration
+function the_duration($post_id = false) {
+	global $post;
+	$post_id = $post_id ? $post_id : $post->ID;
+	echo get_the_duration($post_id);
+}
+function get_the_duration($post_id = false) {
+	global $post;
+	$post_id = $post_id ? $post_id : $post->ID;
+	$duration = intval(get_post_meta($post_id, 'video_duration', true));
+	// convert seconds into readable duration
+	if($duration / 3600 >= 1) {
+		$hour = floor($duration / 3600);
+		$min = floor(($duration - ($hour * 3600)) / 60);
+		$sec = $duration - ($hour * 3600) - ($min * 60);
+		$duration = $hour . 'h' . $min . 'm' . $sec . 's';
+	} elseif($duration / 60 >= 1) {
+		$min = floor($duration / 60);
+		$sec = $duration % 60;
+		$duration = $min . 'm' . $sec . 's';
+	} else {
+		$duration = $duration . 's';
+	}
+	return apply_filters('vlchannel_video_duration', $duration);
+}
+function has_duration($post_id = false) {
+	global $post;
+	$post_id = $post_id ? $post_id : $post->ID;
+	if(get_post_meta($post_id, 'video_duration', true))
+		return true;
+	
+	return false;
+}
+
+// Team
+function the_team($post_id = false) {
+	global $post;
+	$post_id = $post_id ? $post_id : $post->ID;
+	echo get_the_team($post_id);
+}
+function get_the_team($post_id = false) {
+	global $post;
+	$post_id = $post_id ? $post_id : $post->ID;
+	$team = get_post_meta($post_id, 'team', true);
+	return apply_filters('vlchannel_video_team', $team);
+}
+function has_team($post_id = false) {
+	global $post;
+	$post_id = $post_id ? $post_id : $post->ID;
+	if(get_post_meta($post_id, 'team', true))
+		return true;
+	
+	return false;
+}
+
+// Attachments
+function get_attachments($post_id = false) {
+	global $post;
+	$post_id = $post_id ? $post_id : $post->ID;
+	$attachments = get_post_meta($post_id, 'video_attachments', true);
+	return apply_filters('vlchannel_video_attachments', $attachments);
 }

@@ -26,6 +26,7 @@ function register_cpt_video() {
         'hierarchical' => false,
         
         'supports' => array('title', 'editor', 'author', 'trackbacks', 'comments'),
+        'taxonomies' => array('post_tag'),
         
         'public' => true,
         'show_ui' => true,

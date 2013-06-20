@@ -52,16 +52,16 @@
     
     /* Offsets */   
     .container .offset-by-one                    { margin-left: 80px;  }
-    .container .offset-by-two                    { margin-left: 160px; }
-    .container .offset-by-three                  { margin-left: 240px; }
-    .container .offset-by-four                   { margin-left: 320px; }
-    .container .offset-by-five                   { margin-left: 400px; }
-    .container .offset-by-six                    { margin-left: 480px; }
-    .container .offset-by-seven                  { margin-left: 560px; }
-    .container .offset-by-eight                  { margin-left: 640px; }
-    .container .offset-by-nine                   { margin-left: 720px; }
-    .container .offset-by-ten                    { margin-left: 800px; }
-    .container .offset-by-eleven                 { margin-left: 880px; }
+    .container .offset-by-two                    { margin-left: 170px; }
+    .container .offset-by-three                  { margin-left: 250px; }
+    .container .offset-by-four                   { margin-left: 330px; }
+    .container .offset-by-five                   { margin-left: 410px; }
+    .container .offset-by-six                    { margin-left: 490px; }
+    .container .offset-by-seven                  { margin-left: 570px; }
+    .container .offset-by-eight                  { margin-left: 650px; }
+    .container .offset-by-nine                   { margin-left: 730px; }
+    .container .offset-by-ten                    { margin-left: 810px; }
+    .container .offset-by-eleven                 { margin-left: 890px; }
 
     
     /*****************************

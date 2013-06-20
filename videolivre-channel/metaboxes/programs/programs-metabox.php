@@ -11,7 +11,7 @@ function programs_metabox_init() {
 function programs_add_meta_box() {
 	add_meta_box(
 		'programs_metabox',
-		__('Programs', 'videolivre-channel'),
+		__('Program', 'videolivre-channel'),
 		'programs_inner_meta_box',
 		'video',
 		'side',
@@ -23,10 +23,10 @@ add_filter("postbox_classes_video_programs_metabox", create_function('', 'return
 
 function programs_inner_meta_box($post) {
 	$programs = get_posts(array('post_type' => 'program', 'posts_per_page' => -1));
-	$video_programs = get_post_meta($post->ID, 'programs', true);
+	$video_program = get_post_meta($post->ID, 'program', true);
 	?>
 	<p class="description">
-		<?php _e('Select program(s) to associate with your video.', 'videolivre-channel'); ?><br/>
+		<?php _e('Select program to associate your video.', 'videolivre-channel'); ?><br/>
 	</p>
 	<div class="field relationship">
 		<?php if($programs) : ?>
@@ -34,7 +34,7 @@ function programs_inner_meta_box($post) {
 			<ul class="programs relation-list">
 				<?php foreach($programs as $program) : ?>
 					<li>
-						<input id="program_<?php echo $program->ID; ?>" type="checkbox" name="video_programs[]" value="<?php echo $program->ID; ?>" <?php if(in_array($program->ID, $video_programs)) echo 'checked'; ?> />
+						<input id="program_<?php echo $program->ID; ?>" type="radio" name="video_program" value="<?php echo $program->ID; ?>" <?php if($program->ID == $video_program) echo 'checked'; ?> />
 						<label for="program_<?php echo $program->ID; ?>"><?php echo $program->post_title; ?></label>
 					</li>
 				<?php endforeach; ?>
@@ -63,7 +63,7 @@ function programs_save_postdata($post_id) {
 	if (false !== wp_is_post_revision($post_id))
 		return;
 
-	update_post_meta($post_id, 'programs', $_POST['video_programs']);
+	update_post_meta($post_id, 'program', $_POST['video_program']);
 }
 
 ?>

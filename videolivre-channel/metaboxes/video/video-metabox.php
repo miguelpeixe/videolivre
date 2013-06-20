@@ -6,7 +6,8 @@ add_action('save_post', 'video_save_postdata');
 
 function video_metabox_init() {
 	wp_enqueue_script('google-jsapi', 'http://www.google.com/jsapi');
-	wp_enqueue_script('video-metabox', get_template_directory_uri() . '/metaboxes/video/video-metabox.js', array('jquery', 'google-jsapi'), '1.0');
+	wp_enqueue_script('vimeo-jsapi', get_template_directory_uri() . '/js/froogaloop.min.js', array('jquery'));
+	wp_enqueue_script('video-metabox', get_template_directory_uri() . '/metaboxes/video/video-metabox.js', array('jquery', 'google-jsapi', 'vimeo-jsapi'), '1.0');
 	wp_localize_script('video-metabox', 'video_metabox_messages', array(
 		'empty_url' => __('You must enter a valid URL', 'videolivre-channel')
 	));
@@ -30,6 +31,7 @@ function video_inner_meta_box($post) {
 	$video_src = get_post_meta($post->ID, 'video_src', true);
 	$video_url = get_post_meta($post->ID, 'video_url', true);
 	$video_srv = get_post_meta($post->ID, 'video_srv', true);
+	$video_duration = get_post_meta($post->ID, 'video_duration', true);
 	$video_html5_mp4 = get_post_meta($post->ID, 'video_html5_mp4', true);
 	$video_html5_webm = get_post_meta($post->ID, 'video_html5_webm', true);
 	$video_html5_ogv = get_post_meta($post->ID, 'video_html5_ogv', true);
@@ -37,6 +39,7 @@ function video_inner_meta_box($post) {
 	?>
 	<input type="hidden" name="video_srv" value="<?php echo $video_srv; ?>" />
 	<input type="hidden" name="video_src" value="<?php echo $video_src; ?>" />
+	<input type="hidden" name="video_duration" value="<?php echo $video_duration; ?>" />
 	<div class="supported-formats">
 		<span><?php _e('Supported formats', 'videolivre-channel'); ?></span>
 		<ul>
@@ -118,6 +121,7 @@ function video_save_postdata($post_id) {
 	update_post_meta($post_id, 'video_src', $_POST['video_src']);
 	update_post_meta($post_id, 'video_url', $_POST['video_url']);
 	update_post_meta($post_id, 'video_srv', $_POST['video_srv']);
+	update_post_meta($post_id, 'video_duration', $_POST['video_duration']);
 
 	if($_POST['video_srv'] == 'html5') {
 		update_post_meta($post_id, 'video_html5_mp4', $_POST['html5_mp4']);

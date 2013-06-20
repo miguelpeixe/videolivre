@@ -35,7 +35,7 @@ function attachments_inner_meta_box($post) {
 					<label><?php _e('File', 'videolivre-channel'); ?></label>
 				</div>
 				<div class="field-input">
-					<input type="text" size="80" />
+					<input type="text" size="60" />
 					<a class="button upload_file_button"><?php _e('Upload file', 'videolivre-channel'); ?></a>
 					<p class="instruction"><?php _e('Enter file URL or upload new file', 'videolivre-channel'); ?></p>
 				</div>
@@ -45,7 +45,7 @@ function attachments_inner_meta_box($post) {
 					<label><?php _e('File name', 'videolivre-channel'); ?></label>
 				</div>
 				<div class="field-input">
-					<input type="text" size="80" />
+					<input type="text" size="60" />
 				</div>
 			</div>
 			<div class="sub-item file_description">
@@ -67,7 +67,7 @@ function attachments_inner_meta_box($post) {
 							<label><?php _e('File', 'videolivre-channel'); ?></label>
 						</div>
 						<div class="field-input">
-							<input type="text" name="video_attachments[<?php echo $i; ?>][url]" size="80" value="<?php echo $attachment['url']; ?>" />
+							<input type="text" name="video_attachments[<?php echo $i; ?>][url]" size="60" value="<?php echo $attachment['url']; ?>" />
 							<a class="button upload_file_button"><?php _e('Upload file', 'videolivre-channel'); ?></a>
 							<p class="instruction"><?php _e('Enter file URL or upload new file', 'videolivre-channel'); ?></p>
 						</div>
@@ -112,7 +112,13 @@ function attachments_save_postdata($post_id) {
 	if (false !== wp_is_post_revision($post_id))
 		return;
 
-	update_post_meta($post_id, 'video_attachments', $_POST['video_attachments']);
+	if(isset($_POST['video_attachments'])) {
+		$attachments = $_POST['video_attachments'];
+		foreach($attachments as &$attachment) {
+			$attachment['base'] = basename($attachment['url']);
+		}
+		update_post_meta($post_id, 'video_attachments', $attachments);
+	}
 }
 
 ?>
