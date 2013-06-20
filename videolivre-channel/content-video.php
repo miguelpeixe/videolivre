@@ -93,4 +93,6 @@
 
 <?php get_template_part('loop', 'related-video'); ?>
 
-<?php comments_template('', true); ?>
+<div class="twelve columns">
+	<?php comments_template('', true); ?>
+</div>
