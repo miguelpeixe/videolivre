@@ -22,8 +22,8 @@
 							<li class="length icon clock"><?php the_duration(); ?></li>
 						<?php endif; ?>
 						<li class="director icon clapperboard">by <?php the_author(); ?></li>
-						<?php if(has_team()) : ?>
-							<li class="tech-crew icon camera"><?php _e('technical crew', 'videolivre-channel'); ?></li>
+						<?php if(has_crew()) : ?>
+							<li class="tech-crew icon camera toggler"><?php _e('technical crew', 'videolivre-channel'); ?></li>
 						<?php endif; ?>
 					</ul>
 				</section>
@@ -31,6 +31,13 @@
 			<div class="four columns">
 				<?php vlchannel_social_shares(); ?>
 			</div>
+			<?php if(has_crew()) : ?>
+				<div class="twelve columns">
+					<aside id="tech-crew" class="aside-box">
+						<?php the_crew(); ?>
+					</aside>
+				</div>
+			<?php endif; ?>
 		</div>
 	</div>
 </section>

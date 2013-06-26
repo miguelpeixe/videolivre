@@ -11,6 +11,8 @@ function vlchannel_setup() {
 
 	add_theme_support('post-thumbnails');
 	set_post_thumbnail_size( 624, 9999 );
+	add_image_size('featured-video', 460, 266, true);
+	add_image_size('thumbnail-video', 220, 124, true);
 
 }
 add_action('after_setup_theme', 'vlchannel_setup');
@@ -35,6 +37,7 @@ add_action('wp_enqueue_scripts', 'vlchannel_styles');
  */
 
 function vlchannel_scripts() {
+	wp_enqueue_script('vlchannel-main', get_template_directory_uri() . '/js/videolivre.js', array('jquery'));
 	wp_register_script('vlchannel-carousel', get_template_directory_uri() . '/js/carousel.js', array('jquery'));
 }
 add_action('wp_enqueue_scripts', 'vlchannel_scripts');

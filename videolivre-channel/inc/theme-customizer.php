@@ -54,6 +54,9 @@ add_action('customize_register', 'vlchannel_customize_register');
 function vlchannel_customize_css() {
 	?>
 	<style type="text/css">
+		.site-background {
+			background: #<?php echo get_theme_mod('background_color'); ?>;
+		}
 		.main-color-border {
 			border-color: <?php echo get_theme_mod('main_color'); ?> !important;
 		}

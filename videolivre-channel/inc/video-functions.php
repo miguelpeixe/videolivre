@@ -205,22 +205,22 @@ function has_duration($post_id = false) {
 	return false;
 }
 
-// Team
-function the_team($post_id = false) {
+// Crew
+function the_crew($post_id = false) {
 	global $post;
 	$post_id = $post_id ? $post_id : $post->ID;
-	echo get_the_team($post_id);
+	echo get_the_crew($post_id);
 }
-function get_the_team($post_id = false) {
+function get_the_crew($post_id = false) {
 	global $post;
 	$post_id = $post_id ? $post_id : $post->ID;
-	$team = get_post_meta($post_id, 'team', true);
-	return apply_filters('vlchannel_video_team', $team);
+	$team = get_post_meta($post_id, 'crew', true);
+	return apply_filters('vlchannel_video_crew', $team);
 }
-function has_team($post_id = false) {
+function has_crew($post_id = false) {
 	global $post;
 	$post_id = $post_id ? $post_id : $post->ID;
-	if(get_post_meta($post_id, 'team', true))
+	if(get_post_meta($post_id, 'crew', true))
 		return true;
 	
 	return false;

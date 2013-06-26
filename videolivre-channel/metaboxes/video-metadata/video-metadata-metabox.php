@@ -24,8 +24,7 @@ add_filter("postbox_classes_video_video_metadata_metabox", create_function('', '
 function video_metadata_inner_meta_box($post) {
 	$year = get_post_meta($post->ID, 'year', true);
 	$direction = get_post_meta($post->ID, 'direction', true);
-	$casting = get_post_meta($post->ID, 'casting', true);
-	$team = get_post_meta($post->ID, 'team', true);
+	$crew = get_post_meta($post->ID, 'crew', true);
 	?>
 	<div class="field">
 		<div class="field-meta">
@@ -47,18 +46,10 @@ function video_metadata_inner_meta_box($post) {
 	</div>
 	<div class="field">
 		<div class="field-meta">
-			<label for="casting"><?php _e('Casting', 'videolivre-channel'); ?></label>
+			<label for="crew"><?php _e('Technical crew', 'videolivre-channel'); ?></label>
 		</div>
 		<div class="field-input">
-			<textarea id="casting" cols="80" rows="8" name="casting"><?php echo $casting; ?></textarea>
-		</div>
-	</div>
-	<div class="field">
-		<div class="field-meta">
-			<label for="production_team"><?php _e('Production team', 'videolivre-channel'); ?></label>
-		</div>
-		<div class="field-input">
-			<textarea id="production_team" type="text" cols="80" rows="8" name="team"><?php echo $team; ?></textarea>
+			<textarea id="crew" cols="80" rows="8" name="crew"><?php echo $crew; ?></textarea>
 		</div>
 	</div>
 	<div class="clearfix"></div>
@@ -77,8 +68,7 @@ function video_metadata_save_postdata($post_id) {
 
 	update_post_meta($post_id, 'year', $_POST['production_year']);
 	update_post_meta($post_id, 'direction', $_POST['direction']);
-	update_post_meta($post_id, 'casting', $_POST['casting']);
-	update_post_meta($post_id, 'team', $_POST['team']);
+	update_post_meta($post_id, 'crew', $_POST['crew']);
 }
 
 ?>

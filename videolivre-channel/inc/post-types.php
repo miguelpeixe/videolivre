@@ -25,7 +25,7 @@ function register_cpt_video() {
         'labels' => $labels,
         'hierarchical' => false,
         
-        'supports' => array('title', 'editor', 'author', 'trackbacks', 'comments'),
+        'supports' => array('title', 'editor', 'author', 'trackbacks', 'comments', 'thumbnail'),
         'taxonomies' => array('post_tag'),
         
         'public' => true,
@@ -69,7 +69,7 @@ function register_cpt_program() {
         'labels' => $labels,
         'hierarchical' => false,
         
-        'supports' => array( 'title', 'editor', 'author', 'trackbacks', 'comments' ),
+        'supports' => array( 'title', 'editor' ),
         
         'public' => true,
         'show_ui' => true,
