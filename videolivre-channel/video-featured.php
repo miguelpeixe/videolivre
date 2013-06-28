@@ -1,10 +1,10 @@
 <div class="twelve columns">
-	<article id="<?php echo get_post_type(); ?>-<?php the_ID(); ?>" <?php post_class('featured-video card'); ?>>
-		<div class="thumbnail">
-			<?php the_post_thumbnail('featured-video'); ?>
+	<article id="<?php echo get_post_type(); ?>-<?php the_ID(); ?>" <?php post_class('featured-video card clearfix'); ?>>
+		<div class="thumbnail program-color-border">
+			<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_post_thumbnail('featured-video', array('class' => 'scale-with-grid')); ?></a>
 		</div>
 		<header>
-			<h2><?php the_title(); ?></h2>
+			<h2><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h2>
 		</header>
 		<section class="description">
 			<div class="site-background">
@@ -13,7 +13,7 @@
 		</section>
 		<footer class="video-meta">
 			<ul class="status">
-				<li class="views icon eye"><?php the_views(); echo ' '; _e('views', 'videolivre-channel'); ?></li>
+				<li class="views icon eye"><?php the_views(); ?></li>
 				<?php if(has_duration()) : ?>
 					<li class="length icon clock"><?php the_duration(); ?></li>
 				<?php endif; ?>

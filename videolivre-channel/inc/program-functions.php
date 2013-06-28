@@ -4,18 +4,34 @@
  * Program functions
  */
 
+
+
+/*
+ * Disable canonical redirect on map/map-group post type for stories pagination
+ */
+function vlchannel_program_disable_canonical($redirect_url) {
+	if(is_singular('program'))
+		return false;
+}
+add_filter('redirect_canonical', 'vlchannel_program_disable_canonical');
+
 /*
  * Get current program color
  */
-function vlchannel_get_program_color() {
+function vlchannel_get_program_color($post_id = false) {
 	global $post;
+	$post_id = $post_id ? $post_id : $post->ID;
 
-	if(is_single() && get_post_type() == 'video')
-		return get_post_meta(vlchannel_get_video_program_id(), 'program_color', true);
-	elseif(is_single() && get_post_type() == 'program')
-		return get_post_meta($post->ID, 'program_color', true);
+	if(get_post_type($post_id) != 'program' && get_post_type($post_id) != 'video')
+		return false;
 
-	return false;
+	if(get_post_type($post_id) == 'video')
+		$post_id = vlchannel_get_video_program_id($post_id);
+
+	if(!$post_id)
+		return false;
+
+	return get_post_meta($post_id, 'program_color', true);
 }
 
 /*
@@ -34,7 +50,7 @@ function vlchannel_get_video_program_id($post_id = false) {
 function vlchannel_program_css() {
 	$color = vlchannel_get_program_color();
 	if(!$color)
-		return false;
+		$color = get_theme_mod('main_color');
 	?>
 	<style type="text/css">
 		.program-color-border {
@@ -53,6 +69,10 @@ function vlchannel_program_css() {
 	<?php
 }
 add_action('wp_head', 'vlchannel_program_css');
+
+function vlchannel_get_program_text_scheme() {
+	return vlchannel_get_color_scheme(vlchannel_get_program_color());
+}
 
 /*
  * Get featured video
@@ -95,10 +115,16 @@ function vlchannel_get_program_query($query = array(), $program_id = false) {
 				'key' => 'program',
 				'value' => $post_id
 			)
-		)
+		),
+		'paged' => (get_query_var('paged')) ? get_query_var('paged') : 1,
+		'posts_per_page' => 4
 	);
 
-	$query = array_merge_recursive($p_query, $query);
+	if($query['meta_query']) {
+		$p_query['meta_query'] = array_merge($p_query['meta_query'], $query['meta_query']);
+	}
+
+	$query = array_merge($p_query, $query);
 
 	return apply_filters('vlchannel_program_query', $query);
 }

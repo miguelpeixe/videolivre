@@ -53,13 +53,13 @@
 					<li class="video-widget program-color-border">
 						<ul class="buttons clearfix">
 							<li>
-								<span class="icon-button program-color-border"><a class="icon-button-inside icon heart" href="#" title="<?php _e('Like', 'videolivre-channel'); ?>"><?php _e('Like', 'videolivre-channel'); ?></a></span>
+								<span class="icon-button button program-color-border"><a class="icon-button-inside icon heart" href="#" title="<?php _e('Like', 'videolivre-channel'); ?>"><?php _e('Like', 'videolivre-channel'); ?></a></span>
 							</li>
 							<li>
-								<span class="icon-button program-color-border"><a class="icon-button-inside icon comment" href="#" title="<?php _e('Comment', 'videolivre-channel'); ?>"><?php _e('Comment', 'videolivre-channel'); ?></a></span>
+								<span class="icon-button button program-color-border"><a class="icon-button-inside icon comment" href="#" title="<?php _e('Comment', 'videolivre-channel'); ?>"><?php _e('Comment', 'videolivre-channel'); ?></a></span>
 							</li>
 							<li>
-								<span class="icon-button program-color-border"><a class="icon-button-inside icon share" href="#" title="<?php _e('Share', 'videolivre-channel'); ?>"><?php _e('Share', 'videolivre-channel'); ?></a></span>
+								<span class="icon-button button program-color-border"><a class="icon-button-inside icon share" href="#" title="<?php _e('Share', 'videolivre-channel'); ?>"><?php _e('Share', 'videolivre-channel'); ?></a></span>
 							</li>
 						</ul>
 					</li>

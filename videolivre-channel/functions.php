@@ -233,6 +233,53 @@ function vlchannel_comment( $comment, $args, $depth ) {
 }
 
 /*
+ * Check if has next/prev page
+ */
+
+function vlchannel_has_next_page() {
+	if(get_next_posts_link() === null)
+		return false;
+
+	return true;
+}
+
+function vlchannel_has_prev_page() {
+	if(get_previous_posts_link() === null)
+		return false;
+
+	return true;
+}
+
+/*
+ * Get color brightness
+ */
+
+function vlchannel_get_brightness($hex) {
+	// returns brightness value from 0 to 255
+
+	// strip off any leading #
+	$hex = str_replace('#', '', $hex);
+
+	$c_r = hexdec(substr($hex, 0, 2));
+	$c_g = hexdec(substr($hex, 2, 2));
+	$c_b = hexdec(substr($hex, 4, 2));
+
+	return (($c_r * 299) + ($c_g * 587) + ($c_b * 114)) / 1000;
+}
+
+// determine light or dark color scheme
+
+function vlchannel_get_color_scheme($hex) {
+	if(!$hex)
+		return false;
+
+	if(vlchannel_get_brightness($hex) > 130)
+		return 'dark-scheme';
+	else
+		return 'light-scheme';
+}
+
+/*
  * Helpers
  */
 
@@ -251,4 +298,74 @@ function hex2rgb($hex) {
 	$rgb = array($r, $g, $b);
 	return implode(",", $rgb); // returns the rgb values separated by commas
 	//return $rgb; // returns an array with the rgb values
+}
+
+function vlchannel_custom_ordering_var() {
+	global $wp;
+	$wp->add_query_var('vlchannel_order');
+}
+add_action('init', 'vlchannel_custom_ordering_var');
+
+function vlchannel_custom_ordering($wp_query) {
+	$order = $wp_query->get('vlchannel_order');
+	if($order) {
+		if($order == 'recent') {
+			$wp_query->set('orderby', 'date');
+			$wp_query->set('order', 'DESC');
+		} elseif ($order == 'old') {
+			$wp_query->set('orderby', 'date');
+			$wp_query->set('order', 'ASC');
+		} elseif($order == 'popular') {
+			$wp_query->set('meta_key', '_vlchannel_likes');
+			$wp_query->set('orderby', 'meta_value_num');
+			$wp_query->set('order', 'DESC');
+		}
+	}
+	return $wp_query;
+}
+add_filter('pre_get_posts', 'vlchannel_custom_ordering');
+
+function vlchannel_custom_ordering_labels() {
+	return apply_filters('vlchannel_ordering_labels', array(
+		'popular' => __('Most popular', 'vlchannel'),
+		'recent' => __('Most recent', 'vlchannel'),
+		'old' => __('Oldests', 'vlchannel')
+	));
+}
+
+function vlchannel_get_current_order_label() {
+	$current = get_query_var('vlchannel_order');
+	if(!$current)
+		$current = 'recent';
+
+	$labels = vlchannel_custom_ordering_labels();
+
+	return $labels[$current];
+}
+
+function vlchannel_custom_ordering_dropdown() {
+	$current = get_query_var('vlchannel_order');
+	if(!$current)
+		$current = 'recent';
+
+	$labels = vlchannel_custom_ordering_labels();
+
+	$available = $labels;
+	unset($available[$current]);
+
+	global $wp;
+
+	?>
+	<div class="ordering-dropdown">
+		<p class="title"><?php _e('Order by', 'vlchannel'); ?></p>
+		<div class="choices button program-color-border">
+			<p class="current"><?php echo $labels[$current]; ?></p>
+			<ul class="list program-color-border">
+				<?php foreach($available as $key => $label) : ?>
+					<li class="<?php echo $key; ?> choice"><a href="<?php echo add_query_arg('order', $key, home_url($wp->request)); ?>" title="<?php echo $label; ?>"><?php echo $label; ?></a></li>
+				<?php endforeach; ?>
+			</ul>
+		</div>
+	</div>
+	<?php
 }
