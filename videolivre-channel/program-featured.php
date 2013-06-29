@@ -9,10 +9,20 @@
 		<?php
 		$query = vlchannel_get_program_query();
 		$video_query = new WP_Query($query);
+		$template = 'minimal';
+		if($video_query->found_posts <= 2)
+			$template = 'small';
+		elseif($video_query->found_posts == 3)
+			$template = array('small', 'minimal', 'minimal');
 		if($video_query->have_posts()) {
+			$i = 0;
 			while($video_query->have_posts()) {
+				$t = $template;
+				if(is_array($template))
+					$t = $template[$i];
 				$video_query->the_post();
-				get_template_part('video', 'minimal');
+				get_template_part('video', $t);
+				$i++;
 			}
 		}
 		?>

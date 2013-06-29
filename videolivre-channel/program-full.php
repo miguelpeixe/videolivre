@@ -29,18 +29,20 @@
 			 * Featured post
 			 */
 			$featured = vlchannel_get_program_featured();
-			if(!is_paged() && !$_REQUEST['order']) {
+			if($featured && !is_paged() && !$_REQUEST['order']) {
 				global $post;
 				$post = $featured;
 				setup_postdata($post);
 				get_template_part('video', 'featured');
 				wp_reset_postdata();
+			} else {
+				$featured = null;
 			}
 			/*
 			 * Video list
 			 */
 			$query = vlchannel_get_program_query(array(
-				'post__not_in' => array($featured->ID),
+				'post__not_in' => array(($featured ? $featured->ID : 0)),
 				'vlchannel_order' => $_REQUEST['order']
 			));
 			query_posts($query);
