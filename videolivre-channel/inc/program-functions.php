@@ -28,10 +28,12 @@ function vlchannel_get_program_color($post_id = false) {
 	if(get_post_type($post_id) == 'video')
 		$post_id = vlchannel_get_video_program_id($post_id);
 
-	if(!$post_id)
-		return false;
+	$color = get_post_meta($post_id, 'program_color', true);
 
-	return get_post_meta($post_id, 'program_color', true);
+	if(!$color)
+		return get_theme_mod('main_color');
+
+	return $color;
 }
 
 /*
@@ -49,8 +51,6 @@ function vlchannel_get_video_program_id($post_id = false) {
  */
 function vlchannel_program_css() {
 	$color = vlchannel_get_program_color();
-	if(!$color)
-		$color = get_theme_mod('main_color');
 	?>
 	<style type="text/css">
 		.program-color-border {
