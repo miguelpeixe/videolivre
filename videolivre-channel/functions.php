@@ -167,6 +167,9 @@ function vlchannel_breadcrumb() {
 	if(is_single() && $program) {
 		$links[get_the_title($program)] = get_permalink($program);
 	}
+	if(is_singular('program')) {
+		$links[__('Programs', 'videolivre-channel')] = get_post_type_archive_link('program');
+	}
 
 	if($links) {
 		echo '<nav id="breadcrumb">';
@@ -400,3 +403,27 @@ function vlchannel_login_logo() {
 	<?php
 }
 add_action( 'login_enqueue_scripts', 'vlchannel_login_logo' );
+
+/*
+ * Remove some menu pages
+ */
+
+function vlchannel_remove_menu_pages() {
+	remove_menu_page('link-manager.php');
+	remove_menu_page('edit.php');	
+}
+add_action('admin_menu', 'vlchannel_remove_menu_pages');
+
+function vlchannel_admin_bar() {
+    global $wp_admin_bar;
+    $wp_admin_bar->remove_node('wp-logo');
+    $wp_admin_bar->remove_node('about');
+    $wp_admin_bar->remove_node('wporg');
+    $wp_admin_bar->remove_node('documentation');
+    $wp_admin_bar->remove_node('support-forums');
+    $wp_admin_bar->remove_node('feedback');
+    $wp_admin_bar->remove_node('view-site');
+
+    $wp_admin_bar->remove_node('new-post');
+}
+add_action('wp_before_admin_bar_render', 'vlchannel_admin_bar');

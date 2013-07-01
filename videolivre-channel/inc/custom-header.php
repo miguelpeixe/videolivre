@@ -74,8 +74,11 @@ function vlchannel_header_style() {
 		else :
 	?>
 		.site-title a,
-		.site-description {
-			color: #<?php echo $text_color; ?> !important;
+		.site-description,
+		.site-header a,
+		.site-header h1,
+		.site-header h2 {
+			color: #<?php echo $text_color; ?>;
 		}
 	<?php endif; ?>
 	</style>

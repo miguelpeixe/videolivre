@@ -39,7 +39,7 @@ function register_cpt_video() {
         'has_archive' => true,
         'query_var' => true,
         'can_export' => true,
-        'rewrite' => true,
+        'rewrite' => array('slug' => 'videos'),
         'capability_type' => 'post'
     );
 
@@ -81,7 +81,7 @@ function register_cpt_program() {
         'has_archive' => true,
         'query_var' => true,
         'can_export' => true,
-        'rewrite' => true,
+        'rewrite' => array('slug' => 'programs'),
         'capability_type' => 'post'
     );
 

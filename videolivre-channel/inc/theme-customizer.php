@@ -63,8 +63,9 @@ function vlchannel_customize_css() {
 		.main-color-text {
 			color: <?php echo get_theme_mod('main_color'); ?> !important;
 		}
-		#masthead hgroup {
-			background-color: <?php echo get_theme_mod('header_background_color'); ?> !important;
+		#masthead hgroup,
+		.site-header {
+			background-color: <?php echo get_theme_mod('header_background_color'); ?>;
 		}
 	</style>
 	<?php

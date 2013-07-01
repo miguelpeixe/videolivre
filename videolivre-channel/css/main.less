@@ -347,6 +347,7 @@ aside#community-header {
  * Channel header
  */
 header#masthead {
+	margin: 0 0 40px;
 	hgroup {
 		width: 100%;
 		max-height: 700px;
@@ -452,8 +453,61 @@ header#masthead {
 		}
 	}
 }
+.site-header {
+	margin: 0 0 40px;
+	padding: 60px 0;
+	h1,
+	h2,
+	a {
+		color: #fff;
+		text-decoration: none;
+		margin: 0;
+	}
+	h2,
+	#breadcrumb {
+		font-size: 14px;
+		line-height: 14px;
+		margin: 0;
+		font-weight: 800;
+		text-transform: uppercase;
+		position: relative;
+		z-index: 2;
+		font-family: "Dosis";
+	}
+	h1 {
+		font-weight: 200;
+		font-size: 72px;
+		line-height: 72px;
+	}
+	#breadcrumb {
+		.arrow {
+			font-size: 10px;
+			padding: 0 5px;
+			opacity: .6;
+		}
+	}
+	&.dark-scheme {
+		a,
+		h2,
+		h1,
+		#breadcrumb {
+			color: #333;
+			text-shadow: 0 0 0;
+		}
+	}
+	&.light-scheme {
+		a,
+		h2,
+		h1,
+		#breadcrumb {
+			color: #fff;
+			text-shadow: 0 0 0;
+		}
+	}
+}
 .sub-header {
 	width: 100%;
+	margin: -40px 0 0;
 	padding: 40px 0;
 	background: -moz-linear-gradient(top,  rgba(150,150,150,0.1) 0%, rgba(0,0,0,0) 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.1)), color-stop(100%,rgba(0,0,0,0))); /* Chrome,Safari4+ */
@@ -519,6 +573,7 @@ header#masthead {
  */
 
 #videohead {
+	margin: 0 0 40px;
 	padding: 40px 0;
 	box-shadow: inset 0 0 200px rgba(0,0,0,0.4);
 	background: #333;
@@ -902,38 +957,6 @@ header#masthead {
 
 .single {
 	.program {
-		#program-header {
-			padding: 60px 0;
-			h1,
-			h2,
-			a {
-				color: #fff;
-				text-decoration: none;
-				margin: 0;
-			}
-			h2 {
-				font-size: 14px;
-				line-height: 14px;
-				margin: 0;
-				font-weight: 800;
-				text-transform: uppercase;
-				position: relative;
-				z-index: 2;
-			}
-			h1 {
-				font-weight: 200;
-				font-size: 72px;
-				line-height: 72px;
-			}
-			&.dark-scheme {
-				a,
-				h2,
-				h1 {
-					color: #333;
-					text-shadow: 0 0 0;
-				}
-			}
-		}
 	}
 }
 
@@ -1286,7 +1309,7 @@ header#masthead {
 			font-weight: 400;
 			color: #666;
 			h3 {
-				font-size: 22px;
+				font-size: 26px;
 				line-height: 36px;
 				font-weight: 600;
 				margin: 0 0 18px;

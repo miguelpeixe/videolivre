@@ -4,10 +4,10 @@
 	$scheme = vlchannel_get_program_text_scheme();
 	?>
 
-	<header id="program-header" class="program-background <?php echo $scheme; ?>">
+	<header id="program-header" class="site-header program-background <?php echo $scheme; ?>">
 		<div class="container">
 			<div class="twelve columns">
-				<h2><a href="<?php echo home_url('/'); ?>" title="<?php _e('Home page', 'videolivre'); ?>"><?php bloginfo('name'); ?></a></h2>
+				<?php vlchannel_breadcrumb(); ?>
 				<h1><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h1>
 			</div>
 		</div>

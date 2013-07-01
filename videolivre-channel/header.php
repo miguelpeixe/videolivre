@@ -31,8 +31,8 @@ fjs.parentNode.insertBefore(js, fjs);
 
 	<?php if(is_multisite()) community_header(); ?>
 
-	<?php if(!is_single() && get_post_type() != 'video') : ?>
-		<header id="masthead" class="site-header" role="banner">
+	<?php if(is_front_page()) : ?>
+		<header id="masthead" role="banner">
 			<hgroup>
 				<?php
 				$header_image = get_header_image();
