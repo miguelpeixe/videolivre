@@ -77,7 +77,9 @@ function vlchannel_get_video($post_id = false) {
 
 		$embed .= '<script type="text/javascript">jQuery("#video_' . $post_id . '").mediaelementplayer();</script>';
 	} elseif($video_data['video_srv'][0] == 'youtube') {
-		$embed .= '<iframe id="video_' . $post_id . ' class="fitvid" src="http://www.youtube.com/embed/'.$video_data['video_src'][0].'" frameborder="0" allowfullscreen></iframe>';
+		$embed .= '<iframe id="video_' . $post_id . '" class="fitvid" src="http://www.youtube.com/embed/'.$video_data['video_src'][0].'" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>';
+	} elseif($video_data['video_srv'][0] == 'vimeo') {
+		$embed .= '<iframe id="video_' . $post_id . '" class="fitvid" src="http://player.vimeo.com/video/' . $video_data['video_src'][0] . '?title=0&amp;byline=0&amp;portrait=0&amp;color=' . substr(vlchannel_get_program_color(), 1) . '" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>';
 	}
 
 	$embed .= apply_filters('vlchannel_after_video', '');
