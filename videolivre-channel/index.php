@@ -3,40 +3,60 @@
 <div id="primary" class="site-content container">
 	<div id="content" role="main">
 		<?php
-		query_posts(array(
-			'post_type' => 'program'
-		));
-		if(have_posts()) {
-			while(have_posts()) {
-				the_post();
-				get_template_part('program', 'featured');
-			}
+		/*
+		 * Featured program
+		 */
+		$featured = vlchannel_get_featured_program();
+		if($featured && !is_paged()) {
+			global $post;
+			$post = $featured;
+			setup_postdata($post);
+			get_template_part('program', 'featured');
+			wp_reset_postdata();
+		} else {
+			$featured = null;
 		}
-		wp_reset_query();
+		/*
+		 * Program list
+		 */
 		?>
 		<?php
-		query_posts(array(
-			'post_type' => 'program'
-		));
+		$query = array(
+			'post_type' => 'program',
+			'posts_per_page' => 2,
+			'post__not_in' => array(($featured ? $featured->ID : 0)),
+		);
+		query_posts($query);
 		if(have_posts()) {
+			?>
+			<div class="twelve columns">
+				<h2 class="section-title"><?php _e('More programs', 'videolivre-channel'); ?></h2>
+			</div>
+			<?php
 			while(have_posts()) {
 				the_post();
 				get_template_part('program', 'strip');
 			}
 		}
-		wp_reset_query();
+		/*
+		 * Latest videos
+		 */
 		?>
+		<div class="twelve columns">
+			<h2 class="section-title"><?php _e('Latest videos', 'videolivre-channel'); ?></h2>
+		</div>
 		<?php
-		query_posts(array(
-			'post_type' => 'program'
-		));
+		$query = array(
+			'post_type' => 'video',
+			'posts_per_page' => 8,
+		);
+		query_posts($query);
 		if(have_posts()) {
 			while(have_posts()) {
 				the_post();
-				get_template_part('program', 'minimal');
+				get_template_part('video', 'minimal');
 			}
 		}
-		wp_reset_query();
 		?>
 	</div>
 </div>

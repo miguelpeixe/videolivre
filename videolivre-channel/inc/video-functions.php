@@ -119,7 +119,7 @@ function vlchannel_get_video_views($post_id = false) {
 			$views = $vimeo_data->stats_number_of_plays;
 		}
 	}
-	set_transient('video_'.$post_id.'_views', $views, 60*60*2);
+	set_transient('video_'.$post_id.'_views', $views, 60*60);
 	return $views;
 }
 

@@ -29,7 +29,7 @@
 				</section>
 			</div>
 			<div class="four columns">
-				<?php vlchannel_social_shares(); ?>
+				<?php vlchannel_social_shares(get_permalink()); ?>
 			</div>
 			<?php if(has_crew()) : ?>
 				<div class="twelve columns">
@@ -53,13 +53,10 @@
 					<li class="video-widget program-color-border">
 						<ul class="buttons clearfix">
 							<li>
-								<span class="icon-button button program-color-border"><a class="icon-button-inside icon heart" href="#" title="<?php _e('Like', 'videolivre-channel'); ?>"><?php _e('Like', 'videolivre-channel'); ?></a></span>
+								<span class="big-icon icon heart" title="<?php _e('Social share', 'videolivre-channel'); ?>"><?php $shares = vlchannel_get_shares($post->ID); echo $shares['total']; ?></span>
 							</li>
 							<li>
-								<span class="icon-button button program-color-border"><a class="icon-button-inside icon comment" href="#" title="<?php _e('Comment', 'videolivre-channel'); ?>"><?php _e('Comment', 'videolivre-channel'); ?></a></span>
-							</li>
-							<li>
-								<span class="icon-button button program-color-border"><a class="icon-button-inside icon share" href="#" title="<?php _e('Share', 'videolivre-channel'); ?>"><?php _e('Share', 'videolivre-channel'); ?></a></span>
+								<span class="big-icon icon comment" title="<?php _e('Comments', 'videolivre-channel'); ?>"><?php comments_number('0', '1', '%'); ?></span>
 							</li>
 						</ul>
 					</li>

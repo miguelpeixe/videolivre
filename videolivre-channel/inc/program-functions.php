@@ -75,6 +75,31 @@ function vlchannel_get_program_text_scheme() {
 }
 
 /*
+ * Get featured program
+ */
+
+function vlchannel_get_featured_program() {
+
+	$featured = get_posts(array(
+		'post_type' => 'program',
+		'meta_query' => array(
+			array(
+				'key' => '_vlchannel_featured',
+				'value' => 1
+			)
+		)
+	));
+
+	if(!$featured)
+		$featured = get_posts(array('post_type' => 'program'));
+
+	if($featured)
+		return array_shift($featured);
+
+	return false;
+}
+
+/*
  * Get featured video
  */
 

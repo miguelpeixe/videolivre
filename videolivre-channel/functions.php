@@ -48,6 +48,11 @@ add_action('wp_enqueue_scripts', 'vlchannel_scripts');
 include(TEMPLATEPATH . '/inc/post-types.php');
 
 /**
+ * Share count
+ */
+include(TEMPLATEPATH . '/inc/shares.php');
+
+/**
  * Program functions
  */
 include(TEMPLATEPATH . '/inc/program-functions.php');
@@ -118,29 +123,33 @@ add_filter('wp_title', 'vlchannel_wp_title', 10, 2);
  */
 
 function vlchannel_login_url() {
-	return '#';
+	return wp_login_url();
+}
+
+function vlchannel_logout_url() {
+	return wp_logout_url();
 }
 
 function vlchannel_register_url() {
-	return '#';
+	return site_url('/wp-login.php?action=register');
 }
 
 /*
  * Share butttons
  */
 
-function vlchannel_social_shares() {
+function vlchannel_social_shares($url = false) {
 	?>
 	<ul class="social social-share">
 		<li class="facebook">
-			<div class="fb-like" data-send="false" data-layout="box_count" data-width="53" data-show-faces="false"></div>
+			<div class="fb-like" <?php if($url) echo 'data-href="'. $url . '"'; ?> data-send="false" data-layout="box_count" data-width="53" data-show-faces="false"></div>
 		</li>
 		<li class="twitter">
-			<iframe allowtransparency="true" frameborder="0" scrolling="no" src="https://platform.twitter.com/widgets/tweet_button.html?count=vertical"></iframe>
+			<iframe allowtransparency="true" frameborder="0" scrolling="no" src="https://platform.twitter.com/widgets/tweet_button.html?count=vertical<?php if($url) echo '&url=' . $url; ?>"></iframe>
 		</li>
 		<li class="gplus">
 			<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
-			<div class="g-plusone" data-size="tall"></div>
+			<div class="g-plusone" <?php if($url) echo 'data-href="'. $url . '"'; ?> data-size="tall"></div>
 		</li>
 	</ul>
 	<?php
@@ -316,7 +325,7 @@ function vlchannel_custom_ordering($wp_query) {
 			$wp_query->set('orderby', 'date');
 			$wp_query->set('order', 'ASC');
 		} elseif($order == 'popular') {
-			$wp_query->set('meta_key', '_vlchannel_likes');
+			$wp_query->set('meta_key', '_vlchannel_share_count_total');
 			$wp_query->set('orderby', 'meta_value_num');
 			$wp_query->set('order', 'DESC');
 		}
@@ -369,3 +378,25 @@ function vlchannel_custom_ordering_dropdown() {
 	</div>
 	<?php
 }
+
+function vlchannel_login_logo() {
+	wp_enqueue_style('font-dosis', 'http://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600');
+	?>
+    <style type="text/css">
+        body.login div#login h1 a {
+            background: transparent;
+            padding-bottom: 30px;
+            text-indent: 0;
+            font-size: 60px;
+            line-height: 60px;
+            overflow: visible;
+            width: auto;
+            height: auto;
+            font-family: "Dosis";
+            font-weight: 200;
+            text-decoration: none;
+        }
+    </style>
+	<?php
+}
+add_action( 'login_enqueue_scripts', 'vlchannel_login_logo' );
