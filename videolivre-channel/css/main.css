@@ -80,10 +80,7 @@ header#masthead hgroup .header-content h2{font-size:20px;margin:0;line-height:22
 .video-carousel .carousel-container .carousel-nav.left-arrow{background-image:url(../img/icons/20x20_arrow-left.png);left:-20px;}
 .video-carousel .carousel-container .carousel-nav.right-arrow{background-image:url(../img/icons/20x20_arrow-right.png);right:-20px;}
 .video-carousel .carousel-container .carousel-items-area{width:100%;overflow:hidden;}
-.video-carousel .carousel-container .carousel{margin:0;padding:0;position:relative;}.video-carousel .carousel-container .carousel .carousel-item img{display:block;-webkit-transition:all 0.2s ease-in;-khtml-transition:all 0.2s ease-in;-moz-transition:all 0.2s ease-in;-o-transition:all 0.2s ease-in;transition:all 0.2s ease-in;opacity:0.7;}
-.video-carousel .carousel-container .carousel .carousel-item h2{font-size:16px;}.video-carousel .carousel-container .carousel .carousel-item h2 a{text-decoration:none;color:#999;}
-.video-carousel .carousel-container .carousel .carousel-item:hover img{opacity:1;}
-.video-carousel .carousel-container .carousel .carousel-item:hover h2 a{color:#333;}
+.video-carousel .carousel-container .carousel{margin:0;padding:0;position:relative;}
 .video-thumb{position:relative;display:block;background:#000;}.video-thumb:before{content:url(../img/icons/play.png);top:50%;left:50%;margin-top:-20px;margin-left:-20px;position:absolute;z-index:2;opacity:0;}
 .video-thumb img{opacity:1;-webkit-transition:all 0.2s ease-in;-khtml-transition:all 0.2s ease-in;-moz-transition:all 0.2s ease-in;-o-transition:all 0.2s ease-in;transition:all 0.2s ease-in;}
 .video-thumb:hover img{opacity:.7;}

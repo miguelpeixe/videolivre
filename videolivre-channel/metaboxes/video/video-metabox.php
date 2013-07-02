@@ -57,7 +57,7 @@ function video_inner_meta_box($post) {
 	    	<input type="text" size="80" class="html5_webm" name="html5_webm" placeholder="<?php _e('WebM fallback', 'videolivre-channel'); ?>" value="<?php echo $video_html5_webm; ?>" />
 	    </p>
 	    <div class="subtitle-tracks">
-	    	<a href="#" class="add-subtitle button"><?php _e('+ Add subtitle track', 'videolivre-channel'); ?></a>
+	    	<a href="#" class="add-subtitle button">+ <?php _e('Add subtitle track', 'videolivre-channel'); ?></a>
 	    	<div class="subtitle-container">
 		    	<ul class="subtitle-list">
 		    		<li class="model list-item">
@@ -69,7 +69,7 @@ function video_inner_meta_box($post) {
 		    				<input type="text" placeholder="<?php _e('Language code', 'videolivre-channel'); ?>" title="<?php _e('E.g.: pt-BR, en-US, fr', 'videolivre-channel'); ?>" />
 		    			</span>
 		    			<span class="subtitle_lang_label subtitle_part">
-		    				<input type="text" placeholder="<?php _e('Language label', 'videolivre-channel'); ?>" title="<?php _e('E.g.: English, Português', 'videolivre-channel'); ?>" />
+		    				<input type="text" placeholder="<?php _e('Language label', 'videolivre-channel'); ?>" title="<?php _e('E.g.: English, Portuguese', 'videolivre-channel'); ?>" />
 		    			</span>
 		    			<span class="subtitle_manage subtitle_part">
 		    				<a href="#" class="remove-subtitle"><?php _e('Remove subtitle', 'videolivre-channel'); ?></a>
@@ -85,7 +85,7 @@ function video_inner_meta_box($post) {
 			    				<input type="text" name="subtitles[<?php echo $i; ?>][lang-code]" placeholder="<?php _e('Language code', 'videolivre-channel'); ?>" title="<?php _e('E.g.: pt-BR, en-US, fr', 'videolivre-channel'); ?>" value="<?php echo $subtitle['lang-code']; ?>" />
 			    			</span>
 			    			<span class="subtitle_lang_label subtitle_part">
-			    				<input type="text" name="subtitles[<?php echo $i; ?>][lang-label]" placeholder="<?php _e('Language label', 'videolivre-channel'); ?>" title="<?php _e('E.g.: English, Português', 'videolivre-channel'); ?>" value="<?php echo $subtitle['lang-label']; ?>" />
+			    				<input type="text" name="subtitles[<?php echo $i; ?>][lang-label]" placeholder="<?php _e('Language label', 'videolivre-channel'); ?>" title="<?php _e('E.g.: English, Portuguese', 'videolivre-channel'); ?>" value="<?php echo $subtitle['lang-label']; ?>" />
 			    			</span>
 			    			<span class="subtitle_manage subtitle_part">
 			    				<a href="#" class="remove-subtitle"><?php _e('Remove subtitle', 'videolivre-channel'); ?></a>
@@ -96,7 +96,7 @@ function video_inner_meta_box($post) {
 		    	<div class="subtitle-tips">
 		    		<span class="subtitle_url tip"><?php _e('Enter the file url or click to upload a <strong>.srt</strong> or <strong>.vtt</strong> file', 'videolivre-channel'); ?></span>
 		    		<span class="subtitle_lang_code tip"><?php echo sprintf(__('According to <a href="%s" target="_blank" rel="external">BCP 47</a> code. E.g.: pt-BR, en-US, fr.', 'videolivre-channel'), 'http://tools.ietf.org/html/bcp47'); ?></span>
-		    		<span class="subtitle_lang_label tip"><?php _e('E.g.: English, Português', 'videolivre-channel'); ?></span>
+		    		<span class="subtitle_lang_label tip"><?php _e('E.g.: English, Portuguese', 'videolivre-channel'); ?></span>
 		    	</div>
 		    </div>
 	    </div>

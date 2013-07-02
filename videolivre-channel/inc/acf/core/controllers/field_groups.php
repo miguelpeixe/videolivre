@@ -253,7 +253,7 @@ class acf_field_groups
 	<!-- acf-content-body -->
 	<div class="acf-content-body">
 		<h2 class="nav-tab-wrapper">
-			<a class="acf-tab-toggle nav-tab <?php if( $tab == 'whats-new' ){ echo 'nav-tab-active'; } ?>" href="<?php echo admin_url('edit.php?post_type=acf&info=whats-new'); ?>"><?php _e("What’s New",'acf'); ?></a>
+			<a class="acf-tab-toggle nav-tab <?php if( $tab == 'whats-new' ){ echo 'nav-tab-active'; } ?>" href="<?php echo admin_url('edit.php?post_type=acf&info=whats-new'); ?>"><?php _e("What's New",'acf'); ?></a>
 			<a class="acf-tab-toggle nav-tab <?php if( $tab == 'changelog' ){ echo 'nav-tab-active'; } ?>" href="<?php echo admin_url('edit.php?post_type=acf&info=changelog'); ?>"><?php _e("Changelog",'acf'); ?></a>
 			<?php if( $tab == 'download-add-ons' ): ?>
 			<a class="acf-tab-toggle nav-tab nav-tab-active" href="<?php echo admin_url('edit.php?post_type=acf&info=download-add-ons'); ?>"><?php _e("Download Add-ons",'acf'); ?></a>

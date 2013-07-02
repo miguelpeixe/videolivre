@@ -5,6 +5,8 @@
  */
 function vlchannel_setup() {
 
+	load_theme_textdomain('videolivre-channel', get_template_directory() . '/languages');
+
 	add_theme_support( 'custom-background', array(
 		'default-color' => 'e6e6e6',
 	));
