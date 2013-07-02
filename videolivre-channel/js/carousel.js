@@ -20,7 +20,8 @@ jQuery(function($) {
 			carouselWidth,
 			itemWidth,
 			currentLocation,
-			maxLocation;
+			maxLocation,
+			itemOffset;
 
 		$carousel = $carouselContainer.find('.carousel');
 		$next = $carouselContainer.find('.carousel-nav.next');
@@ -28,7 +29,8 @@ jQuery(function($) {
 		$items = $carousel.find('.carousel-item');
 		itemCount = $items.length;
 		itemWidth = $items.width();
-		carouselWidth = (itemCount * itemWidth) + (20 * itemCount);
+		itemOffset = parseInt($items.css('margin-right').replace('px', '')) + parseInt($items.css('margin-left').replace('px', ''));
+		carouselWidth = (itemCount * itemWidth) + (itemOffset * itemCount);
 
 		// prepare carousel
 		$carousel.width(carouselWidth);
@@ -49,7 +51,7 @@ jQuery(function($) {
 		var goNext = function() {
 			if(currentLocation >= maxLocation)
 				return false;
-			var itemArea = itemWidth + 20;
+			var itemArea = itemWidth + itemOffset;
 			$carousel.animate({
 				'left': '-=' + itemArea
 			}, 100);
@@ -59,7 +61,7 @@ jQuery(function($) {
 		var goPrev = function() {
 			if(currentLocation == 0)
 				return false;
-			var itemArea = itemWidth + 20;
+			var itemArea = itemWidth + itemOffset;
 			$carousel.animate({
 				'left': '+=' + itemArea
 			}, 100);

@@ -157,6 +157,13 @@ input {
 	margin: 0;
 	border-bottom: 3px solid;
 	text-shadow: 0 0 0;
+	font-size: 16px;
+	font-family: "Dosis";
+	font-weight: 200;
+	text-transform: uppercase;
+	line-height: 37px;
+	padding: 0 15px;
+	padding: ;
 	a {
 		text-decoration: none;
 		font-weight: 400;
@@ -247,7 +254,16 @@ aside#community-header {
 	padding: 20px 0 0;
 	box-shadow: 0 0 20px rgba(0,0,0,.2);
 	position: relative;
-	z-index: 2;
+	z-index: 100;
+	h2 {
+		font-size: 20px;
+		line-height: 20px;
+		margin: 10px 0;
+		a {
+			color: #333;
+			text-decoration: none;
+		}
+	}
 	#searchform {
 		width: 100%;
 		position: relative;
@@ -957,6 +973,32 @@ header#masthead {
 
 .single {
 	.program {
+		#program-meta {
+			.program-description {
+				height: 84px;
+				overflow:hidden;
+				font-family: "Open Sans";
+				font-size: 14px;
+				font-weight: 200;
+				p {
+					font-family: "Open Sans";
+					font-size: 14px;
+					font-weight: 200;
+				}
+			}
+			.readmore {
+				border-top: 1px solid #bbb;
+				display: block;
+				margin: 5px 0;
+				padding: 5px 0;
+				text-transform: uppercase;
+				text-align: center;
+				font-size: 12px;
+				font-weight: 800;
+				color: #999;
+				text-decoration: none;
+			}
+		}
 	}
 }
 
@@ -971,8 +1013,7 @@ header#masthead {
 	&.featured-video {
 		margin: 0 0 40px;
 		.thumbnail {
-			float: left;
-			margin: 0 20px 0 0;
+			margin-bottom: 20px;
 			position: relative;
 			z-index: 5;
 			border-right: 5px solid #333;
@@ -1042,8 +1083,8 @@ header#masthead {
 	&.list-video {
 		margin: 0 0 40px;
 		.thumbnail {
-			float:left;
-			margin: 0 20px 20px 0;
+			margin: 0;
+			padding: 0;
 			position: relative;
 			z-index: 5;
 			border-right: 2px solid #333;
@@ -1169,6 +1210,13 @@ header#masthead {
 	line-height: 42px;
 	font-weight: 200;
 	color: #666;
+	> * {
+		float: left;
+		margin-right: 20px;
+	}
+	.button {
+		margin-top: 2px;
+	}
 }
 
 .pagination {
@@ -1224,6 +1272,7 @@ header#masthead {
 		font-weight: 200;
 		text-transform: uppercase;
 		font-size: 16px;
+		padding: 0;
 		&:before {
 			content: '';
 			height: 40px;
@@ -1319,5 +1368,37 @@ header#masthead {
 				}
 			}
 		}
+	}
+}
+
+#colophon {
+	padding: 40px 0;
+	background: #444;
+	color: #999;
+	font-size: 90%;
+	h2,
+	p,
+	li,
+	span,
+	a {
+		color: #999;
+	}
+	.widgettitle {
+		color: #f0f0f0;
+		font-size: 16px;
+		line-height: 22px;
+		font-weight: 800;
+		text-transform: uppercase;
+	}
+}
+
+#footer-credits {
+	background: #333;
+	color: #888;
+	text-align: right;
+	font-size: 12px;
+	padding: 10px 0;
+	p {
+		margin: 0;
 	}
 }

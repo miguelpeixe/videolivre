@@ -68,8 +68,6 @@ function vlchannel_get_video($post_id = false) {
 			$embed .= '<param name="movie" value="' . $swf . '" />';
 			$embed .= '<param name="flashvars" value="controls=true&file=' . $video_data['video_html5_webm'] . '" />';
 
-	        // $embed .= '<img src="myvideo.jpg" width="320" height="240" title="No video playback capabilities" />';
-
 			$embed .= '</object>';
 		}
 
@@ -112,6 +110,7 @@ function vlchannel_get_video_views($post_id = false) {
 			$youtube_data = json_decode(file_get_contents('http://gdata.youtube.com/feeds/api/videos/' . $video_data['video_src'][0] . '?v=2&alt=jsonc'));
 			$views = $youtube_data->data->viewCount;
 		}
+		set_transient('video_'.$post_id.'_views', $views, 60*60);
 	}
 	// grab views from youtube and store transient
 	elseif($video_data['video_srv'][0] == 'vimeo') {
@@ -120,9 +119,151 @@ function vlchannel_get_video_views($post_id = false) {
 			$vimeo_data = array_shift(json_decode(file_get_contents('http://vimeo.com/api/v2/video/' . $video_data['video_src'][0] . '.json')));
 			$views = $vimeo_data->stats_number_of_plays;
 		}
+		set_transient('video_'.$post_id.'_views', $views, 60*60);
+	} else {
+		$views = get_post_meta($post_id, '_vlchannel_views', true);
 	}
-	set_transient('video_'.$post_id.'_views', $views, 60*60);
+
+	if(!$views)
+		$views = 0;
+
 	return $views;
+}
+
+// Own views system
+
+add_action('wp_ajax_nopriv_vlchannel_view', 'vlchannel_custom_view_ajax');
+add_action('wp_ajax_vlchannel_view', 'vlchannel_custom_view_ajax');
+
+function vlchannel_custom_view_ajax() {
+	if(!wp_verify_nonce($_REQUEST['nonce'], 'vlchannel_count_view'))
+		die(__('Permission denied.', 'videolivre-channel'));
+
+	$views = get_post_meta($_REQUEST['post_id'], '_vlchannel_views', true);
+
+	if(!$views)
+		$views = 1;
+	else
+		$views++;
+
+	update_post_meta($_REQUEST['post_id'], '_vlchannel_views', $views);
+
+	exit();
+}
+
+add_action('wp_footer', 'vlchannel_custom_view_script');
+
+function vlchannel_custom_view_script() {
+	if(is_singular('video')) {
+		global $post;
+		wp_enqueue_script('vlchannel-views', get_template_directory_uri() . '/js/views.js', array('jquery'), '0.1');
+		wp_localize_script('vlchannel-views', 'vlchannel_views', array(
+			'ajaxurl' => admin_url('admin-ajax.php'),
+			'nonce' => wp_create_nonce('vlchannel_count_view'),
+			'postid' => $post->ID
+		));
+	}
+}
+
+/* 
+ * ACF fields
+ */
+
+if(function_exists("register_field_group"))
+{
+	register_field_group(array (
+		'id' => 'acf_video-information',
+		'title' => __('Video information', 'videolivre-channel'),
+		'fields' => array (
+			array (
+				'default_value' => '',
+				'formatting' => 'html',
+				'key' => 'field_51d23120cec9e',
+				'label' => __('Year of production', 'videolivre-channel'),
+				'name' => 'production_year',
+				'type' => 'text',
+				'instructions' => 'E.g.: 2008',
+			),
+			array (
+				'default_value' => '',
+				'formatting' => 'html',
+				'key' => 'field_51d23145cec9f',
+				'label' => __('Direction', 'videolivre-channel'),
+				'name' => 'direction',
+				'type' => 'text',
+				'instructions' => 'E.g.: John Doe',
+			),
+			array (
+				'default_value' => '',
+				'formatting' => 'br',
+				'key' => 'field_51d2315bceca0',
+				'label' => __('Technical information', 'videolivre-channel'),
+				'name' => 'tech_info',
+				'type' => 'textarea',
+			),
+		),
+		'location' => array (
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'video',
+					'order_no' => 0,
+					'group_no' => 0,
+				),
+			),
+		),
+		'options' => array (
+			'position' => 'normal',
+			'layout' => 'no_box',
+			'hide_on_screen' => array (
+			),
+		),
+		'menu_order' => 0,
+	));
+
+	register_field_group(array (
+		'id' => 'acf_featured-options',
+		'title' => __('Featured options', 'videolivre-channel'),
+		'fields' => array (
+			array (
+				'default_value' => 0,
+				'message' => __('This video is program featured', 'videolivre-channel'),
+				'key' => 'field_51d25a60e88f2',
+				'label' => __('Program featured', 'videolivre-channel'),
+				'name' => 'program_featured',
+				'type' => 'true_false',
+				'instructions' => __('Set this video as program featured. You can only have one featured video on your program. If more than one is selected, the last uploaded will be selected.', 'videolivre-channel'),
+			),
+			array (
+				'default_value' => 0,
+				'message' => __('This video is channel featured', 'videolivre-channel'),
+				'key' => 'field_51d25ad7e88f3',
+				'label' => __('Channel featured', 'videolivre-channel'),
+				'name' => 'channel_featured',
+				'type' => 'true_false',
+				'instructions' => __('Set this video as channel featured. You can only have one featured video on your channel. If more than one is selected, the last uploaded will be selected.', 'videolivre-channel'),
+			),
+		),
+		'location' => array (
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'video',
+					'order_no' => 0,
+					'group_no' => 0,
+				),
+			),
+		),
+		'options' => array (
+			'position' => 'side',
+			'layout' => 'default',
+			'hide_on_screen' => array (
+			),
+		),
+		'menu_order' => 0,
+	));
 }
 
 
@@ -140,7 +281,7 @@ function the_launch($post_id = false) {
 function get_the_launch($post_id = false) {
 	global $post;
 	$post_id = $post_id ? $post_id : $post->ID;
-	$launch = get_post_meta($post_id, 'year', true);
+	$launch = get_post_meta($post_id, 'production_year', true);
 	return apply_filters('vlchannel_video_launch', $launch);
 }
 function has_launch($post_id = false) {

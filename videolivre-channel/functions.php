@@ -12,7 +12,18 @@ function vlchannel_setup() {
 	add_theme_support('post-thumbnails');
 	set_post_thumbnail_size( 624, 9999 );
 	add_image_size('featured-video', 460, 266, true);
-	add_image_size('thumbnail-video', 220, 124, true);
+	add_image_size('thumbnail-video', 260, 145, true);
+
+	register_sidebar(array(
+		'name'          => __('Footer widgets', 'videlivre-channel'),
+		'id'            => 'footer-widgets',
+		'description'   => '',
+		'class'         => '',
+		'before_widget' => '<div class="three columns"><div id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</div></div>',
+		'before_title'  => '<h2 class="widgettitle">',
+		'after_title'   => '</h2>'
+	));
 
 }
 add_action('after_setup_theme', 'vlchannel_setup');
@@ -41,6 +52,16 @@ function vlchannel_scripts() {
 	wp_register_script('vlchannel-carousel', get_template_directory_uri() . '/js/carousel.js', array('jquery'));
 }
 add_action('wp_enqueue_scripts', 'vlchannel_scripts');
+
+/* 
+ * ACF
+ */
+function vlchannel_acf_path() {
+	return get_template_directory_uri() . '/inc/acf/';
+}
+add_filter('acf/helpers/get_dir', 'vlchannel_acf_path');
+define('ACF_LITE' , false);
+include_once(TEMPLATEPATH . '/inc/acf/acf.php');
 
 /**
  * Register post types
@@ -76,6 +97,11 @@ require(TEMPLATEPATH . '/inc/custom-header.php');
  * Theme customizer
  */
 require(TEMPLATEPATH . '/inc/theme-customizer.php');
+
+/**
+ * Admin settings
+ */
+include(TEMPLATEPATH . '/admin/settings.php');
 
 /**
  * Community functions (WordPress MS)
@@ -160,9 +186,10 @@ function vlchannel_social_shares($url = false) {
  */
 
 function vlchannel_breadcrumb() {
-	if(vlchannel_get_community()) {
-		$links[get_bloginfo('name')] = home_url('/');
-	}
+
+	$links = array();
+
+	$links[get_bloginfo('name')] = home_url('/');
 	$program = vlchannel_get_video_program_id();
 	if(is_single() && $program) {
 		$links[get_the_title($program)] = get_permalink($program);
@@ -403,6 +430,18 @@ function vlchannel_login_logo() {
 	<?php
 }
 add_action( 'login_enqueue_scripts', 'vlchannel_login_logo' );
+
+/*
+ * Allow any post type on tag and category archive
+ */
+
+add_filter('pre_get_posts', 'vlchannel_archive_query');
+function vlchannel_archive_query($query) {
+	if(is_category() || is_tag()) {
+		$query->set('post_type', 'any');
+	}
+	return $query;
+}
 
 /*
  * Remove some menu pages

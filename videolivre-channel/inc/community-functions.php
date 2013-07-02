@@ -37,13 +37,20 @@ function vlchannel_get_community_theme() {
  */
 function community_header() {
 	$community = vlchannel_get_community();
-	if(!$community)
-		return false;
+	if($community)
+		switch_to_blog(1);
+
+	$title = get_bloginfo('name');
+	$home_url = home_url('/');
+
+	if($community)
+		restore_current_blog();
+
 	?>
 	<aside id="community-header">
 		<div class="container">
 			<div class="three columns">
-				<h2>Logo</h2>
+				<h2><a href="<?php echo $home_url; ?>"><?php echo $title; ?></a></h2>
 			</div>
 			<div class="six columns">
 				<?php get_search_form(); ?>
@@ -51,12 +58,14 @@ function community_header() {
 			<div class="three columns">
 				<div class="meta-links">
 					<?php if(!is_user_logged_in()) : ?>
-						<span class="login">
-							<a class="icon login" href="<?php echo vlchannel_login_url(); ?>"><?php _e('Login', 'videolivre-channel'); ?></a>
-						</span>
-						<span class="register">
-							<a class="icon register" href="<?php echo vlchannel_register_url(); ?>"><?php _e('Register', 'videolivre-channel'); ?></a>
-						</span>
+						<?php if(get_option('users_can_register')) : ?>
+							<span class="login">
+								<a class="icon login" href="<?php echo vlchannel_login_url(); ?>"><?php _e('Login', 'videolivre-channel'); ?></a>
+							</span>
+							<span class="register">
+								<a class="icon register" href="<?php echo vlchannel_register_url(); ?>"><?php _e('Register', 'videolivre-channel'); ?></a>
+							</span>
+						<?php endif; ?>
 					<?php else : ?>
 						<?php
 						$user = wp_get_current_user();

@@ -15,7 +15,12 @@
 	<section id="program-meta" class="sub-header">
 		<div class="container">
 			<div class="eight columns">
-				<?php the_content(); ?>
+				<div class="program-description">
+					<div class="description-content">
+						<?php the_content(); ?>
+					</div>
+				</div>
+				<a class="readmore" data-opentext="<?php _e('Click to close full description', 'videolivre-channel'); ?>" href="#"><?php _e('Click to read the full description', 'videolivre-channel'); ?></a>
 			</div>
 			<div class="four columns">
 				<?php vlchannel_social_shares(); ?>

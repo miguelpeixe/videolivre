@@ -4,6 +4,79 @@
  * Program functions
  */
 
+/*
+ * ACF fields
+ */
+
+if(function_exists("register_field_group"))
+{
+	register_field_group(array (
+		'id' => 'acf_program-configuration',
+		'title' => 'Program configuration',
+		'fields' => array (
+			array (
+				'default_value' => '',
+				'key' => 'field_51d23642db67f',
+				'label' => 'Program color',
+				'name' => 'program_color',
+				'type' => 'color_picker',
+			),
+		),
+		'location' => array (
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'program',
+					'order_no' => 0,
+					'group_no' => 0,
+				),
+			),
+		),
+		'options' => array (
+			'position' => 'normal',
+			'layout' => 'no_box',
+			'hide_on_screen' => array (
+			),
+		),
+		'menu_order' => 0,
+	));
+
+	register_field_group(array (
+		'id' => 'acf_program-featured-options',
+		'title' => __('Featured options', 'videolivre-channel'),
+		'fields' => array (
+			array (
+				'default_value' => 0,
+				'message' => __('This program is featured', 'videolivre-channel'),
+				'key' => 'field_51d25bf1e15b6',
+				'label' => __('Featured program', 'videolivre-channel'),
+				'name' => 'featured_program',
+				'type' => 'true_false',
+				'instructions' => __('Set this program as channel featured. You can only have one featured program on your channel. If more than one is selected, the last uploaded will be selected.', 'videolivre-channel'),
+			),
+		),
+		'location' => array (
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'program',
+					'order_no' => 0,
+					'group_no' => 0,
+				),
+			),
+		),
+		'options' => array (
+			'position' => 'side',
+			'layout' => 'default',
+			'hide_on_screen' => array (
+			),
+		),
+		'menu_order' => 0,
+	));
+
+}
 
 
 /*
@@ -84,7 +157,7 @@ function vlchannel_get_featured_program() {
 		'post_type' => 'program',
 		'meta_query' => array(
 			array(
-				'key' => '_vlchannel_featured',
+				'key' => 'featured_program',
 				'value' => 1
 			)
 		)
@@ -146,7 +219,7 @@ function vlchannel_get_program_query($query = array(), $program_id = false) {
 	);
 
 	if($query['meta_query']) {
-		$p_query['meta_query'] = array_merge($p_query['meta_query'], $query['meta_query']);
+		$query['meta_query'] = array_merge($p_query['meta_query'], $query['meta_query']);
 	}
 
 	$query = array_merge($p_query, $query);

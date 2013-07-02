@@ -70,36 +70,67 @@ fjs.parentNode.insertBefore(js, fjs);
 	<?php endif; ?>
 
 	<?php if(is_front_page()) : ?>
+		<?php
+		$producer = get_option('vlchannel_producer');
+		$creator = get_option('vlchannel_creator');
+
+		$description = get_option('vlchannel_description');
+
+		$fb = get_option('vlchannel_facebook');
+		$tw = get_option('vlchannel_twitter');
+		$yt = get_option('vlchannel_youtube');
+		$vm = get_option('vlchannel_vimeo');
+		?>
 		<section id="channel-meta" class="sub-header">
 			<div class="container">
-				<div class="four columns">
-					<div class="team">
-						<p class="idea icon lightbulb"><?php _e('created by', 'videolivre-channel'); ?> <strong>Fulano</strong></p>
-						<p class="production icon star"><?php _e('produced by', 'videolivre-channel'); ?> <strong>Cicrano</strong></p>
+				<?php if($producer || $creator) : ?>
+					<div class="four columns">
+						<div class="team">
+							<?php if($creator) : ?>
+								<p class="idea icon lightbulb"><?php _e('created by', 'videolivre-channel'); ?> <strong><?php echo $creator; ?></strong></p>
+							<?php endif; ?>
+							<?php if($producer) : ?>
+								<p class="production icon star"><?php _e('produced by', 'videolivre-channel'); ?> <strong><?php echo $producer; ?></strong></p>
+							<?php endif; ?>
+						</div>
 					</div>
-				</div>
-				<div class="four columns">
-					<ul class="social social-icons">
-						<li class="facebook social-item">
-							<a href="#" title="<?php _e('Find us on Facebook', 'videolivre-channel'); ?>"><?php _e('Find us on Facebook', 'videolivre-channel'); ?></a>
-						</li>
-						<li class="twitter social-item">
-							<a href="#" title="<?php _e('Find us on Twitter', 'videolivre-channel'); ?>"><?php _e('Find us on Twitter', 'videolivre-channel'); ?></a>
-						</li>
-						<li class="youtube social-item">
-							<a href="#" title="<?php _e('Find us on YouTube', 'videolivre-channel'); ?>"><?php _e('Find us on YouTube', 'videolivre-channel'); ?></a>
-						</li>
-						<li class="vimeo social-item">
-							<a href="#" title="<?php _e('Find us on Vimeo', 'videolivre-channel'); ?>"><?php _e('Find us on Vimeo', 'videolivre-channel'); ?></a>
-						</li>
-					</ul>
-				</div>
-				<div class="four columns">
-					<?php vlchannel_social_shares(); ?>
-				</div>
-				<div class="twelve columns">
-					<p class="channel-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse volutpat luctus est. Sed eu purus nunc. Proin rutrum sem ut enim ullamcorper accumsan. Fusce venenatis nunc id risus placerat sodales. Nulla aliquet dui vitae arcu porta non dapibus arcu ornare.</p>
-				</div>
+				<?php endif; ?>
+				<?php if($fb || $tw || $yt || $vm) : ?>
+					<div class="four columns">
+						<ul class="social social-icons">
+							<?php if($fb) : ?>
+								<li class="facebook social-item">
+									<a href="<?php echo $fb; ?>" title="<?php _e('Find us on Facebook', 'videolivre-channel'); ?>" rel="external" target="_blank"><?php _e('Find us on Facebook', 'videolivre-channel'); ?></a>
+								</li>
+							<?php endif; ?>
+							<?php if($tw) : ?>
+								<li class="twitter social-item">
+									<a href="<?php echo $tw; ?>" title="<?php _e('Find us on Twitter', 'videolivre-channel'); ?>" rel="external" target="_blank"><?php _e('Find us on Twitter', 'videolivre-channel'); ?></a>
+								</li>
+							<?php endif; ?>
+							<?php if($yt) : ?>
+								<li class="youtube social-item">
+									<a href="<?php echo $yt; ?>" title="<?php _e('Find us on YouTube', 'videolivre-channel'); ?>" rel="external" target="_blank"><?php _e('Find us on YouTube', 'videolivre-channel'); ?></a>
+								</li>
+							<?php endif; ?>
+							<?php if($vm) : ?>
+								<li class="vimeo social-item">
+									<a href="<?php echo $vm; ?>" title="<?php _e('Find us on Vimeo', 'videolivre-channel'); ?>" rel="external" target="_blank"><?php _e('Find us on Vimeo', 'videolivre-channel'); ?></a>
+								</li>
+							<?php endif; ?>
+						</ul>
+					</div>
+				<?php endif; ?>
+				<?php if($producer || $creator || $fb || $tw || $yt || $vm) : ?>
+					<div class="four columns">
+						<?php vlchannel_social_shares(); ?>
+					</div>
+				<?php endif; ?>
+				<?php if($description) : ?>
+					<div class="twelve columns">
+						<p class="channel-description"><?php echo $description; ?></p>
+					</div>
+				<?php endif; ?>
 			</div>
 		</section>
 	<?php endif; ?>

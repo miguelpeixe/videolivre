@@ -4,6 +4,27 @@
 	<div id="content" role="main">
 		<?php
 		/*
+		 * Featured video
+		 */
+		$featured_video = get_posts(array(
+			'post_type' => 'video',
+			'meta_query' => array(
+				array(
+					'key' => 'channel_featured',
+					'value' => 1
+				)
+			)
+		));
+		if($featured_video) {
+			global $post;
+			$post = array_shift($featured_video);
+			setup_postdata($post);
+			get_template_part('video', 'featured');
+			wp_reset_postdata();
+		} else {
+			$featured_video = null;
+		}
+		/*
 		 * Featured program
 		 */
 		$featured = vlchannel_get_featured_program();
@@ -30,7 +51,10 @@
 		if(have_posts()) {
 			?>
 			<div class="twelve columns">
-				<h2 class="section-title"><?php _e('More programs', 'videolivre-channel'); ?></h2>
+				<h2 class="section-title clearfix">
+					<span><?php _e('More programs', 'videolivre-channel'); ?></span>
+					<a class="button" href="<?php echo get_post_type_archive_link('program'); ?>"><?php _e('All programs', 'videolivre-channel'); ?></a>
+				</h2>
 			</div>
 			<?php
 			while(have_posts()) {
@@ -43,7 +67,10 @@
 		 */
 		?>
 		<div class="twelve columns">
-			<h2 class="section-title"><?php _e('Latest videos', 'videolivre-channel'); ?></h2>
+			<h2 class="section-title clearfix">
+				<span><?php _e('Latest videos', 'videolivre-channel'); ?></span>
+				<a class="button" href="<?php echo get_post_type_archive_link('video'); ?>"><?php _e('All videos', 'videolivre-channel'); ?></a>
+			</h2>
 		</div>
 		<?php
 		$query = array(
