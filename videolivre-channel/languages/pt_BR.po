@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Video Livre Channel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-02 09:20-0300\n"
-"PO-Revision-Date: 2013-07-02 09:35-0300\n"
+"POT-Creation-Date: 2013-07-02 18:41-0300\n"
+"PO-Revision-Date: 2013-07-02 18:42-0300\n"
 "Last-Translator: Miguel Peixe <miguel@cardume.art.br>\n"
 "Language-Team: Cardume <contato@cardume.art.br>\n"
 "Language: \n"
@@ -46,61 +46,61 @@ msgstr "Encontre-nos no YouTube"
 msgid "Find us on Vimeo"
 msgstr "Encontre-nos no Vimeo"
 
-#: ../functions.php:18
+#: ../functions.php:20
 msgid "Footer widgets"
 msgstr "Widgets de rodapé"
 
-#: ../functions.php:141
+#: ../functions.php:143
 #, php-format
 msgid "Page %s"
 msgstr "Página %s"
 
-#: ../functions.php:198
+#: ../functions.php:200
 msgid "Programs"
 msgstr "Programas"
 
-#: ../functions.php:222
+#: ../functions.php:224
 msgid "Pingback:"
 msgstr "Pingback:"
 
-#: ../functions.php:222
+#: ../functions.php:224
 msgid "(Edit)"
 msgstr "(Editar)"
 
-#: ../functions.php:241
+#: ../functions.php:243
 msgid "Author"
 msgstr "Autor"
 
-#: ../functions.php:247
+#: ../functions.php:249
 #, php-format
 msgid "%1$s at %2$s"
 msgstr "%1$s às %2$s"
 
-#: ../functions.php:255
+#: ../functions.php:257
 msgid "Your comment is awaiting moderation."
 msgstr "Seu comentário está aguardando moderação."
 
-#: ../functions.php:259
+#: ../functions.php:261
 msgid "Edit"
 msgstr "Editar"
 
-#: ../functions.php:264
+#: ../functions.php:266
 msgid "Reply"
 msgstr "Responder"
 
-#: ../functions.php:369
+#: ../functions.php:371
 msgid "Most popular"
 msgstr "Mais popular"
 
-#: ../functions.php:370
+#: ../functions.php:372
 msgid "Most recent"
 msgstr "Mais recente"
 
-#: ../functions.php:371
+#: ../functions.php:373
 msgid "Oldests"
 msgstr "Mais antigos"
 
-#: ../functions.php:399
+#: ../functions.php:401
 msgid "Order by"
 msgstr "Ordenar por"
 
@@ -153,6 +153,10 @@ msgstr "Arquivo"
 msgid "Social share"
 msgstr "Compartilhamentos sociais"
 
+#: ../video-full.php:24
+msgid "by"
+msgstr "por"
+
 #: ../video-full.php:26
 msgid "technical crew"
 msgstr "Equipe técnica"
@@ -161,12 +165,19 @@ msgstr "Equipe técnica"
 msgid "views"
 msgstr "visualizações"
 
-#: ../video-full.php:91
+#: ../video-full.php:94
 msgid "Flag this video"
 msgstr "Denunciar este vídeo"
 
-#: ../searchform.php:2
 #: ../searchform.php:3
+msgid "Search for videos and programs"
+msgstr "Pesquise por vídeos e programas"
+
+#: ../searchform.php:5
+msgid "Search for channels, programs and videos"
+msgstr "Pesquise por canais, programas e vídeos"
+
+#: ../searchform.php:10
 msgid "Search"
 msgstr "Buscar"
 
@@ -351,7 +362,7 @@ msgid "Edit video"
 msgstr "Editar vídeo"
 
 #: ../inc/post-types.php:15
-#: ../inc/community-functions.php:80
+#: ../inc/community-functions.php:83
 msgid "New video"
 msgstr "Novo vídeo"
 
@@ -385,7 +396,7 @@ msgid "Edit program"
 msgstr "Editar programa"
 
 #: ../inc/post-types.php:59
-#: ../inc/community-functions.php:81
+#: ../inc/community-functions.php:84
 msgid "New program"
 msgstr "Novo programa"
 
@@ -438,28 +449,28 @@ msgstr "Programa em destaque"
 msgid "Set this program as channel featured. You can only have one featured program on your channel. If more than one is selected, the last uploaded will be selected."
 msgstr "Selecionar este programa como destaque. Você pode ter apenas um programa em destaque no seu canal. Se mais de um estiver selecionado, o último enviado será utilizado."
 
-#: ../inc/community-functions.php:64
+#: ../inc/community-functions.php:67
 msgid "Login"
 msgstr "Entrar"
 
-#: ../inc/community-functions.php:67
+#: ../inc/community-functions.php:70
 msgid "Register"
 msgstr "Cadastre-se"
 
-#: ../inc/community-functions.php:76
-#: ../inc/community-functions.php:78
+#: ../inc/community-functions.php:79
+#: ../inc/community-functions.php:81
 msgid "Edit profile"
 msgstr "Editar perfil"
 
-#: ../inc/community-functions.php:82
+#: ../inc/community-functions.php:85
 msgid "Dashboard"
 msgstr "Painel de controle"
 
-#: ../inc/community-functions.php:85
+#: ../inc/community-functions.php:88
 msgid "Create new video channel"
 msgstr "Criar novo canal de vídeo"
 
-#: ../inc/community-functions.php:87
+#: ../inc/community-functions.php:90
 msgid "Logout"
 msgstr "Sair"
 
@@ -2136,7 +2147,7 @@ msgstr ""
 #: ../admin/settings.php:13
 #: ../admin/settings.php:20
 msgid "Channel settings"
-msgstr ""
+msgstr "Configurações do canal"
 
 #: ../admin/settings.php:39
 msgid "Team and description"

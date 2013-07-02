@@ -368,9 +368,9 @@ add_filter('pre_get_posts', 'vlchannel_custom_ordering');
 
 function vlchannel_custom_ordering_labels() {
 	return apply_filters('vlchannel_ordering_labels', array(
-		'popular' => __('Most popular', 'vlchannel'),
-		'recent' => __('Most recent', 'vlchannel'),
-		'old' => __('Oldests', 'vlchannel')
+		'popular' => __('Most popular', 'videolivre-channel'),
+		'recent' => __('Most recent', 'videolivre-channel'),
+		'old' => __('Oldests', 'videolivre-channel')
 	));
 }
 
@@ -398,7 +398,7 @@ function vlchannel_custom_ordering_dropdown() {
 
 	?>
 	<div class="ordering-dropdown">
-		<p class="title"><?php _e('Order by', 'vlchannel'); ?></p>
+		<p class="title"><?php _e('Order by', 'videolivre-channel'); ?></p>
 		<div class="choices button program-color-border">
 			<p class="current"><?php echo $labels[$current]; ?></p>
 			<ul class="list program-color-border">

@@ -21,7 +21,7 @@
 						<?php if(has_duration()) : ?>
 							<li class="length icon clock"><?php the_duration(); ?></li>
 						<?php endif; ?>
-						<li class="director icon clapperboard">by <?php the_author(); ?></li>
+						<li class="director icon clapperboard"><?php _e('by', 'videolivre-channel'); ?> <?php the_author(); ?></li>
 						<?php if(has_crew()) : ?>
 							<li class="tech-crew icon camera toggler"><?php _e('technical crew', 'videolivre-channel'); ?></li>
 						<?php endif; ?>
@@ -87,9 +87,13 @@
 						</li>
 					<?php endif; ?>
 				</ul>
-				<p class="flag-video">
-					<?php _e('Flag this video', 'videolivre-channel'); ?>
-				</p>
+				<?php 
+				$enabled_flag = false;
+				if($enable_flag) : ?>
+					<p class="flag-video">
+						<?php _e('Flag this video', 'videolivre-channel'); ?>
+					</p>
+				<?php endif; ?>
 			</aside>
 		</div>
 	</div>

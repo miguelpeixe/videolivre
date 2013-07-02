@@ -42,9 +42,12 @@ function community_header() {
 
 	$title = get_bloginfo('name');
 	$home_url = home_url('/');
+	$search_label = __('Search for videos and programs', 'videolivre-channel');
 
-	if($community)
+	if($community) {
 		restore_current_blog();
+		$search_label = __('Search for channels, programs and videos', 'videolivre-channel');
+	}
 
 	?>
 	<aside id="community-header">
