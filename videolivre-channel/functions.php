@@ -62,7 +62,7 @@ function vlchannel_acf_path() {
 	return get_template_directory_uri() . '/inc/acf/';
 }
 add_filter('acf/helpers/get_dir', 'vlchannel_acf_path');
-define('ACF_LITE' , false);
+define('ACF_LITE' , true);
 include_once(TEMPLATEPATH . '/inc/acf/acf.php');
 
 /**
