@@ -193,6 +193,7 @@ function vlchannel_breadcrumb() {
 
 	$links[get_bloginfo('name')] = home_url('/');
 	$program = vlchannel_get_video_program_id();
+
 	if(is_single() && $program) {
 		$links[get_the_title($program)] = get_permalink($program);
 	}
