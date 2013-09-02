@@ -8,7 +8,7 @@ $channels = vl_get_channels();
 			<div class="container">
 				<div class="twelve columns">
 					<div class="title-area">
-						<?php vlchannel_breadcrumb(); ?>
+						<?php vl_breadcrumb(); ?>
 						<h1><?php _e('Channels', 'videolivre-community'); ?></h1>
 					</div>
 				</div>

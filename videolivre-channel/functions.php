@@ -173,7 +173,7 @@ function vlchannel_social_shares($url = false) {
  * Breadcrumbs
  */
 
-function vlchannel_breadcrumb() {
+function vl_breadcrumb() {
 
 	$links = array();
 
@@ -186,6 +186,8 @@ function vlchannel_breadcrumb() {
 	if(is_singular('program')) {
 		$links[__('Programs', 'videolivre-channel')] = get_post_type_archive_link('program');
 	}
+
+	$links = apply_filters('vl_breadcrumb_links', $links);
 
 	if($links) {
 		echo '<nav id="breadcrumb">';

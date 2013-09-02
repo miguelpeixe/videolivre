@@ -15,7 +15,7 @@ if(defined('IS_VLCOMMUNITY') && class_exists('WP_Query_Multisite')) {
 		<header id="archive-header" class="site-header">
 			<div class="container">
 				<div class="twelve columns">
-					<?php vlchannel_breadcrumb(); ?>
+					<?php vl_breadcrumb(); ?>
 					<h1><?php echo __('Search results for', 'videolivre-channel') . ' "' . $_GET['s'] . '"'; ?></h1>
 				</div>
 			</div>

@@ -8,7 +8,7 @@ $scheme = vl_get_color_scheme($color);
 		<div class="container">
 			<div class="twelve columns">
 				<div class="title-area">
-					<?php vlchannel_breadcrumb(); ?>
+					<?php vl_breadcrumb(); ?>
 					<h1><?php the_title(); ?></h1>
 					<p class="date"><?php the_date(); ?></p>
 				</div>
@@ -22,6 +22,9 @@ $scheme = vl_get_color_scheme($color);
 					<?php the_content(); ?>
 				</div>
 			</section>
+			<div class="row">
+				<?php comments_template('', true); ?>
+			</div>
 		</div>
 		<div class="three columns">
 			<aside class="sidebar">

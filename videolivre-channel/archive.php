@@ -10,7 +10,7 @@ $scheme = vl_get_color_scheme($color);
 		<header id="archive-header" class="site-header <?php echo $scheme; ?>">
 			<div class="container">
 				<div class="twelve columns">
-					<?php vlchannel_breadcrumb(); ?>
+					<?php vl_breadcrumb(); ?>
 					<?php
 					$title = __('Archive', 'videolivre-channel');
 					if(is_post_type_archive())

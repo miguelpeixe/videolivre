@@ -82,3 +82,11 @@ function vl_multisite_search($query) {
 	return $query;
 }
 add_action('pre_get_posts', 'vl_multisite_search', 100, 1);
+
+function vl_community_breadcrumb($links) {
+	if(is_singular('post'))
+		$links['Blog'] = vl_get_blog_archive_url();
+
+	return $links;
+}
+add_filter('vl_breadcrumb_links', 'vl_community_breadcrumb');

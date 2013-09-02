@@ -12,7 +12,7 @@ class VL_Video {
 
 	function __construct() {
 
-		//if(!defined('IS_VLCOMMUNITY'))
+		if(!defined('IS_VLCOMMUNITY'))
 			add_action('init', array($this, 'init'));
 
 	}

@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="ten columns offset-by-one">
 			<div class="title-area program-color-border">
-				<?php vlchannel_breadcrumb(); ?>
+				<?php vl_breadcrumb(); ?>
 				<h1><?php the_title(); ?></h1>
 			</div>
 			<div class="video-container">

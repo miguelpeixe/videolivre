@@ -59,7 +59,7 @@ header#masthead hgroup .header-content h2{font-size:20px;margin:0;line-height:22
 .sub-header .social-share{margin:0;padding:0;}.sub-header .social-share li{width:53px;height:63px;overflow:hidden;}.sub-header .social-share li iframe{width:inherit;}
 .sub-header p.channel-description{margin-top:10px;padding:20px 0;border-top:1px solid rgba(0, 0, 0, 0.1);border-bottom:1px solid rgba(0, 0, 0, 0.1);color:#777;font-size:20px;line-height:130%;}
 .sub-header p.program-descrition{border-bottom:1px solid rgba(0, 0, 0, 0.1);font-size:20px;line-height:130%;color:#777;}
-#videohead{margin:0 0 40px;padding:40px 0;box-shadow:inset 0 0 200px rgba(0, 0, 0, 0.4);background:#333;color:#f6f6f6;border-bottom:5px solid #222;box-sizing:border-box;}#videohead .title-area{border-left:3px solid #555;padding-left:40px;box-sizing:border-box;}#videohead .title-area h1{color:#f6f6f6;font-size:52px;font-weight:200;margin:0 0 40px;}
+#videohead{margin:-40px 0 40px;padding:40px 0;box-shadow:inset 0 0 200px rgba(0, 0, 0, 0.4);background:#333;color:#f6f6f6;border-bottom:5px solid #222;box-sizing:border-box;}#videohead .title-area{border-left:3px solid #555;padding-left:40px;box-sizing:border-box;}#videohead .title-area h1{color:#f6f6f6;font-size:52px;font-weight:200;margin:0 0 40px;}
 #videohead .video-container{box-shadow:0 0 50px rgba(0, 0, 0, 0.7);}#videohead .video-container iframe,#videohead .video-container object{display:block;}
 #videohead a{color:#888;text-decoration:none;}#videohead a:hover{color:#f0f0f0;}
 #videohead nav{-webkit-transition:all 0.2s ease-in;-khtml-transition:all 0.2s ease-in;-moz-transition:all 0.2s ease-in;-o-transition:all 0.2s ease-in;transition:all 0.2s ease-in;opacity:.5;font-family:"Dosis";}#videohead nav a:first-child{text-transform:uppercase;}

@@ -9,7 +9,7 @@
 					<div class="container">
 						<div class="twelve columns">
 							<div class="title-area">
-								<?php vlchannel_breadcrumb(); ?>
+								<?php vl_breadcrumb(); ?>
 								<h1><?php the_title(); ?></h1>
 							</div>
 						</div>

@@ -7,7 +7,7 @@
 	<header id="program-header" class="site-header program-background <?php echo $scheme; ?>">
 		<div class="container">
 			<div class="twelve columns">
-				<?php vlchannel_breadcrumb(); ?>
+				<?php vl_breadcrumb(); ?>
 				<h1><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h1>
 			</div>
 		</div>
