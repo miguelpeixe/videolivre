@@ -14,14 +14,19 @@ $logo = false;
 			<?php echo apply_filters('the_content', get_option('vl_description')); ?>
 			<a class="button" href="<?php echo home_url('/'); ?>" title="<?php _e('Visit channel', 'videolivre-community'); ?>"><?php _e('Visit channel', 'videolivre-community'); ?></a>
 		</div>
-		<?php
-		$latest_videos = new WP_Query(array('post_type' => 'video', 'posts_per_page' => 1));
-		if($latest_videos->have_posts()) {
-			while($latest_videos->have_posts()) {
-				$latest_videos->the_post();
-				get_template_part('video', 'small');
+		<div>
+			<div class="six columns">
+				<h4><?php _e('Latest videos', 'videolivre-community'); ?></h4>
+			</div>
+			<?php
+			$latest_videos = new WP_Query(array('post_type' => 'video', 'posts_per_page' => 2));
+			if($latest_videos->have_posts()) {
+				while($latest_videos->have_posts()) {
+					$latest_videos->the_post();
+					get_template_part('video', 'minimal');
+				}
 			}
-		}
-		?>
+			?>
+		</div>
 	</div>
 </div>

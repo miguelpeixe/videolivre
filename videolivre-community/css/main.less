@@ -1,7 +1,57 @@
+#mastnav {
+	margin: -40px 0 0;
+	background: #e0e0e0;
+	position: relative;
+	z-index: 101;
+	ul {
+		float: right;
+		margin: 0;
+		padding: 0;
+		li {
+			float: left;
+			margin: 0;
+			a {
+				display: block;
+				padding: 12px 10px 14px;
+				font-weight: 400;
+				text-transform: uppercase;
+				text-decoration: none;
+				font-family: "Dosis";
+				font-size: 16px;
+				line-height: 16px;
+				color: rgba(0,0,0,.5);
+				&:hover {
+					color: rgba(0,0,0,0.8);
+				}
+			}
+		}
+	}
+}
+
+.site-header {
+	margin-top: 0 !important;
+	.date {
+		margin-top: 10px;
+		font-size: 12px;
+		font-family: "Dosis";
+		text-transform: uppercase;
+	}
+}
+
+.mu_alert {
+	margin-bottom: 40px;
+}
+
+.section-subtitle {
+	padding-bottom: 20px;
+	border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
 .list {
 	&.channel {
 		.item {
 			h3 {
+				font-weight: 800;
 				a {
 					text-decoration: none;
 				}
@@ -17,6 +67,11 @@
 					}
 				}
 			}
+			h4 {
+				font-size: 12px;
+				text-transform: uppercase;
+				font-weight: 400;
+			}
 		}
 	}
 	&.post {
@@ -25,6 +80,24 @@
 				font-weight: 800;
 				a {
 					text-decoration: none;
+				}
+			}
+			.date {
+				font-size: 12px;
+				color: #999;
+				margin: 0 0 10px;
+			}
+			&.small {
+				margin-bottom: 40px;
+				background: rgba(0,0,0,0.06);
+				height: 307px;
+				overflow: hidden;
+				font-size: 12px;
+				img {
+					display: block;
+				}
+				.post-content {
+					padding: 15px 20px 20px;
 				}
 			}
 		}

@@ -1,5 +1,13 @@
-.list.channel .item h3 a{text-decoration:none;}
+#mastnav{margin:-40px 0 0;background:#e0e0e0;position:relative;z-index:101;}#mastnav ul{float:right;margin:0;padding:0;}#mastnav ul li{float:left;margin:0;}#mastnav ul li a{display:block;padding:12px 10px 14px;font-weight:400;text-transform:uppercase;text-decoration:none;font-family:"Dosis";font-size:16px;line-height:16px;color:rgba(0, 0, 0, 0.5);}#mastnav ul li a:hover{color:rgba(0, 0, 0, 0.8);}
+.site-header{margin-top:0 !important;}.site-header .date{margin-top:10px;font-size:12px;font-family:"Dosis";text-transform:uppercase;}
+.mu_alert{margin-bottom:40px;}
+.section-subtitle{padding-bottom:20px;border-bottom:1px solid rgba(0, 0, 0, 0.1);}
+.list.channel .item h3{font-weight:800;}.list.channel .item h3 a{text-decoration:none;}
 .list.channel .item h3.logo{text-indent:-9999px;line-height:0px;}.list.channel .item h3.logo img{display:block;max-width:100%;max-height:50px;width:auto;height:auto;}
+.list.channel .item h4{font-size:12px;text-transform:uppercase;font-weight:400;}
 .list.post .item h3{font-weight:800;}.list.post .item h3 a{text-decoration:none;}
+.list.post .item .date{font-size:12px;color:#999;margin:0 0 10px;}
+.list.post .item.small{margin-bottom:40px;background:rgba(0, 0, 0, 0.06);height:307px;overflow:hidden;font-size:12px;}.list.post .item.small img{display:block;}
+.list.post .item.small .post-content{padding:15px 20px 20px;}
 .sidebar .widget{margin:0 0 40px;}.sidebar .widget .widgettitle{text-transform:uppercase;border-bottom:2px solid rgba(0, 0, 0, 0.3);font-size:20px;color:#999;}
 .sidebar .widget ul{margin:0;padding:0;}.sidebar .widget ul li{margin:0;padding:10px 0;border-bottom:1px solid rgba(0, 0, 0, 0.1);}.sidebar .widget ul li a{text-decoration:none;}

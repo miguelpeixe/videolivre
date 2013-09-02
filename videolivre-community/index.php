@@ -35,14 +35,14 @@
 					<div class="twelve columns">
 						<h2 class="section-title clearfix">
 							<span><?php _e('From the blog', 'videolivre-community'); ?></span>
-							<a class="button" href=""><?php _e('View blog', 'videolivre-community'); ?></a>
+							<a class="button" href="<?php echo vl_get_blog_archive_url(); ?>"><?php _e('View blog', 'videolivre-community'); ?></a>
 						</h2> 
 					</div>
 				</div>
 				<?php
 				while(have_posts()) {
 					the_post();
-					get_template_part('post', 'small');
+					get_template_part('post', 'big');
 				}
 				?>
 			</section>

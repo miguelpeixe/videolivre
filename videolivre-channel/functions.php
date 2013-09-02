@@ -113,20 +113,20 @@ if(is_multisite())
 function vl_wp_title($title, $sep) {
 	global $paged, $page;
 
-	if (is_feed())
+	if ( is_feed() )
 		return $title;
 
 	// Add the site name.
-	$title .= get_bloginfo('name');
+	$title = get_bloginfo( 'name' ) . $title;
 
 	// Add the site description for the home/front page.
-	$site_description = get_bloginfo('description', 'display');
-	if ($site_description && (is_home() || is_front_page()))
+	$site_description = get_bloginfo( 'description', 'display' );
+	if ( $site_description && ( is_home() || is_front_page() ) )
 		$title = "$title $sep $site_description";
 
 	// Add a page number if necessary.
-	if ($paged >= 2 || $page >= 2)
-		$title = "$title $sep " . sprintf(__('Page %s', 'videolivre-channel'), max($paged, $page));
+	if ( $paged >= 2 || $page >= 2 )
+		$title = "$title $sep " . sprintf( __( 'Page %s', 'videolivre-channel' ), max( $paged, $page ) );
 
 	return $title;
 }

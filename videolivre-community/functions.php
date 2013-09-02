@@ -2,6 +2,18 @@
 
 define('IS_VLCOMMUNITY', true);
 
+// channels
+include_once(STYLESHEETPATH . '/inc/channel/channel.php');
+
+// channels
+include_once(STYLESHEETPATH . '/inc/blog.php');
+
+// slider
+include_once(STYLESHEETPATH . '/inc/slider/slider.php');
+
+// multisite query
+require_once(STYLESHEETPATH . '/inc/multisite-query.php');
+
 function vlcommunity_setup() {
 
 	add_theme_support( 'custom-background', array(
@@ -22,13 +34,10 @@ function vlcommunity_setup() {
 		'after_title'   => '</h2>'
 	));
 
+	register_nav_menu('main', __('Main navigation menu', 'videlivre-community'));
+
 }
-
 add_action('after_setup_theme', 'vlcommunity_setup');
-
-include_once(STYLESHEETPATH . '/inc/channel/channel.php');
-
-include_once(STYLESHEETPATH . '/inc/slider/slider.php');
 
 function vlcommunity_styles() {
 	wp_enqueue_style('community-main', get_stylesheet_directory_uri() . '/css/main.css');
@@ -47,17 +56,29 @@ add_action('init', 'vlcommunity_flush_rewrite');
 
 function vl_community_slider() {
 	global $pagenow, $wp_query;
-	if(is_front_page() && is_home() && $pagenow !== 'wp-signup.php' && !$wp_query->get('vl_channels')) {
+	if(is_front_page() && is_home() && $pagenow !== 'wp-signup.php' && !$wp_query->get('vl_channels') && !$wp_query->get('blog')) {
 		$GLOBALS['vl_slider']->slider();
 	}
 }
-add_action('vl_after_header', 'vl_community_slider');
+add_action('vl_after_header', 'vl_community_slider', 100);
 
-require_once(STYLESHEETPATH . '/inc/multisite-query.php');
+function vl_community_nav() {
+	?>
+	<nav id="mastnav">
+		<div class="container">
+			<div class="twelve columns">
+				<?php wp_nav_menu('main'); ?>
+			</div>
+		</div>
+	</nav>
+	<?php
+}
+add_action('vl_after_header', 'vl_community_nav', 1);
+
 function vl_multisite_search($query) {
 	if(!is_admin() && $query->is_main_query() && $query->is_search) {
 		$query->set('post_type', array('video', 'program'));
 	}
 	return $query;
 }
-add_action('pre_get_posts', 'vl_multisite_search', 1, 100);
+add_action('pre_get_posts', 'vl_multisite_search', 100, 1);
