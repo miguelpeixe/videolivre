@@ -46,7 +46,9 @@ $scheme = vl_get_color_scheme($color);
 						</div>
 					</div>
 					<aside class="sidebar">
-						<?php dynamic_sidebar('post'); ?>
+						<div class="three columns">
+							<?php dynamic_sidebar('post'); ?>
+						</div>
 					</aside>
 				</div>
 				<div class="row">

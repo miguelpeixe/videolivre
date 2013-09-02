@@ -28,8 +28,8 @@ function vlcommunity_setup() {
 		'id'            => 'post',
 		'description'   => '',
 		'class'         => '',
-		'before_widget' => '<div class="three columns"><div id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</div></div>',
+		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</div>',
 		'before_title'  => '<h2 class="widgettitle">',
 		'after_title'   => '</h2>'
 	));
