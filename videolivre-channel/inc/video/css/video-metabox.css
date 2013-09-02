@@ -102,7 +102,7 @@
 	overflow: hidden;
 	text-indent: -9999px;
 	display: block;
-	background-image: url(media-icons.png);
+	background-image: url(../img/media-icons.png);
 	background-repeat: no-repeat;
 }
 
@@ -116,4 +116,9 @@
 
 #video_metabox .supported-formats ul li.youtube {
 	background-position: -16px 0px;
+}
+
+.clearfix {
+	width: 100%;
+	clear:both;
 }

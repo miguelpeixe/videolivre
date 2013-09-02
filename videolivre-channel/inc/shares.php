@@ -3,7 +3,7 @@
  * Video Livre Share Counter
  */
 
-class VLChannel_Shares {
+class VL_Shares {
 
 	var $url = false;
 
@@ -93,7 +93,7 @@ class VLChannel_Shares {
 
 }
 
-function vlchannel_get_shares($url = false) {
-	$shares = new VLChannel_Shares($url);
+function vl_get_the_shares($url = false) {
+	$shares = new VL_Shares($url);
 	return $shares->get_count();
 }

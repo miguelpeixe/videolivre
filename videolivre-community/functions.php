@@ -1,11 +1,6 @@
 <?php
 
-function change_default_theme($blog_id) {
-	switch_to_blog($blog_id);
-	switch_theme('videolivre-channel', 'videolivre-channel');
-	restore_current_blog();
-}
-add_action('wpmu_new_blog', 'change_default_theme', 100, 1);
+define('IS_VLCOMMUNITY', true);
 
 function vlcommunity_setup() {
 
@@ -16,29 +11,53 @@ function vlcommunity_setup() {
 	add_theme_support('post-thumbnails');
 	set_post_thumbnail_size( 624, 9999 );
 
+	register_sidebar(array(
+		'name'          => __('Blog widgets', 'videlivre-community'),
+		'id'            => 'post',
+		'description'   => '',
+		'class'         => '',
+		'before_widget' => '<div class="three columns"><div id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</div></div>',
+		'before_title'  => '<h2 class="widgettitle">',
+		'after_title'   => '</h2>'
+	));
+
 }
 
 add_action('after_setup_theme', 'vlcommunity_setup');
 
+include_once(STYLESHEETPATH . '/inc/channel/channel.php');
 
-function vlcommunity_wp_title( $title, $sep ) {
-	global $paged, $page;
+include_once(STYLESHEETPATH . '/inc/slider/slider.php');
 
-	if ( is_feed() )
-		return $title;
-
-	// Add the site name.
-	$title .= get_bloginfo( 'name' );
-
-	// Add the site description for the home/front page.
-	$site_description = get_bloginfo( 'description', 'display' );
-	if ( $site_description && ( is_home() || is_front_page() ) )
-		$title = "$title $sep $site_description";
-
-	// Add a page number if necessary.
-	if ( $paged >= 2 || $page >= 2 )
-		$title = "$title $sep " . sprintf( __( 'Page %s', 'videolivre_community' ), max( $paged, $page ) );
-
-	return $title;
+function vlcommunity_styles() {
+	wp_enqueue_style('community-main', get_stylesheet_directory_uri() . '/css/main.css');
 }
-add_filter( 'wp_title', 'vlcommunity_wp_title', 10, 2 );
+add_action('wp_enqueue_scripts', 'vlcommunity_styles');
+
+function vlcommunity_flush_rewrite() {
+	global $pagenow;
+	if(is_admin() && $_REQUEST['activated'] && $pagenow == 'themes.php') {
+		global $wp_rewrite;
+		$wp_rewrite->init();
+		$wp_rewrite->flush_rules();
+	}
+}
+add_action('init', 'vlcommunity_flush_rewrite');
+
+function vl_community_slider() {
+	global $pagenow, $wp_query;
+	if(is_front_page() && is_home() && $pagenow !== 'wp-signup.php' && !$wp_query->get('vl_channels')) {
+		$GLOBALS['vl_slider']->slider();
+	}
+}
+add_action('vl_after_header', 'vl_community_slider');
+
+require_once(STYLESHEETPATH . '/inc/multisite-query.php');
+function vl_multisite_search($query) {
+	if(!is_admin() && $query->is_main_query() && $query->is_search) {
+		$query->set('post_type', array('video', 'program'));
+	}
+	return $query;
+}
+add_action('pre_get_posts', 'vl_multisite_search', 1, 100);

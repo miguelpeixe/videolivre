@@ -10,7 +10,7 @@
 			</a>
 		</div>
 		<header>
-			<h2><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a> <span class="duration">[<?php the_duration(); ?>]</span></h2>
+			<h2><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a> <span class="duration">[<?php vl_the_duration(); ?>]</span></h2>
 		</header>
 	</article>
 </div>

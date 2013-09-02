@@ -31,7 +31,9 @@ fjs.parentNode.insertBefore(js, fjs);
 
 	<?php if(is_multisite()) community_header(); ?>
 
-	<?php if(is_front_page()) : ?>
+	<?php do_action('vl_before_header'); ?>
+
+	<?php if(is_front_page() && !defined('IS_VLCOMMUNITY')) : ?>
 		<header id="masthead" role="banner">
 			<hgroup>
 				<?php
@@ -67,24 +69,21 @@ fjs.parentNode.insertBefore(js, fjs);
 			</nav><!-- #site-navigation -->
 			*/ ?>
 		</header><!-- #masthead -->
-	<?php endif; ?>
-
-	<?php if(is_front_page()) : ?>
 		<?php
-		$producer = get_option('vlchannel_producer');
-		$creator = get_option('vlchannel_creator');
+		$producer = get_option('vl_producer');
+		$creator = get_option('vl_creator');
 
-		$description = get_option('vlchannel_description');
+		$description = get_option('vl_description');
 
-		$fb = get_option('vlchannel_facebook');
-		$tw = get_option('vlchannel_twitter');
-		$yt = get_option('vlchannel_youtube');
-		$vm = get_option('vlchannel_vimeo');
+		$fb = get_option('vl_facebook');
+		$tw = get_option('vl_twitter');
+		$yt = get_option('vl_youtube');
+		$vm = get_option('vl_vimeo');
 		?>
 		<section id="channel-meta" class="sub-header">
 			<div class="container">
-				<?php if($producer || $creator) : ?>
-					<div class="four columns">
+				<div class="four columns">
+					<?php if($producer || $creator) : ?>
 						<div class="team">
 							<?php if($creator) : ?>
 								<p class="idea icon lightbulb"><?php _e('created by', 'videolivre-channel'); ?> <strong><?php echo $creator; ?></strong></p>
@@ -93,10 +92,11 @@ fjs.parentNode.insertBefore(js, fjs);
 								<p class="production icon star"><?php _e('produced by', 'videolivre-channel'); ?> <strong><?php echo $producer; ?></strong></p>
 							<?php endif; ?>
 						</div>
-					</div>
-				<?php endif; ?>
-				<?php if($fb || $tw || $yt || $vm) : ?>
-					<div class="four columns">
+						&nbsp;
+					<?php endif; ?>
+				</div>
+				<div class="four columns">
+					<?php if($fb || $tw || $yt || $vm) : ?>
 						<ul class="social social-icons">
 							<?php if($fb) : ?>
 								<li class="facebook social-item">
@@ -119,11 +119,13 @@ fjs.parentNode.insertBefore(js, fjs);
 								</li>
 							<?php endif; ?>
 						</ul>
-					</div>
-				<?php endif; ?>
+					<?php endif; ?>
+					&nbsp;
+				</div>
 				<?php if($producer || $creator || $fb || $tw || $yt || $vm) : ?>
 					<div class="four columns">
 						<?php vlchannel_social_shares(); ?>
+						&nbsp;
 					</div>
 				<?php endif; ?>
 				<?php if($description) : ?>
@@ -134,5 +136,7 @@ fjs.parentNode.insertBefore(js, fjs);
 			</div>
 		</section>
 	<?php endif; ?>
+
+	<?php do_action('vl_after_header'); ?>
 
 	<div id="main" class="wrapper">

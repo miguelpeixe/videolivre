@@ -248,13 +248,23 @@ input {
  * Community header
  */
 
-aside#community-header {
+#community-header {
 	background: #f2f2f2;
 	border-bottom: 2px solid #dedede;
-	padding: 20px 0 0;
+	padding: 20px 0;
 	box-shadow: 0 0 20px rgba(0,0,0,.2);
 	position: relative;
 	z-index: 100;
+	&.logo {
+		h2 {
+			line-height: 0;
+			text-indent: -9999px;
+		}
+		#searchform,
+		.meta-links {
+			margin-top: 20px;
+		}
+	}
 	h2 {
 		font-size: 20px;
 		line-height: 20px;
@@ -263,10 +273,16 @@ aside#community-header {
 			color: #333;
 			text-decoration: none;
 		}
+		img {
+			display: block;
+			width: auto;
+			height: 53px;
+		}
 	}
 	#searchform {
 		width: 100%;
 		position: relative;
+		margin: 0;
 		input {
 			margin: 0;
 			&[type=text] {

@@ -5,33 +5,37 @@
 
 function vlchannel_customize_register($wp_customize) {
 
-	// custom main color
-	$wp_customize->add_setting('main_color' , array(
-		'default'     => '#ff0000',
-		'transport'   => 'refresh',
-	));
+	if(!defined('IS_VLCOMMUNITY')) {
 
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control($wp_customize, 'main_color', array(
-			'label'		=> __('Channel color', 'videolivre-channel'),
-			'section'	=> 'colors',
-			'settings'	=> 'main_color',
-		))
-	);
+		// custom main color
+		$wp_customize->add_setting('main_color' , array(
+			'default'     => '#ff0000',
+			'transport'   => 'refresh',
+		));
 
-	// custom header background color
-	$wp_customize->add_setting('header_background_color' , array(
-		'default'     => 'transparent',
-		'transport'   => 'refresh',
-	));
+		$wp_customize->add_control(
+			new WP_Customize_Color_Control($wp_customize, 'main_color', array(
+				'label'		=> __('Channel color', 'videolivre-channel'),
+				'section'	=> 'colors',
+				'settings'	=> 'main_color',
+			))
+		);
 
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control($wp_customize, 'header_background_color', array(
-			'label'		=> __('Header background color', 'videolivre-channel'),
-			'section'	=> 'header_image',
-			'settings'	=> 'header_background_color',
-		))
-	);
+	}
+
+		// custom header background color
+		$wp_customize->add_setting('header_background_color' , array(
+			'default'     => 'transparent',
+			'transport'   => 'refresh',
+		));
+
+		$wp_customize->add_control(
+			new WP_Customize_Color_Control($wp_customize, 'header_background_color', array(
+				'label'		=> __('Header background color', 'videolivre-channel'),
+				'section'	=> 'header_image',
+				'settings'	=> 'header_background_color',
+			))
+		);
 
 	// logo upload
 	$wp_customize->add_setting('logo_image' , array(
@@ -42,7 +46,7 @@ function vlchannel_customize_register($wp_customize) {
 	$wp_customize->add_control(
 		new WP_Customize_Image_Control($wp_customize, 'logo_image', array(
 			'label'		=> __('Website Logo', 'videolivre-channel'),
-			'section'	=> 'header_image',
+			'section'	=> 'title_tagline',
 			'settings'	=> 'logo_image',
 		))
 	);

@@ -2,7 +2,12 @@
 
 <?php
 $color = get_theme_mod('header_background_color');
-$scheme = vlchannel_get_color_scheme($color);
+$scheme = vl_get_color_scheme($color);
+
+if(defined('IS_VLCOMMUNITY') && class_exists('WP_Query_Multisite')) {
+	global $wp_query;
+	$wp_query = new WP_Query_Multisite($wp_query->query_vars);
+}
 ?>
 
 <div id="primary" class="site-content">
@@ -19,15 +24,16 @@ $scheme = vlchannel_get_color_scheme($color);
 			<div class="container">
 				<div class="row">
 					<?php
-					$template = 'small';
-					if(get_post_type() == 'program')
-						$template = 'featured';
 					if(have_posts()) {
 						while(have_posts()) {
 							the_post();
+							$template = 'small';
+							if(get_post_type() == 'program')
+								$template = 'strip';
 							get_template_part(get_post_type(), $template);
 						}
 					}
+					wp_reset_postdata();
 					?>
 				</div>
 				<div class="row">

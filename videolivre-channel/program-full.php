@@ -1,7 +1,7 @@
 <section id="program-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 	<?php
-	$scheme = vlchannel_get_program_text_scheme();
+	$scheme = vl_get_program_text_scheme();
 	?>
 
 	<header id="program-header" class="site-header program-background <?php echo $scheme; ?>">
@@ -33,7 +33,7 @@
 			/*
 			 * Featured post
 			 */
-			$featured = vlchannel_get_program_featured();
+			$featured = vl_get_program_featured();
 			if($featured && !is_paged() && !$_REQUEST['order']) {
 				global $post;
 				$post = $featured;
@@ -46,7 +46,7 @@
 			/*
 			 * Video list
 			 */
-			$query = vlchannel_get_program_query(array(
+			$query = vl_get_program_query(array(
 				'post__not_in' => array(($featured ? $featured->ID : 0)),
 				'vlchannel_order' => $_REQUEST['order']
 			));

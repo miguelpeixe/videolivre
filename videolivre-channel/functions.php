@@ -12,7 +12,7 @@ function vlchannel_setup() {
 	));
 
 	add_theme_support('post-thumbnails');
-	set_post_thumbnail_size( 624, 9999 );
+	set_post_thumbnail_size(624, 9999);
 	add_image_size('featured-video', 460, 266, true);
 	add_image_size('thumbnail-video', 260, 145, true);
 
@@ -66,29 +66,24 @@ define('ACF_LITE' , true);
 include_once(TEMPLATEPATH . '/inc/acf/acf.php');
 
 /**
- * Register post types
+ * Video
  */
-include(TEMPLATEPATH . '/inc/post-types.php');
+include(TEMPLATEPATH . '/inc/video/video.php');
+
+/**
+ * Program
+ */
+include(TEMPLATEPATH . '/inc/video/program.php');
+
+/**
+ * Attachment
+ */
+include(TEMPLATEPATH . '/inc/video/attachment.php');
 
 /**
  * Share count
  */
 include(TEMPLATEPATH . '/inc/shares.php');
-
-/**
- * Program functions
- */
-include(TEMPLATEPATH . '/inc/program-functions.php');
-
-/**
- * Video functions
- */
-include(TEMPLATEPATH . '/inc/video-functions.php');
-
-/**
- * Include metaboxes
- */
-include(TEMPLATEPATH . '/metaboxes/metaboxes.php');
 
 /**
  * Add support for a custom header image.
@@ -103,28 +98,19 @@ require(TEMPLATEPATH . '/inc/theme-customizer.php');
 /**
  * Admin settings
  */
-include(TEMPLATEPATH . '/admin/settings.php');
+include(TEMPLATEPATH . '/inc/admin.php');
 
 /**
  * Community functions (WordPress MS)
  */
 if(is_multisite())
-	include(TEMPLATEPATH . '/inc/community-functions.php');
-
-/*
- * Add subtitle (srt files) mime type
- */
-add_filter('upload_mimes', 'vlchannel_upload_mimes');
-function vlchannel_upload_mimes ($mimes = array()) {
-	$mimes['srt'] = 'text/plain';
-	return $mimes;
-}
+	include(TEMPLATEPATH . '/inc/community.php');
 
 /*
  * Custom title
  */
 
-function vlchannel_wp_title($title, $sep) {
+function vl_wp_title($title, $sep) {
 	global $paged, $page;
 
 	if (is_feed())
@@ -140,25 +126,25 @@ function vlchannel_wp_title($title, $sep) {
 
 	// Add a page number if necessary.
 	if ($paged >= 2 || $page >= 2)
-		$title = "$title $sep " . sprintf(__('Page %s', 'videolivre_channel'), max($paged, $page));
+		$title = "$title $sep " . sprintf(__('Page %s', 'videolivre-channel'), max($paged, $page));
 
 	return $title;
 }
-add_filter('wp_title', 'vlchannel_wp_title', 10, 2);
+add_filter('wp_title', 'vl_wp_title', 10, 2);
 
 /*
  * Registration and login url
  */
 
-function vlchannel_login_url() {
+function vl_login_url() {
 	return wp_login_url();
 }
 
-function vlchannel_logout_url() {
+function vl_logout_url() {
 	return wp_logout_url();
 }
 
-function vlchannel_register_url() {
+function vl_register_url() {
 	return site_url('/wp-login.php?action=register');
 }
 
@@ -192,7 +178,7 @@ function vlchannel_breadcrumb() {
 	$links = array();
 
 	$links[get_bloginfo('name')] = home_url('/');
-	$program = vlchannel_get_video_program_id();
+	$program = vl_get_video_program_id();
 
 	if(is_single() && $program) {
 		$links[get_the_title($program)] = get_permalink($program);
@@ -290,56 +276,6 @@ function vlchannel_has_prev_page() {
 		return false;
 
 	return true;
-}
-
-/*
- * Get color brightness
- */
-
-function vlchannel_get_brightness($hex) {
-	// returns brightness value from 0 to 255
-
-	// strip off any leading #
-	$hex = str_replace('#', '', $hex);
-
-	$c_r = hexdec(substr($hex, 0, 2));
-	$c_g = hexdec(substr($hex, 2, 2));
-	$c_b = hexdec(substr($hex, 4, 2));
-
-	return (($c_r * 299) + ($c_g * 587) + ($c_b * 114)) / 1000;
-}
-
-// determine light or dark color scheme
-
-function vlchannel_get_color_scheme($hex) {
-	if(!$hex)
-		return false;
-
-	if(vlchannel_get_brightness($hex) > 130)
-		return 'dark-scheme';
-	else
-		return 'light-scheme';
-}
-
-/*
- * Helpers
- */
-
-function hex2rgb($hex) {
-	$hex = str_replace("#", "", $hex);
-
-	if(strlen($hex) == 3) {
-		$r = hexdec(substr($hex,0,1).substr($hex,0,1));
-		$g = hexdec(substr($hex,1,1).substr($hex,1,1));
-		$b = hexdec(substr($hex,2,1).substr($hex,2,1));
-	} else {
-		$r = hexdec(substr($hex,0,2));
-		$g = hexdec(substr($hex,2,2));
-		$b = hexdec(substr($hex,4,2));
-	}
-	$rgb = array($r, $g, $b);
-	return implode(",", $rgb); // returns the rgb values separated by commas
-	//return $rgb; // returns an array with the rgb values
 }
 
 function vlchannel_custom_ordering_var() {
@@ -450,13 +386,14 @@ function vlchannel_archive_query($query) {
  * Remove some menu pages
  */
 
-function vlchannel_remove_menu_pages() {
+function vl_remove_menu_pages() {
 	remove_menu_page('link-manager.php');
-	remove_menu_page('edit.php');	
+	if(!defined('IS_VLCOMMUNITY'))
+		remove_menu_page('edit.php');	
 }
-add_action('admin_menu', 'vlchannel_remove_menu_pages');
+add_action('admin_menu', 'vl_remove_menu_pages');
 
-function vlchannel_admin_bar() {
+function vl_admin_bar() {
     global $wp_admin_bar;
     $wp_admin_bar->remove_node('wp-logo');
     $wp_admin_bar->remove_node('about');
@@ -468,4 +405,14 @@ function vlchannel_admin_bar() {
 
     $wp_admin_bar->remove_node('new-post');
 }
-add_action('wp_before_admin_bar_render', 'vlchannel_admin_bar');
+add_action('wp_before_admin_bar_render', 'vl_admin_bar');
+
+function vl_flush_rewrite() {
+	global $pagenow;
+	if(is_admin() && $_REQUEST['activated'] && $pagenow == 'themes.php') {
+		global $wp_rewrite;
+		$wp_rewrite->init();
+		$wp_rewrite->flush_rules();
+	}
+}
+add_action('init', 'vl_flush_rewrite');

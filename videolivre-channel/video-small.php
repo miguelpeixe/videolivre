@@ -2,7 +2,7 @@
 	<article id="<?php echo get_post_type(); ?>-<?php the_ID(); ?>" <?php post_class('list-video card'); ?>>
 		<div class="clearfix">
 			<div class="three columns alpha">
-				<div class="thumbnail" style="border-color: <?php echo vlchannel_get_program_color(); ?>;">
+				<div class="thumbnail" style="border-color: <?php echo vl_get_program_color(); ?>;">
 					<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" class="video-thumb">
 						<?php if(has_post_thumbnail()) : ?>
 							<?php the_post_thumbnail('thumbnail-video', array('class' => 'scale-with-grid')); ?>
@@ -23,10 +23,10 @@
 				</section>
 				<footer class="video-meta">
 					<ul class="status">
-						<li class="views icon eye"><?php the_views(); ?></li>
-						<li class="shares icon heart" title="<?php _e('Social share', 'videolivre-channel'); ?>"><?php $shares = vlchannel_get_shares($post->ID); echo $shares['total']; ?></li>
-						<?php if(has_duration()) : ?>
-							<li class="length icon clock"><?php the_duration(); ?></li>
+						<li class="views icon eye"><?php vl_the_views(); ?></li>
+						<li class="shares icon heart" title="<?php _e('Social share', 'videolivre-channel'); ?>"><?php $shares = vl_get_the_shares($post->ID); echo $shares['total']; ?></li>
+						<?php if(vl_has_duration()) : ?>
+							<li class="length icon clock"><?php vl_the_duration(); ?></li>
 						<?php endif; ?>
 					</ul>
 				</footer>

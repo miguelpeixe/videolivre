@@ -2,7 +2,7 @@
 
 <?php
 $color = get_theme_mod('header_background_color');
-$scheme = vlchannel_get_color_scheme($color);
+$scheme = vl_get_color_scheme($color);
 ?>
 
 <div id="primary" class="site-content">

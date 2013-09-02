@@ -15,28 +15,28 @@
 				)
 			)
 		));
-		if($featured_video) {
+		if($featured_video) :
 			global $post;
 			$post = array_shift($featured_video);
 			setup_postdata($post);
 			get_template_part('video', 'featured');
 			wp_reset_postdata();
-		} else {
+		else :
 			$featured_video = null;
-		}
+		endif;
 		/*
 		 * Featured program
 		 */
-		$featured = vlchannel_get_featured_program();
-		if($featured && !is_paged()) {
+		$featured = vl_get_featured_program();
+		if($featured && !is_paged()) :
 			global $post;
 			$post = $featured;
 			setup_postdata($post);
 			get_template_part('program', 'featured');
 			wp_reset_postdata();
-		} else {
+		else :
 			$featured = null;
-		}
+		endif;
 		/*
 		 * Program list
 		 */
@@ -48,7 +48,7 @@
 			'post__not_in' => array(($featured ? $featured->ID : 0)),
 		);
 		query_posts($query);
-		if(have_posts()) {
+		if(have_posts()) :
 			?>
 			<div class="twelve columns">
 				<h2 class="section-title clearfix">
@@ -57,33 +57,33 @@
 				</h2>
 			</div>
 			<?php
-			while(have_posts()) {
+			while(have_posts()) :
 				the_post();
 				get_template_part('program', 'strip');
-			}
-		}
+			endwhile;
+		endif;
 		/*
 		 * Latest videos
 		 */
-		?>
-		<div class="twelve columns">
-			<h2 class="section-title clearfix">
-				<span><?php _e('Latest videos', 'videolivre-channel'); ?></span>
-				<a class="button" href="<?php echo get_post_type_archive_link('video'); ?>"><?php _e('All videos', 'videolivre-channel'); ?></a>
-			</h2>
-		</div>
-		<?php
 		$query = array(
 			'post_type' => 'video',
 			'posts_per_page' => 8,
 		);
 		query_posts($query);
-		if(have_posts()) {
-			while(have_posts()) {
+		if(have_posts()) :
+			?>
+			<div class="twelve columns">
+				<h2 class="section-title clearfix">
+					<span><?php _e('Latest videos', 'videolivre-channel'); ?></span>
+					<a class="button" href="<?php echo get_post_type_archive_link('video'); ?>"><?php _e('All videos', 'videolivre-channel'); ?></a>
+				</h2>
+			</div>
+			<?php
+			while(have_posts()) :
 				the_post();
 				get_template_part('video', 'minimal');
-			}
-		}
+			endwhile;
+		endif;
 		?>
 	</div>
 </div>
