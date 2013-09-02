@@ -17,10 +17,10 @@
 
 		} else {
 
-			slide(current);
-			var run = setInterval(slide, 8000);
 			var current = items.first();
 			var next = current.next('.slider-item');
+			var run = setInterval(slide, 8000);
+			slide(current);
 
 		}
 

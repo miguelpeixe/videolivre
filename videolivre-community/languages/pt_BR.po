@@ -1,0 +1,507 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Video Livre Channel\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-09-02 15:22-0300\n"
+"PO-Revision-Date: 2013-09-02 15:24-0300\n"
+"Last-Translator: Miguel Peixe <miguel@cardume.art.br>\n"
+"Language-Team: Cardume <contato@cardume.art.br>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: Portuguese\n"
+"X-Poedit-Country: BRAZIL\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../functions.php:27
+msgid "Blog widgets"
+msgstr "Widgets do blog"
+
+#: ../functions.php:37
+msgid "Main navigation menu"
+msgstr "Menu de navegação principal"
+
+#: ../channel-small.php:15
+msgid "Visit channel"
+msgstr "Visitar canal"
+
+#: ../channel-small.php:19
+msgid "Latest videos"
+msgstr "Últimos vídeos"
+
+#: ../content-channels.php:12
+msgid "Channels"
+msgstr "Canais"
+
+#: ../blog.php:14
+msgid "Blog"
+msgstr "Blog"
+
+#: ../blog.php:41
+msgid "Older"
+msgstr "Mais antigo"
+
+#: ../blog.php:44
+msgid "Newer"
+msgstr "Mais novo"
+
+#: ../index.php:13
+msgid "Active channels"
+msgstr "Canais ativos"
+
+#: ../index.php:14
+msgid "All channels"
+msgstr "Todos os canais"
+
+#: ../index.php:37
+msgid "From the blog"
+msgstr "No blog"
+
+#: ../index.php:38
+msgid "View blog"
+msgstr "Ver blog"
+
+#: ../inc/channel/channel.php:108
+msgid "Last updated"
+msgstr "Recém atualizados"
+
+#: ../inc/channel/channel.php:109
+msgid "New channels"
+msgstr "Novos canais"
+
+#: ../inc/channel/channel.php:110
+msgid "Old channels"
+msgstr "Canais antigos"
+
+#: ../inc/channel/channel.php:138
+msgid "Order by"
+msgstr "Ordenar por"
+
+#: ../inc/slider/slider.php:34
+msgid "Slider"
+msgstr "Slider"
+
+#: ../inc/slider/slider.php:35
+msgid "Slider item"
+msgstr "Item do slider"
+
+#: ../inc/slider/slider.php:36
+msgid "Add slider item"
+msgstr "Adicionar item do slider"
+
+#: ../inc/slider/slider.php:37
+msgid "Add new slider item"
+msgstr "Adicionar novo item do slider"
+
+#: ../inc/slider/slider.php:38
+msgid "Edit slider item"
+msgstr "Editar item do slider"
+
+#: ../inc/slider/slider.php:39
+msgid "New slider item"
+msgstr "Novo item do slider"
+
+#: ../inc/slider/slider.php:40
+msgid "View slider item"
+msgstr "Ver item do slider"
+
+#: ../inc/slider/slider.php:41
+msgid "Search slider items"
+msgstr "Bsucar itens do slider"
+
+#: ../inc/slider/slider.php:42
+msgid "No slider item found"
+msgstr "Nenhum item do slider foi encontrado"
+
+#: ../inc/slider/slider.php:43
+msgid "No slider item found in the trash"
+msgstr "Nenhum item do slider foi encontrado na lixeira"
+
+#: ../inc/slider/slider.php:44
+msgid "Featured slider"
+msgstr "Slider de destaque"
+
+#: ../inc/slider/slider.php:50
+msgid "Toolkit slider"
+msgstr "Slider"
+
+#: ../inc/slider/slider.php:90
+msgid "Description"
+msgstr "Descrição"
+
+#: ../inc/slider/slider.php:106
+msgid "Hide slider title and content (show only featured image)"
+msgstr "Esconder título e conteúdo do slider (exibir apenas imagem destacada)"
+
+#: ../inc/slider/slider.php:108
+msgid "Hide content"
+msgstr "Esconder conteúdo"
+
+#~ msgid "Comments"
+#~ msgstr "Comentários"
+
+#~ msgid "created by"
+#~ msgstr "criado por"
+
+#~ msgid "produced by"
+#~ msgstr "produzido por"
+
+#~ msgid "Find us on Facebook"
+#~ msgstr "Encontre-nos no Facebook"
+
+#~ msgid "Find us on Twitter"
+#~ msgstr "Encontre-nos no Twitter"
+
+#~ msgid "Find us on YouTube"
+#~ msgstr "Encontre-nos no YouTube"
+
+#~ msgid "Find us on Vimeo"
+#~ msgstr "Encontre-nos no Vimeo"
+
+#~ msgid "Page %s"
+#~ msgstr "Página %s"
+
+#~ msgid "Programs"
+#~ msgstr "Programas"
+
+#~ msgid "Pingback:"
+#~ msgstr "Pingback:"
+
+#~ msgid "(Edit)"
+#~ msgstr "(Editar)"
+
+#~ msgid "Author"
+#~ msgstr "Autor"
+
+#~ msgid "%1$s at %2$s"
+#~ msgstr "%1$s às %2$s"
+
+#~ msgid "Your comment is awaiting moderation."
+#~ msgstr "Seu comentário está aguardando moderação."
+
+#~ msgid "Edit"
+#~ msgstr "Editar"
+
+#~ msgid "Reply"
+#~ msgstr "Responder"
+
+#~ msgid "Most popular"
+#~ msgstr "Mais popular"
+
+#~ msgid "Most recent"
+#~ msgstr "Mais recente"
+
+#~ msgid "Oldests"
+#~ msgstr "Mais antigos"
+
+#~ msgid "This website is running on WordPress with Video Livre Channel theme."
+#~ msgstr "Este site está operando em WordPress com o tema Video Livre Channel"
+
+#~ msgid "Search results for"
+#~ msgstr "Resultados da busca por"
+
+#~ msgid "Click to close full description"
+#~ msgstr "Clique para fechar descrição completa"
+
+#~ msgid "Click to read the full description"
+#~ msgstr "Clique para ler descrição completa"
+
+#~ msgid "More videos"
+#~ msgstr "Mais vídeos"
+
+#~ msgid "Back"
+#~ msgstr "Voltar"
+
+#~ msgid "Forward"
+#~ msgstr "Adiantar"
+
+#~ msgid "Archive"
+#~ msgstr "Arquivo"
+
+#~ msgid "Social share"
+#~ msgstr "Compartilhamentos sociais"
+
+#~ msgid "by"
+#~ msgstr "por"
+
+#~ msgid "technical crew"
+#~ msgstr "Equipe técnica"
+
+#~ msgid "views"
+#~ msgstr "visualizações"
+
+#~ msgid "Flag this video"
+#~ msgstr "Denunciar este vídeo"
+
+#~ msgid "Search for videos and programs"
+#~ msgstr "Pesquise por vídeos e programas"
+
+#~ msgid "Search for channels, programs and videos"
+#~ msgstr "Pesquise por canais, programas e vídeos"
+
+#~ msgid "Search"
+#~ msgstr "Buscar"
+
+#~ msgid "More programs"
+#~ msgstr "Mais programas"
+
+#~ msgid "All programs"
+#~ msgstr "Todos os programas"
+
+#~ msgid "All videos"
+#~ msgstr "Todos os vídeos"
+
+#~ msgid "Video attachments"
+#~ msgstr "Anexos do vídeo"
+
+#~ msgid ""
+#~ "Add attachments to your video, including PDF, ZIP, or any other file."
+#~ msgstr ""
+#~ "Adicione anexos ao seu vídeo, incluindo PDF, ZIP ou outro tipo de arquivo."
+
+#~ msgid "File"
+#~ msgstr "Arquivo"
+
+#~ msgid "Upload file"
+#~ msgstr "Envie o arquivo"
+
+#~ msgid "Enter file URL or upload new file"
+#~ msgstr "Entre com a URL ou envie novo arquivo"
+
+#~ msgid "File name"
+#~ msgstr "Nome do arquivo"
+
+#~ msgid "Remove file"
+#~ msgstr "Remover arquivo"
+
+#~ msgid "+ Add new file"
+#~ msgstr "+ Adicionar novo arquivo"
+
+#~ msgid "Program"
+#~ msgstr "Programa"
+
+#~ msgid "Select program to associate your video."
+#~ msgstr "Selecione um programa para associar seu vídeo."
+
+#~ msgid "No programs were found."
+#~ msgstr "Nenhum programa foi encontrado"
+
+#~ msgid ""
+#~ "<a href=\"%s\" target=\"_blank\" title=\"New program\">Click here</a> to "
+#~ "create a new program"
+#~ msgstr ""
+#~ "<a href=\"%s\" target=\"_blank\" title=\"Novo programa\">Clique aqui</a> "
+#~ "para criar um novo programa"
+
+#~ msgid "You must enter a valid URL"
+#~ msgstr "Você deve inserir uma URL válida"
+
+#~ msgid "Add video"
+#~ msgstr "Adicionar vídeo"
+
+#~ msgid "Supported formats"
+#~ msgstr "Formatos suportados"
+
+#~ msgid ""
+#~ "Paste a video URL and click \"Load video\" or press enter to load the "
+#~ "video"
+#~ msgstr ""
+#~ "Cole a url do vídeo e clique em \"Carregar vídeo\" ou pressione enter"
+
+#~ msgid "Video URL"
+#~ msgstr "URL do vídeo"
+
+#~ msgid "MP4 fallback"
+#~ msgstr "Fallback em MP4"
+
+#~ msgid "OGV fallback"
+#~ msgstr "Fallback em OGV"
+
+#~ msgid "WebM fallback"
+#~ msgstr "Fallback em WebM"
+
+#~ msgid "Add subtitle track"
+#~ msgstr "Adicionar trilha de legendas"
+
+#~ msgid "Subtitle url"
+#~ msgstr "URL da legenda"
+
+#~ msgid "Language code"
+#~ msgstr "Código da legenda"
+
+#~ msgid "E.g.: pt-BR, en-US, fr"
+#~ msgstr "Ex: pt-BR, en-US, fr"
+
+#~ msgid "Language label"
+#~ msgstr "Título da legenda"
+
+#~ msgid "E.g.: English, Portuguese"
+#~ msgstr "Ex: Inglês, Português"
+
+#~ msgid "Remove subtitle"
+#~ msgstr "Remover legenda"
+
+#~ msgid ""
+#~ "Enter the file url or click to upload a <strong>.srt</strong> or <strong>."
+#~ "vtt</strong> file"
+#~ msgstr ""
+#~ "Entre com a url ou clique para enviar um arquivo <strong>.srt</strong> ou "
+#~ "<strong>.vtt</strong>"
+
+#~ msgid ""
+#~ "According to <a href=\"%s\" target=\"_blank\" rel=\"external\">BCP 47</a> "
+#~ "code. E.g.: pt-BR, en-US, fr."
+#~ msgstr ""
+#~ "De acordo com os padrões <a href=\"%s\" target=\"_blank\" rel=\"external"
+#~ "\">BCP 47</a>. Ex: pt-BR, en-US, fr."
+
+#~ msgid "Preview video"
+#~ msgstr "Carregar vídeo"
+
+#~ msgid "Videos"
+#~ msgstr "Vídeos"
+
+#~ msgid "Video"
+#~ msgstr "Vídeo"
+
+#~ msgid "Add new"
+#~ msgstr "Adicionar novo"
+
+#~ msgid "New video"
+#~ msgstr "Novo vídeo"
+
+#~ msgid "Parent video:"
+#~ msgstr "Vídeo pai:"
+
+#~ msgid "Add new program"
+#~ msgstr "Adicionar novo programa"
+
+#~ msgid "Edit program"
+#~ msgstr "Editar programa"
+
+#~ msgid "New program"
+#~ msgstr "Novo programa"
+
+#~ msgid "Search programs"
+#~ msgstr "Buscar programas"
+
+#~ msgid "No programs found"
+#~ msgstr "Nenhum programa foi encontrado"
+
+#~ msgid "No programs found in trash"
+#~ msgstr "Nenhum programa foi encontrado na lixeira"
+
+#~ msgid "Parent program:"
+#~ msgstr "Programa pai:"
+
+#~ msgid "Header background color"
+#~ msgstr "Cor de fundo do cabeçalho"
+
+#~ msgid "Website Logo"
+#~ msgstr "Logo"
+
+#~ msgid "This program is featured"
+#~ msgstr "Este programa é destaque"
+
+#~ msgid "Featured program"
+#~ msgstr "Programa em destaque"
+
+#~ msgid ""
+#~ "Set this program as channel featured. You can only have one featured "
+#~ "program on your channel. If more than one is selected, the last uploaded "
+#~ "will be selected."
+#~ msgstr ""
+#~ "Selecionar este programa como destaque. Você pode ter apenas um programa "
+#~ "em destaque no seu canal. Se mais de um estiver selecionado, o último "
+#~ "enviado será utilizado."
+
+#~ msgid "Login"
+#~ msgstr "Entrar"
+
+#~ msgid "Register"
+#~ msgstr "Cadastre-se"
+
+#~ msgid "Edit profile"
+#~ msgstr "Editar perfil"
+
+#~ msgid "Dashboard"
+#~ msgstr "Painel de controle"
+
+#~ msgid "Create new video channel"
+#~ msgstr "Criar novo canal de vídeo"
+
+#~ msgid "Logout"
+#~ msgstr "Sair"
+
+#~ msgid "Permission denied."
+#~ msgstr "Permissão negada."
+
+#~ msgid "Video information"
+#~ msgstr "Informações do vídeo"
+
+#~ msgid "Year of production"
+#~ msgstr "Ano de produção"
+
+#~ msgid "Direction"
+#~ msgstr "Direção"
+
+#~ msgid "Technical information"
+#~ msgstr "Informações técnicas"
+
+#~ msgid "This video is program featured"
+#~ msgstr "Este vídeo é destaque no programa"
+
+#~ msgid "Program featured"
+#~ msgstr "Destaque no programa"
+
+#~ msgid ""
+#~ "Set this video as program featured. You can only have one featured video "
+#~ "on your program. If more than one is selected, the last uploaded will be "
+#~ "selected."
+#~ msgstr ""
+#~ "Marque este vídeo como destaque do programa. Você pode ter apenas um "
+#~ "destaque no seu programa. Se mais de um destaque for selecionado, o "
+#~ "último envio será selecionado."
+
+#~ msgid "This video is channel featured"
+#~ msgstr "Este vídeo é destaque do canal"
+
+#~ msgid "Channel featured"
+#~ msgstr "Destaque do canal"
+
+#~ msgid ""
+#~ "Set this video as channel featured. You can only have one featured video "
+#~ "on your channel. If more than one is selected, the last uploaded will be "
+#~ "selected."
+#~ msgstr ""
+#~ "Marque este vídeo como destaque do canal. Você pode ter apenas um "
+#~ "destaque no seu canal. Se mais de um destaque for selecionado, o último "
+#~ "envio será selecionado."
+
+#~ msgid "Channel settings"
+#~ msgstr "Configurações do canal"
+
+#~ msgid "Team and description"
+#~ msgstr "Equipe e descrição"
+
+#~ msgid "Creator name"
+#~ msgstr "Nome do criador"
+
+#~ msgid "Producer name"
+#~ msgstr "Nome do produtor"
+
+#~ msgid "Channel description"
+#~ msgstr "Descrição do canal"
+
+#~ msgid "Social links"
+#~ msgstr "Links sociais"
+
+#~ msgid "Enter your channel information below:"
+#~ msgstr "Preencha as informações do seu canal abaixo:"
+
+#~ msgid "Fill with links to your connected social networks:"
+#~ msgstr "Preencha com os links de suas redes sociais:"

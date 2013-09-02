@@ -16,6 +16,8 @@ require_once(STYLESHEETPATH . '/inc/multisite-query.php');
 
 function vlcommunity_setup() {
 
+	load_child_theme_textdomain('videolivre-community', get_stylesheet_directory() . '/languages');
+
 	add_theme_support( 'custom-background', array(
 		'default-color' => 'e6e6e6',
 	));

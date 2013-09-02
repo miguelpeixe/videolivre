@@ -87,7 +87,7 @@ class VL_Slider {
 						'default_value' => '',
 						'formatting' => 'br',
 						'key' => 'field_slider_description',
-						'label' => __('Description', 'videolivre-channel'),
+						'label' => __('Description', 'videolivre-community'),
 						'name' => 'description',
 						'type' => 'textarea',
 					),
@@ -103,9 +103,9 @@ class VL_Slider {
 					),
 					array (
 						'default_value' => 0,
-						'message' => __('Hide slider title and content (show only featured image)', 'vlcommunity'),
+						'message' => __('Hide slider title and content (show only featured image)', 'videolivre-community'),
 						'key' => 'field_slider_content',
-						'label' => __('Hide content', 'vlcommunity'),
+						'label' => __('Hide content', 'videolivre-community'),
 						'name' => 'hide_content',
 						'type' => 'true_false',
 					),
@@ -165,7 +165,7 @@ class VL_Slider {
 		if(!have_posts())
 			return false;
 
-		wp_enqueue_script('vl-slider', $this->uri() . '/js/slider.js', array('jquery'), '1.1');
+		wp_enqueue_script('vl-slider', $this->uri() . '/js/slider.js', array('jquery'), '1.2');
 		wp_enqueue_style('vl-slider', $this->uri() . '/css/slider.css');
 		$this->template();
 		wp_reset_query();
