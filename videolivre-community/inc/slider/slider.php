@@ -165,7 +165,7 @@ class VL_Slider {
 		if(!have_posts())
 			return false;
 
-		wp_enqueue_script('vl-slider', $this->uri() . '/js/slider.js', array('jquery'), '1.2');
+		wp_enqueue_script('vl-slider', $this->uri() . '/js/slider.js', array('jquery'), '1.3');
 		wp_enqueue_style('vl-slider', $this->uri() . '/css/slider.css');
 		$this->template();
 		wp_reset_query();

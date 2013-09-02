@@ -44,8 +44,10 @@
 				next = current.next('.slider-item');
 			}
 
-			clearInterval(run);
-			run = setInterval(slide, 8000);
+			if(typeof run === 'number') {
+				clearInterval(run);
+				run = setInterval(slide, 8000);
+			}
 
 		}
 
