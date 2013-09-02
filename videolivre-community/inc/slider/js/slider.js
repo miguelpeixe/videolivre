@@ -10,18 +10,23 @@
 		var items = container.find('.slider-items > .slider-item');
 		var controllers = container.find('.slider-controllers > li');
 
-		var current = items.first();
-		var next = current.next('.slider-item');
+		if(items.length === 1) {
 
-		slide(current);
+			controllers.hide();
+
+		} else {
+
+			slide(current);
+			var run = setInterval(slide, 8000);
+			var current = items.first();
+			var next = current.next('.slider-item');
+
+		}
 
 		function slide(item) {
 
 			if(typeof item == 'undefined')
 				item = next;
-
-			if(items.length === 1)
-				return false;
 
 			// change active controller
 			controllers.removeClass('active');
@@ -54,8 +59,6 @@
 			return false;
 
 		});
-
-		var run = setInterval(slide, 8000);
 
 	});
 		
