@@ -12,6 +12,7 @@
 
 		if(items.length === 1) {
 
+			items.addClass('active');
 			controllers.hide();
 
 		} else {
