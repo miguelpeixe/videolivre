@@ -26,13 +26,16 @@ $scheme = vl_get_color_scheme($color);
 			<div class="container">
 				<div class="row">
 					<?php
-					$template = 'small';
-					if(get_post_type() == 'program')
-						$template = 'featured';
 					if(have_posts()) {
 						while(have_posts()) {
 							the_post();
-							get_template_part(get_post_type(), $template);
+							if(get_post_type() == 'program') {
+								get_template_part(get_post_type(), 'featured');
+							} else {
+								?><div class="six columns"><?php
+								get_template_part(get_post_type(), 'small');
+								?></div><?php
+							}
 						}
 					}
 					?>

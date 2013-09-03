@@ -24,10 +24,13 @@ $scheme = vl_get_color_scheme($color);
 					if(have_posts()) {
 						while(have_posts()) {
 							the_post();
-							$template = 'small';
-							if(get_post_type() == 'program')
-								$template = 'strip';
-							get_template_part(get_post_type(), $template);
+							if(get_post_type() == 'program') {
+								get_template_part(get_post_type(), 'featured');
+							} else {
+								?><div class="six columns"><?php
+								get_template_part(get_post_type(), 'small');
+								?></div><?php
+							}
 						}
 					}
 					?>
