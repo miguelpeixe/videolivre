@@ -28,16 +28,16 @@
 						$columns = 'three';
 						if($i == 0)
 							$columns .= ' alpha';
-						elseif($i == 2) {
-							if(is_array($template) && $template[0] == 'small')
-								$columns .= ' omega';
-							else
-								$columns .= ' alpha';
-						} elseif($i == 3) {
+						elseif($i == 1) {
 							if(is_array($template) && $template[0] == 'small')
 								$columns .= ' alpha';
 							else
 								$columns .= ' omega';
+						} elseif($i == 2) {
+							if(is_array($template) && $template[0] == 'small')
+								$columns .= ' omega';
+							else
+								$columns .= ' alpha';
 						} else {
 							$columns .= ' omega';
 						}
