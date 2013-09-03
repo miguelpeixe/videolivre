@@ -17,9 +17,9 @@ class VL_Program extends VL_Video {
 	function init() {
 		$this->register_post_type();
 		$this->acf_fields();
+		$this->redirect_canonical_setup();
 		$this->featured_field_setup();
 		$this->relationship_box_setup();
-		$this->redirect_canonical_setup();
 		$this->wp_head_setup();
 	}
 
@@ -212,7 +212,7 @@ class VL_Program extends VL_Video {
 		<?php
 	}
 
-	function save_post() {
+	function save_post($post_id) {
 		if(defined('DOING_AUTOSAVE') && DOING_AUTOSAVE)
 			return;
 
@@ -226,12 +226,14 @@ class VL_Program extends VL_Video {
 	}
 
 	function redirect_canonical_setup() {
-		apply_filters('redirect_canonical', array($this, 'redirect_canonical'));
+		add_filter('redirect_canonical', array($this, 'redirect_canonical'));
 	}
 
-	function redirect_canonical() {
+	function redirect_canonical($redirect_url) {
 		if(is_singular($this->program_post_type))
 			return false;
+
+		return $redirect_url;
 	}
 
 	/*

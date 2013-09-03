@@ -41,10 +41,10 @@ $scheme = vl_get_color_scheme($color);
 					<div class="pagination <?php echo $scheme; ?>">
 						<div class="twelve columns">
 							<?php if(vlchannel_has_next_page()) : ?>
-								<span class="older" style="background: <?php echo $color; ?>"><?php next_posts_link(__('Older', 'videolivre-channel'), $video_query->max_num_pages); ?></span>
+								<span class="older" style="background: <?php echo $color; ?>"><?php next_posts_link(__('Older', 'videolivre-channel')); ?></span>
 							<?php endif; ?>
 							<?php if(vlchannel_has_prev_page()) : ?>
-								<span class="newer" style="background: <?php echo $color; ?>"><?php previous_posts_link(__('Newer', 'videolivre-channel'), $video_query->max_num_pages); ?></span>
+								<span class="newer" style="background: <?php echo $color; ?>"><?php previous_posts_link(__('Newer', 'videolivre-channel')); ?></span>
 							<?php endif; ?>
 						</div>
 					</div>

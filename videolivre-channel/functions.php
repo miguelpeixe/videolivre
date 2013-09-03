@@ -266,8 +266,8 @@ function vlchannel_comment( $comment, $args, $depth ) {
  * Check if has next/prev page
  */
 
-function vlchannel_has_next_page() {
-	if(get_next_posts_link() === null)
+function vlchannel_has_next_page($max_num_pages = 0) {
+	if(get_next_posts_link(null, $max_num_pages) === null)
 		return false;
 
 	return true;

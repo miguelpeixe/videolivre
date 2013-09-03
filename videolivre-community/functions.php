@@ -11,8 +11,8 @@ include_once(STYLESHEETPATH . '/inc/blog.php');
 // slider
 include_once(STYLESHEETPATH . '/inc/slider/slider.php');
 
-// multisite query
-require_once(STYLESHEETPATH . '/inc/multisite-query.php');
+// multisite search
+require_once(STYLESHEETPATH . '/inc/multisite.php');
 
 function vlcommunity_setup() {
 
@@ -80,10 +80,10 @@ add_action('vl_after_header', 'vl_community_nav', 1);
 function vl_multisite_search($query) {
 	if(!is_admin() && $query->is_main_query() && $query->is_search) {
 		$query->set('post_type', array('video', 'program'));
+		$query->set('multisite', 1);
 	}
-	return $query;
 }
-add_action('pre_get_posts', 'vl_multisite_search', 100, 1);
+add_action('pre_get_posts', 'vl_multisite_search');
 
 function vl_community_breadcrumb($links) {
 	if(is_singular('post'))

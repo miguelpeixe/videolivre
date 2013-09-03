@@ -70,11 +70,11 @@
 			?>
 			<div class="pagination <?php echo $scheme; ?>">
 				<div class="twelve columns">
-					<?php if(vlchannel_has_next_page()) : ?>
+					<?php if(vlchannel_has_next_page($video_query->max_num_pages)) : ?>
 						<span class="older program-background"><?php next_posts_link(__('Older', 'videolivre'), $video_query->max_num_pages); ?></span>
 					<?php endif; ?>
 					<?php if(vlchannel_has_prev_page()) : ?>
-						<span class="newer program-background"><?php previous_posts_link(__('Newer', 'videolivre'), $video_query->max_num_pages); ?></span>
+						<span class="newer program-background"><?php previous_posts_link(__('Newer', 'videolivre')); ?></span>
 					<?php endif; ?>
 				</div>
 			</div>
