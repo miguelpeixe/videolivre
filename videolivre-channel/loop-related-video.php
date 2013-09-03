@@ -20,9 +20,9 @@ if(have_posts()) :
 					<?php
 					while(have_posts()) :
 						the_post();
-						echo '<li class="carousel-item">';
+						echo '<li class="carousel-item"><div class="three columns">';
 						get_template_part('video', 'minimal');
-						echo '</li>';
+						echo '</div></li>';
 					endwhile;
 					?>
 				</ul>
