@@ -81,7 +81,9 @@
 			<?php
 			while(have_posts()) :
 				the_post();
+				?><div class="three columns"><?php
 				get_template_part('video', 'minimal');
+				?></div><?php
 			endwhile;
 		endif;
 		?>

@@ -23,7 +23,9 @@ $logo = false;
 			if($latest_videos->have_posts()) {
 				while($latest_videos->have_posts()) {
 					$latest_videos->the_post();
+					?><div class="three columns"><?php
 					get_template_part('video', 'minimal');
+					?></div><?php
 				}
 			}
 			?>
