@@ -1,5 +1,5 @@
 <div class="clearfix"></div>
-<section id="program-<?php the_ID(); ?>" class="section program-strip">
+<section id="program-<?php the_ID(); ?>" class="section row program-strip">
 	<div class="three columns">
 		<header class="program-description" style="border-color: <?php echo vl_get_program_color(); ?>;">
 			<h3 class="program-title"><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h3>
