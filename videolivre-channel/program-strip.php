@@ -36,7 +36,7 @@
 								$columns .= ' omega';
 							}
 						} else {
-							$coluns .= ' omega';
+							$columns .= ' omega';
 						}
 					} else
 						$columns = 'six alpha';
