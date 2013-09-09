@@ -168,25 +168,30 @@ class VL_Video {
 		if($video_data['video_srv'][0] == 'youtube') {
 			$views = get_transient('video_'.$post_id.'_views');
 			if(!$views) {
-				$youtube_data = json_decode(file_get_contents('http://gdata.youtube.com/feeds/api/videos/' . $video_data['video_src'][0] . '?v=2&alt=jsonc'));
-				$views = $youtube_data->data->viewCount;
+				$youtube_data = @file_get_contents('http://gdata.youtube.com/feeds/api/videos/' . $video_data['video_src'][0] . '?v=2&alt=jsonc');
+				if($youtube_data) {
+					$youtube_data = json_decode($youtube_data);
+					$views = $youtube_data->data->viewCount;
+					set_transient('video_'.$post_id.'_views', $views, 60*60);
+				}
 			}
-			set_transient('video_'.$post_id.'_views', $views, 60*60);
 		}
 		// grab views from youtube and store transient
 		elseif($video_data['video_srv'][0] == 'vimeo') {
 			$views = get_transient('video_'.$post_id.'_views');
 			if(!$views) {
-				$vimeo_data = array_shift(json_decode(file_get_contents('http://vimeo.com/api/v2/video/' . $video_data['video_src'][0] . '.json')));
-				$views = $vimeo_data->stats_number_of_plays;
+				$vimeo_data = @file_get_contents('http://vimeo.com/api/v2/video/' . $video_data['video_src'][0] . '.json');
+				if($vimeo_data) {
+					$vimeo_data = array_shift(json_decode($vimeo_data));
+					$views = $vimeo_data->stats_number_of_plays;
+					set_transient('video_'.$post_id.'_views', $views, 60*60);
+				}
 			}
-			set_transient('video_'.$post_id.'_views', $views, 60*60);
-		} else {
-			$views = get_post_meta($post_id, '_vl_views', true);
 		}
 
-		if(!$views)
-			$views = 0;
+		if(!$views) {
+			$views = get_post_meta($post_id, '_vl_views', true) ? get_post_meta($post_id, '_vl_views', true) : 0;
+		}
 
 		return apply_filters('vl_video_views', $views);
 	}

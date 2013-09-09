@@ -21,6 +21,8 @@ class VL_Query_Multisite {
 	function pre_get_posts($query) {
 		if($query->get('multisite')) {
 
+			$this->debug_start = microtime(true);
+
 			global $wpdb, $blog_id;
 
 			$this->loop_end = false;
@@ -91,7 +93,7 @@ class VL_Query_Multisite {
 			$sql = str_replace('WHERE 1=1', '', $sql);
 
 			// Multisite request
-			$sql = str_replace("$wpdb->posts.* FROM $wpdb->posts", 'tables.* FROM ( ' . implode(" UNION ", $this->ms_select) . ' ) tables', $sql);
+			$sql = str_replace("$wpdb->posts.* FROM $wpdb->posts", 'tables.* FROM ( ' . implode(" UNION ALL ", $this->ms_select) . ' ) tables', $sql);
 
 		}
 
@@ -114,6 +116,7 @@ class VL_Query_Multisite {
 			if($switched) {
 				switch_to_blog($this->blog_id);
 			}
+			error_log(microtime(true) - $this->debug_start);
 		}
 	}
 }
